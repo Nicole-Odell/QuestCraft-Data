@@ -1,0 +1,17 @@
+{
+    "values": [
+        "minecraft:experience_orb",
+        "#minecraft:arrows",
+        "minecraft:trident",
+        "minecraft:armor_stand",
+        "minecraft:item_frame",
+        "minecraft:glow_item_frame",
+        "minecraft:painting",
+        "minecraft:leash_knot",
+        "minecraft:end_crystal",
+        "minecraft:fishing_bobber",
+        "minecraft:firework_rocket",
+        "minecraft:tnt",
+        "minecraft:falling_block"
+    ]
+}

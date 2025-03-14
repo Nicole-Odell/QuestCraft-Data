@@ -1,0 +1,1 @@
+tellraw @s {"bold":false,"color":"green","text":"Spell - Vigor Aspect added"}

@@ -1,0 +1,1 @@
+give @s minecraft:music_disc_5[!jukebox_playable,custom_name='{"bold":true,"color":"dark_purple","text":"Aspect of Void"}',custom_model_data=4,minecraft:custom_data={magic_aspect:void,right_click:true},minecraft:food={nutrition:0,saturation:0f,eat_seconds:2147483648f,can_always_eat:true}] 1

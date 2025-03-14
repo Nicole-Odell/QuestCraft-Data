@@ -1,0 +1,1 @@
+tellraw @s {"bold":false,"color":"aqua","text":"Spell - Soul Aspect added"}

@@ -1,0 +1,1 @@
+tellraw @s {"bold":false,"color":"red","text":"Spell - Blood Aspect added"}

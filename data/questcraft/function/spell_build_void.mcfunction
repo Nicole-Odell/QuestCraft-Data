@@ -1,0 +1,1 @@
+tellraw @s {"bold":false,"color":"dark_purple","text":"Spell - Void Aspect added"}
