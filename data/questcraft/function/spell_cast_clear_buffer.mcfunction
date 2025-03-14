@@ -1,0 +1,2 @@
+$data modify storage questcraft:mage_data mages[$(id)].spell set value []
+$title @s actionbar [{"bold":true,"color":"gold","text":"-^-<| "},{"color":"$(color)","text":"$(castText)"},{"bold":true,"color":"gold","text":"|>-^-"}]

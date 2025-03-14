@@ -1,0 +1,1 @@
+$title @s actionbar [{"bold":true,"color":"gold","text":"-^-<| "},{"color":"$(0)","text":"$(char) "},{"bold":true,"color":"gold","text":"|>-^-"}]
