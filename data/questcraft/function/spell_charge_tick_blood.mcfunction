@@ -11,4 +11,9 @@ execute if score @s blood_aspect.charge matches 0 run scoreboard players set @s 
 execute if score @s blood_aspect.charge > @s blood_aspect.maxCharge run scoreboard players operation @s blood_aspect.maxCharge = @s blood_aspect.charge
 
 # If the charge reaches the max, trigger the spell casting process
-execute if score @s blood_aspect.charge = _globals spellCastingMaxCharge run function questcraft:spell_cast_blood
+# Get the mage id and cast details to pass to casting
+execute if score @s blood_aspect.charge = _globals spellCastingMaxCharge run execute store result storage questcraft:args id int 1 run scoreboard players get @s mageId
+execute if score @s blood_aspect.charge = _globals spellCastingMaxCharge run data modify storage questcraft:args castSource set value 1
+
+# Attempt to cast. May or may not succeed based on spell details and cast source
+execute if score @s blood_aspect.charge = _globals spellCastingMaxCharge run function questcraft:spell_casting_prime with storage questcraft:args

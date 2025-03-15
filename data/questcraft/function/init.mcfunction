@@ -19,6 +19,10 @@ data merge storage questcraft:temp {}
 scoreboard objectives add var dummy
 scoreboard objectives add var2 dummy
 
+# Player stats
+scoreboard objectives add food food
+scoreboard objectives add health health
+
 # ==== Mage ==== #
 
 # Tracks whether a player is a mage
@@ -37,10 +41,20 @@ scoreboard objectives add mageId dummy
 # Mage-specific stats
 scoreboard objectives add mageLevel dummy
 scoreboard objectives add spellBufferSize dummy
+scoreboard objectives add soulPower dummy
 
 # Spellcasting constants
 scoreboard objectives add spellCastingMaxCharge dummy
 scoreboard players set _globals spellCastingMaxCharge 20
+
+scoreboard objectives add spellCastingFoodPower dummy
+scoreboard players set _globals spellCastingFoodPower 1
+
+scoreboard objectives add spellCastingBloodPower dummy
+scoreboard players set _globals spellCastingBloodPower 2
+
+scoreboard objectives add spellCastingSoulPower dummy
+scoreboard players set _globals spellCastingSoulPower 10
 
 # Variables for spellcasting
 scoreboard objectives add vigor_aspect.charge dummy

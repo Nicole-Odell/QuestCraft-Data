@@ -1,0 +1,1 @@
+$title @s actionbar [{"bold":true,"color":"gold","text":"-^-<| "},{"color":"$(castColor)","text":"(> Casted $(spellName) using $(castAspectName) <) "},{"bold":true,"color":"gold","text":"|>-^-"}]

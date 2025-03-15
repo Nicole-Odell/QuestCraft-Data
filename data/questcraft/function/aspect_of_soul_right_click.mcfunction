@@ -1,9 +1,6 @@
 # Display the particle unless we have passed the max charge. This avoids particles after a spell is cast if they continue to hold right click.
 execute unless score @s soul_aspect.charge >= _globals spellCastingMaxCharge at @s anchored eyes run particle minecraft:soul_fire_flame ^-0.4 ^0.05 ^0.35 0.025 0.025 0.025 0.01 10 force @s
 
-# Play the aspect sounds if the click just started
-execute if score @s soul_aspect.charge matches 0 at @s run playsound minecraft:entity.allay.item_thrown player @a ~ ~ ~ 1 0 0
-execute if score @s soul_aspect.charge matches 0 at @s run playsound minecraft:entity.wither.shoot player @a ~ ~ ~ 0.3 2 0
 # Play the charge up sound if we have started charging
 execute if score @s soul_aspect.charge matches 1 run playsound minecraft:block.bell.resonate player @a ~ ~ ~ 1 2 0
 
