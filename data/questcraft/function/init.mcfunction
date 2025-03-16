@@ -1,11 +1,6 @@
-##
- # init.mcfunction
- # wgs2
- #
- # Created by InfectedGrowth.
-##
-
 # ==== General ==== #
+
+gamerule snowAccumulationHeight 7
 
 # scoreboard objectives add rayCastHops dummy
 # scoreboard objectives add maxRayCastHops dummy
@@ -13,11 +8,9 @@
 
 # Temp storage used to pass function arguments (via macros)
 data merge storage questcraft:args {}
-data merge storage questcraft:temp {}
 
-# Temp variables
+# Variables
 scoreboard objectives add var dummy
-scoreboard objectives add var2 dummy
 
 # Player stats
 scoreboard objectives add food food
@@ -41,7 +34,8 @@ scoreboard objectives add mageId dummy
 # Mage-specific stats
 scoreboard objectives add mageLevel dummy
 scoreboard objectives add spellBufferSize dummy
-scoreboard objectives add soulPower dummy
+scoreboard objectives add soulPower.current dummy
+scoreboard objectives add soulPower.max dummy
 
 # Spellcasting constants
 scoreboard objectives add spellCastingMaxCharge dummy
@@ -54,7 +48,7 @@ scoreboard objectives add spellCastingBloodPower dummy
 scoreboard players set _globals spellCastingBloodPower 2
 
 scoreboard objectives add spellCastingSoulPower dummy
-scoreboard players set _globals spellCastingSoulPower 10
+scoreboard players set _globals spellCastingSoulPower 2
 
 # Variables for spellcasting
 scoreboard objectives add vigor_aspect.charge dummy

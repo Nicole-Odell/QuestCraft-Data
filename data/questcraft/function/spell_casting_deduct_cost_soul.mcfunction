@@ -1,0 +1,1 @@
+scoreboard players operation @s soulPower.current -= _spell_cost_with_source var

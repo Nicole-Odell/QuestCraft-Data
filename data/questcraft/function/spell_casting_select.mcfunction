@@ -8,6 +8,27 @@ scoreboard players set _any_spell_matched var 0
 
 # === Basic === #
 
+# Transfuse Health [lvl 1]: Converts another resource into its equivalent of health
+data modify storage questcraft:args spellToMatch set value [1]
+data modify storage questcraft:args spellName set value "Minor Transfuse Health"
+data modify storage questcraft:args spellCost set value 16
+data modify storage questcraft:args spellFunction set value "questcraft:spell_heal_minor_cast"
+execute unless score _any_spell_matched var matches 1 run function questcraft:spell_casting_cast_if_match with storage questcraft:args
+
+# Transfuse Health [lv1 2]: Converts another resource into its equivalent of health
+data modify storage questcraft:args spellToMatch set value [1,1]
+data modify storage questcraft:args spellName set value "Transfuse Health"
+data modify storage questcraft:args spellCost set value 32
+data modify storage questcraft:args spellFunction set value "questcraft:spell_heal_cast"
+execute unless score _any_spell_matched var matches 1 run function questcraft:spell_casting_cast_if_match with storage questcraft:args
+
+# Impact: Launches an entity back and does minor damage
+data modify storage questcraft:args spellToMatch set value [0,0]
+data modify storage questcraft:args spellName set value "<spell>"
+data modify storage questcraft:args spellCost set value 2
+data modify storage questcraft:args spellFunction set value "questcraft:spell_impact_cast"
+execute unless score _any_spell_matched var matches 1 run function questcraft:spell_casting_cast_if_match with storage questcraft:args
+
 # Firebolt: Fires a burst of blaze fireballs which light enemies on fire and melt ice they touch
 data modify storage questcraft:args spellToMatch set value [0,1]
 data modify storage questcraft:args spellName set value "<spell>"
@@ -22,13 +43,6 @@ data modify storage questcraft:args spellCost set value 2
 data modify storage questcraft:args spellFunction set value "questcraft:spell_icewind_cast"
 execute unless score _any_spell_matched var matches 1 run function questcraft:spell_casting_cast_if_match with storage questcraft:args
 
-# Impact: Launches an entity back and does minor damage
-data modify storage questcraft:args spellToMatch set value [0,0]
-data modify storage questcraft:args spellName set value "<spell>"
-data modify storage questcraft:args spellCost set value 2
-data modify storage questcraft:args spellFunction set value "questcraft:spell_impact_cast"
-execute unless score _any_spell_matched var matches 1 run function questcraft:spell_casting_cast_if_match with storage questcraft:args
-
 # Solar Ray: Lights all undead on fire nearby to the caster
 data modify storage questcraft:args spellToMatch set value [0,1,2]
 data modify storage questcraft:args spellName set value "<spell>"
@@ -36,23 +50,23 @@ data modify storage questcraft:args spellCost set value 2
 data modify storage questcraft:args spellFunction set value "questcraft:spell_solar_ray_cast"
 execute unless score _any_spell_matched var matches 1 run function questcraft:spell_casting_cast_if_match with storage questcraft:args
 
-# Barrier: Enemies cannot enter a small radius around the caster or target for a short time
-data modify storage questcraft:args spellToMatch set value [2,0,0]
-data modify storage questcraft:args spellName set value "<spell>"
-data modify storage questcraft:args spellCost set value 2
-data modify storage questcraft:args spellFunction set value "questcraft:spell_barrier_cast"
-execute unless score _any_spell_matched var matches 1 run function questcraft:spell_casting_cast_if_match with storage questcraft:args
-
 # Ward: Deflects projectiles for a short time 
 data modify storage questcraft:args spellToMatch set value [2,0]
-data modify storage questcraft:args spellName set value "<spell>"
+data modify storage questcraft:args spellName set value "Basic Ward"
 data modify storage questcraft:args spellCost set value 2
 data modify storage questcraft:args spellFunction set value "questcraft:spell_ward_cast"
 execute unless score _any_spell_matched var matches 1 run function questcraft:spell_casting_cast_if_match with storage questcraft:args
 
+# Barrier: Enemies cannot enter a small radius around the caster or target for a short time
+data modify storage questcraft:args spellToMatch set value [2,0,0]
+data modify storage questcraft:args spellName set value "Basic Barrier"
+data modify storage questcraft:args spellCost set value 2
+data modify storage questcraft:args spellFunction set value "questcraft:spell_barrier_cast"
+execute unless score _any_spell_matched var matches 1 run function questcraft:spell_casting_cast_if_match with storage questcraft:args
+
 # Blood Bond: Binds an enemy's health to the caster, allowing them to draw from their and any other bonded enemy's combined health pool to cast spells. Doesn't work on all mobs.
-data modify storage questcraft:args spellToMatch set value [1,1]
-data modify storage questcraft:args spellName set value "<spell>"
+data modify storage questcraft:args spellToMatch set value [1,2]
+data modify storage questcraft:args spellName set value "Blood Bond"
 data modify storage questcraft:args spellCost set value 2
 data modify storage questcraft:args spellFunction set value "questcraft:spell_blood_bond_cast"
 execute unless score _any_spell_matched var matches 1 run function questcraft:spell_casting_cast_if_match with storage questcraft:args
@@ -75,8 +89,8 @@ execute unless score _any_spell_matched var matches 1 run function questcraft:sp
 
 # Levitate Self: Applies levitation effect to caster for a time, then slow falling after it ends
 data modify storage questcraft:args spellToMatch set value [2,0,2]
-data modify storage questcraft:args spellCost set value 2
-data modify storage questcraft:args spellName set value "Levitate"
+data modify storage questcraft:args spellCost set value 4
+data modify storage questcraft:args spellName set value "Levitate Self"
 data modify storage questcraft:args spellFunction set value "questcraft:spell_levitate_cast"
 execute unless score _any_spell_matched var matches 1 run function questcraft:spell_casting_cast_if_match with storage questcraft:args
 
