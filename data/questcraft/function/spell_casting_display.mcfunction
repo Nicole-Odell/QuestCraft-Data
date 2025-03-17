@@ -1,5 +1,5 @@
 # Gather the args to pass
-execute store result storage questcraft:args id int 1 run scoreboard players get @s mageId
+execute store result storage questcraft:args mageId int 1 run scoreboard players get @s mageId
 data modify storage questcraft:args index set value 0
 
 # We will gather the information needed display the spell buffer.
@@ -21,7 +21,7 @@ execute if score _spell_display_build_succeeded var matches 1 if score _spell_di
 execute if score _spell_display_build_succeeded var matches 1 if score _spell_display_buffer_content_length var matches 5 run function questcraft:spell_casting_display_apply_5 with storage questcraft:args colors
 execute if score _spell_display_build_succeeded var matches 1 if score _spell_display_buffer_content_length var matches 6 run function questcraft:spell_casting_display_apply_6 with storage questcraft:args colors
 
-data remove storage questcraft:args id
+data remove storage questcraft:args mageId
 data remove storage questcraft:args index
 data remove storage questcraft:args colors
 

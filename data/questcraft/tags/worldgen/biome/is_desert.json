@@ -1,0 +1,9 @@
+{
+    "values": [
+        "#terralith:reference/desert_all",
+        "#terralith:reference/badlands_with_structures",
+        "minecraft:badlands",
+        "minecraft:eroded_badlands",
+        "minecraft:desert"
+    ]
+}

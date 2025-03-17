@@ -1,0 +1,9 @@
+{
+    "values": [
+        "#terralith:reference/swamp",
+        "terralith:cave/fungal_caves",
+        "terralith:orchid_swamp",
+        "minecraft:mangrove_swamp",
+        "minecraft:swamp"
+    ]
+}

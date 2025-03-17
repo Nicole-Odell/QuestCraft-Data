@@ -1,0 +1,12 @@
+{
+    "values": [
+        "#terralith:reference/savanna",
+        "minecraft:bamboo_jungle",
+        "minecraft:jungle",
+        "minecraft:savanna_plateau",
+        "minecraft:savanna",
+        "minecraft:sparse_jungle",
+        "minecraft:windswept_savanna",
+        "minecraft:wooded_badlands"
+    ]
+}

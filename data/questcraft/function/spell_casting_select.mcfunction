@@ -31,7 +31,7 @@ execute unless score _any_spell_matched var matches 1 run function questcraft:sp
 
 # Firebolt: Fires a burst of blaze fireballs which light enemies on fire and melt ice they touch
 data modify storage questcraft:args spellToMatch set value [0,1]
-data modify storage questcraft:args spellName set value "<spell>"
+data modify storage questcraft:args spellName set value "FireBolt"
 data modify storage questcraft:args spellCost set value 2
 data modify storage questcraft:args spellFunction set value "questcraft:spell_firebolt_cast"
 execute unless score _any_spell_matched var matches 1 run function questcraft:spell_casting_cast_if_match with storage questcraft:args
@@ -114,8 +114,8 @@ execute unless score _any_spell_matched var matches 1 run function questcraft:sp
 execute unless score _any_spell_matched var matches 1 run function questcraft:spell_casting_fail_spell_not_found with storage questcraft:args
 
 # Reset state used for casting
-$data modify storage questcraft:mage_data mages[$(id)].spell set value []
-data remove storage questcraft:args id
+$data modify storage questcraft:mage_data mages[$(mageId)].spell set value []
+data remove storage questcraft:args mageId
 data remove storage questcraft:args castSource
 data remove storage questcraft:args spell
 data remove storage questcraft:args spellToMatch

@@ -12,7 +12,7 @@ execute if score @s void_aspect.charge > @s void_aspect.maxCharge run scoreboard
 
 # If the charge reaches the max, trigger the spell casting process
 # Get the mage id and cast details to pass to casting
-execute if score @s void_aspect.charge = _globals spellCastingMaxCharge run execute store result storage questcraft:args id int 1 run scoreboard players get @s mageId
+execute if score @s void_aspect.charge = _globals spellCastingMaxCharge run execute store result storage questcraft:args mageId int 1 run scoreboard players get @s mageId
 execute if score @s void_aspect.charge = _globals spellCastingMaxCharge run data modify storage questcraft:args castSource set value 3
 
 # Attempt to cast. May or may not succeed based on spell details and cast source

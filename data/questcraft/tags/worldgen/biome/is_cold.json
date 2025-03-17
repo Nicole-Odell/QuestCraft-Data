@@ -1,0 +1,29 @@
+{
+    "values": [
+        "terralith:alpine_highlands",
+        "terralith:cloud_forest",
+        "terralith:forested_highlands",
+        "terralith:lush_valley",
+        "terralith:moonlight_grove",
+        "terralith:moonlight_valley",
+        "terralith:rocky_mountains",
+        "terralith:shield_clearing",
+        "terralith:shield",
+        "terralith:white_cliffs",
+        "terralith:yellowstone",
+        "terralith:yosemite_cliffs",
+        "terralith:yosemite_lowlands",
+        "terralith:blooming_plateau",
+        "minecraft:cold_ocean",
+        "minecraft:deep_cold_ocean",
+        "minecraft:deep_dark",
+        "minecraft:meadow",
+        "minecraft:old_growth_spruce_taiga",
+        "minecraft:stony_peaks",
+        "minecraft:stony_shore",
+        "minecraft:taiga",
+        "minecraft:windswept_forest",
+        "minecraft:windswept_gravelly_hills",
+        "minecraft:windswept_hills"
+    ]
+}

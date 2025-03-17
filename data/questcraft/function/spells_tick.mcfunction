@@ -6,3 +6,5 @@ execute as @a[scores={void_aspect.charge=1..}] run function questcraft:spell_cha
 execute as @a[scores={isMage=1}] run function questcraft:spell_casting_display
 
 execute as @a[scores={isMage=1}] run function questcraft:mage_soul_meter_display
+
+function questcraft:spells_tick_effects

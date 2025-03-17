@@ -6,7 +6,7 @@ execute store result score _spell_match_length var run data get storage questcra
 execute unless score _spell_length var = _spell_match_length var run scoreboard players set _spell_matched var 0
 
 # Reset and return early if the length didn't match
-# execute if score _spell_matched var matches 0 run scoreboard players reset _spell_match_length var
+execute if score _spell_matched var matches 0 run scoreboard players reset _spell_match_length var
 execute if score _spell_matched var matches 0 run return fail
 
 # MC refuses to match lists based on their order and instead just does it by their content (ignoring order or count), 

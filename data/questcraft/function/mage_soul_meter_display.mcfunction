@@ -1,4 +1,4 @@
-execute store result storage questcraft:args id int 1 run scoreboard players get @s mageId
+execute store result storage questcraft:args mageId int 1 run scoreboard players get @s mageId
 execute store result storage questcraft:args soulPowerMax int 1 run scoreboard players get @s soulPower.max
 execute store result storage questcraft:args soulPowerCurrent int 1 run scoreboard players get @s soulPower.current
 
@@ -23,7 +23,7 @@ execute if score _soul_power_percentage var matches 0..19 run data modify storag
 # Update the soul meter display
 function questcraft:mage_soul_meter_display_apply with storage questcraft:args
 
-data remove storage questcraft:args id
+data remove storage questcraft:args mageId
 data remove storage questcraft:args soulPowerMax
 data remove storage questcraft:args soulPowerCurrent
 data remove storage questcraft:args soulPowerLevelColor
