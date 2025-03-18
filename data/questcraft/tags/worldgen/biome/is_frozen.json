@@ -1,6 +1,7 @@
 {
     "values": [
         "#terralith:reference/temperature/frozen_all",
+        "terralith:rocky_mountains",
         "terralith:cave/frostfire_caves",
         "minecraft:deep_frozen_ocean",
         "minecraft:frozen_ocean",

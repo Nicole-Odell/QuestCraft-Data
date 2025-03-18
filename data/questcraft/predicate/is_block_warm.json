@@ -1,0 +1,26 @@
+
+{
+    "condition":"any_of",
+    "terms":
+    [
+        {
+            "condition": "minecraft:location_check",
+            "predicate": {
+                "block": {
+                    "blocks": ["minecraft:fire","minecraft:lava","minecraft:lava_cauldron","minecraft:magma_block"]
+                }
+            }
+        },
+        {
+            "condition": "minecraft:location_check",
+            "predicate": {
+                "block": {
+                    "blocks": ["minecraft:campfire","minecraft:furnace","minecraft:blast_furnace","minecraft:smoker"],
+                    "state": {
+                        "lit": "true"
+                    }
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,1 @@
+$execute if score _globals printDebug matches 1 run tellraw InfectedGrowth ["$(var): ",{"score":{"name":"$(var)","objective":"var"}}]

@@ -1,12 +1,15 @@
 {
     "values": [
         "#terralith:reference/savanna",
+        "terralith:brushland",
         "minecraft:bamboo_jungle",
         "minecraft:jungle",
         "minecraft:savanna_plateau",
         "minecraft:savanna",
         "minecraft:sparse_jungle",
         "minecraft:windswept_savanna",
-        "minecraft:wooded_badlands"
+        "minecraft:wooded_badlands",
+        "minecraft:mangrove_swamp",
+        "minecraft:swamp"
     ]
 }

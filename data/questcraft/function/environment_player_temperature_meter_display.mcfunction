@@ -3,6 +3,10 @@ execute store result storage questcraft:args temperatureMax int 1 run scoreboard
 execute store result storage questcraft:args temperatureCurrent int 1 run scoreboard players get @s temperature.current
 execute store result storage questcraft:args temperatureEnvironmentCurrent int 1 run scoreboard players get @s temperature.environmentCurrent
 
+# Determine if we should show fire indication
+execute if score @s isNearWarmth matches 0 run data modify storage questcraft:args temperatureFireText set value ""
+execute if score @s isNearWarmth matches 1 run data modify storage questcraft:args temperatureFireText set value " 🔥 "
+
 # Get the color and text of the environment temperature indication
 execute if score @s temperature.environmentCurrent matches 2 run data modify storage questcraft:args temperatureEnvironmentText set value "Very Hot"
 execute if score @s temperature.environmentCurrent matches 2 run data modify storage questcraft:args temperatureEnvironmentColor set value "red"
@@ -17,6 +21,12 @@ execute if score @s temperature.environmentCurrent matches -2 run data modify st
 execute if score @s temperature.environmentCurrent matches -3 run data modify storage questcraft:args temperatureEnvironmentText set value "Glacial"
 execute if score @s temperature.environmentCurrent matches -3 run data modify storage questcraft:args temperatureEnvironmentColor set value "white"
 
+# Determine if we should show a wetness indication
+execute if score @s wetness.current matches 0 run data modify storage questcraft:args temperatureWetnessText set value ""
+execute if score @s wetness.current matches 1.. unless score @s wetness.current > _globals wetness.wetThreshold run data modify storage questcraft:args temperatureWetnessText set value "  💧Damp💧"
+execute if score @s wetness.current > _globals wetness.wetThreshold run data modify storage questcraft:args temperatureWetnessText set value "  💦Wet💦"
+
+
 # Determine the color of the bassbar to use based on the value
 execute if score @s temperature.current < _globals temperature.freezingThreshold run data modify storage questcraft:args temperatureMeterColor set value "white"
 execute if score @s temperature.current >= _globals temperature.freezingThreshold if score @s temperature.current < _globals temperature.coldThreshold run data modify storage questcraft:args temperatureMeterColor set value "blue"
@@ -24,9 +34,10 @@ execute if score @s temperature.current >= _globals temperature.coldThreshold if
 execute if score @s temperature.current >= _globals temperature.hotThreshold if score @s temperature.current <= _globals temperature.overheatingThreshold run data modify storage questcraft:args temperatureMeterColor set value "yellow"
 execute if score @s temperature.current > _globals temperature.overheatingThreshold run data modify storage questcraft:args temperatureMeterColor set value "red"
 
-# Hide the bossbar if the temperature is at neutral
-data modify storage questcraft:args temperatureMeterVisible set value "true"
-execute if score @s temperature.current = _globals temperature.midpoint run data modify storage questcraft:args temperatureMeterVisible set value "false"
+# Hide the bossbar if the temperature is at neutral and wetness is at 0
+data modify storage questcraft:args temperatureMeterVisible set value "false"
+execute unless score @s temperature.current = _globals temperature.midpoint run data modify storage questcraft:args temperatureMeterVisible set value "true"
+execute unless score @s wetness.current matches 0 run data modify storage questcraft:args temperatureMeterVisible set value "true"
 
 # Update the temperature meter display
 function questcraft:environment_player_temperature_meter_display_apply with storage questcraft:args
@@ -35,7 +46,9 @@ data remove storage questcraft:args playerId
 data remove storage questcraft:args temperatureMax
 data remove storage questcraft:args temperatureCurrent
 data remove storage questcraft:args temperatureEnvironmentCurrent
+data remove storage questcraft:args temperatureFireText
 data remove storage questcraft:args temperatureEnvironmentText
 data remove storage questcraft:args temperatureEnvironmentColor
+data remove storage questcraft:args temperatureWetnessText
 data remove storage questcraft:args temperatureMeterColor
 data remove storage questcraft:args temperatureMeterVisible

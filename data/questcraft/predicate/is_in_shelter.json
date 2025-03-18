@@ -1,0 +1,33 @@
+{
+    "condition":"any_of",
+    "terms":
+    [
+        {
+            "condition": "minecraft:location_check",
+            "predicate": {
+                "structures": [
+                    "minecraft:trial_chambers"
+                ],
+                "can_see_sky": false
+            }
+        },
+        {
+            "condition": "minecraft:location_check",
+            "predicate": {
+                "structures": [
+                    "minecraft:village_desert",
+                    "minecraft:village_plains",
+                    "minecraft:village_savanna",
+                    "minecraft:village_snowy",
+                    "minecraft:village_taiga"
+                ],
+                "light": {
+                    "light": {
+                        "min": 8
+                    }
+                },
+                "can_see_sky":false
+            }
+        }
+    ]
+}

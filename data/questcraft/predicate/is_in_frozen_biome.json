@@ -1,0 +1,54 @@
+{
+    "condition": "any_of",
+    "terms": [
+        {
+            "condition": "minecraft:location_check",
+            "predicate": {
+                "biomes": "#questcraft:is_frozen"
+            }
+        },
+        {
+            "condition": "minecraft:location_check",
+            "predicate": {
+                "biomes": [
+                    "windswept_gravelly_hills",
+                    "windswept_hills",
+                    "windswept_forest",
+                    "stony_shore"
+                ],
+                "position": {
+                    "y": {
+                        "min": 120
+                    }
+                }
+            }
+        },
+        {
+            "condition": "minecraft:location_check",
+            "predicate": {
+                "biomes": [
+                    "taiga",
+                    "old_growth_spruce_taiga"
+                ],
+                "position": {
+                    "y": {
+                        "min": 160
+                    }
+                }
+            }
+        },
+        {
+            "condition": "minecraft:location_check",
+            "predicate": {
+                "biomes": [
+                    "old_growth_pine_taiga"
+                ],
+                "position": {
+                    "y": {
+                        "min": 200
+                    }
+                }
+            }
+        }
+    ]
+}

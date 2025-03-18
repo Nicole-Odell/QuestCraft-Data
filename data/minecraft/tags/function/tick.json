@@ -1,8 +1,6 @@
 {
     "replace": false,
     "values": [
-        "questcraft:spells_tick",
-        "questcraft:projectile_tick",
-        "questcraft:environment_tick"
+        "questcraft:tick"
     ]
 }

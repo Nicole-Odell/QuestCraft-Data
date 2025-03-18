@@ -7,10 +7,12 @@ scoreboard players operation _temperature_delta var -= _temperature_current_leve
 
 # Determine if we are exactly at a threshold
 scoreboard players set _at_exact_threshold var 0
+execute if score @s temperature.current matches 0 run scoreboard players set _at_exact_threshold var 1
 execute if score @s temperature.current = _globals temperature.freezingThreshold run scoreboard players set _at_exact_threshold var 1
 execute if score @s temperature.current = _globals temperature.coldThreshold run scoreboard players set _at_exact_threshold var 1
 execute if score @s temperature.current = _globals temperature.hotThreshold run scoreboard players set _at_exact_threshold var 1
 execute if score @s temperature.current = _globals temperature.overheatingThreshold run scoreboard players set _at_exact_threshold var 1
+execute if score @s temperature.current = _globals temperature.max run scoreboard players set _at_exact_threshold var 1
 
 # Add the bonus in the direction of the delta
 execute if score _temperature_delta var matches ..-1 run scoreboard players remove _temperature_delta var 1
@@ -35,6 +37,10 @@ scoreboard players operation _middle_offset_positive var += _globals temperature
 scoreboard players operation _middle_offset_negative var = _globals temperature.midpoint
 scoreboard players operation _middle_offset_negative var -= _globals temperature.changeSpeed
 execute if score @s temperature.current > _middle_offset_negative var if score @s temperature.current < _middle_offset_positive var run scoreboard players operation @s temperature.current = _globals temperature.midpoint
+
+# Clamp the value between 0 and the max
+execute if score @s temperature.current matches ..-1 run scoreboard players set @s temperature.current 0
+execute if score @s temperature.current > _globals temperature.max run scoreboard players operation @s temperature.current = _globals temperature.max
 
 scoreboard players reset _temperature_delta var
 scoreboard players reset _at_exact_threshold var

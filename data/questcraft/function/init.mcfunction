@@ -6,6 +6,13 @@ gamerule snowAccumulationHeight 7
 # scoreboard objectives add maxRayCastHops dummy
 # scoreboard players set _globals maxRayCastHops 64
 
+# Debug
+scoreboard objectives add printDebug dummy
+scoreboard players set _globals printDebug 0
+
+scoreboard objectives add disableTick dummy
+scoreboard players set _globals disableTick 0
+
 # Temp storage used to pass function arguments (via macros)
 data merge storage questcraft:args {}
 
@@ -47,6 +54,17 @@ scoreboard players set _globals temperature.coldThreshold 12000
 scoreboard objectives add temperature.freezingThreshold dummy
 scoreboard players set _globals temperature.freezingThreshold 6000
 
+scoreboard objectives add wetness.max dummy
+scoreboard players set _globals wetness.max 12000
+scoreboard objectives add wetness.wetThreshold dummy
+scoreboard players set _globals wetness.wetThreshold 4000
+scoreboard objectives add wetness.waterWetSpeed dummy
+scoreboard players set _globals wetness.waterWetSpeed 200
+scoreboard objectives add wetness.rainWetSpeed dummy
+scoreboard players set _globals wetness.rainWetSpeed 5
+scoreboard objectives add wetness.drySpeed dummy
+scoreboard players set _globals wetness.drySpeed 1
+
 # Speed that temperature changes
 scoreboard objectives add temperature.changeSpeed dummy
 scoreboard players set _globals temperature.changeSpeed 5
@@ -57,6 +75,9 @@ scoreboard objectives add temperature.environmentCurrent dummy
 scoreboard objectives add temperature.wasEvaluatedThisTick dummy
 scoreboard objectives add food food
 scoreboard objectives add health health
+scoreboard objectives add wetness.current dummy
+scoreboard objectives add hydration dummy
+scoreboard objectives add isNearWarmth dummy
 
 # ==== Mage ==== #
 
