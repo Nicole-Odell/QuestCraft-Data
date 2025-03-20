@@ -23,9 +23,36 @@ execute if score @s temperature.environmentCurrent matches -3 run data modify st
 
 # Determine if we should show a wetness indication
 execute if score @s wetness.current matches 0 run data modify storage questcraft:args temperatureWetnessText set value ""
-execute if score @s wetness.current matches 1.. unless score @s wetness.current > _globals wetness.wetThreshold run data modify storage questcraft:args temperatureWetnessText set value "  💧Damp💧"
-execute if score @s wetness.current > _globals wetness.wetThreshold run data modify storage questcraft:args temperatureWetnessText set value "  💦Wet💦"
+execute if score @s wetness.current matches 1.. unless score @s wetness.current > _globals wetness.wetThreshold run data modify storage questcraft:args temperatureWetnessText set value "  Damp"
+execute if score @s wetness.current > _globals wetness.wetThreshold run data modify storage questcraft:args temperatureWetnessText set value "  💧Wet💧"
 
+# Determine if we should show a hydration indication
+execute if score @s hydration.current matches 0 run data modify storage questcraft:args hydrationText set value ""
+execute if score @s hydration.current matches 0 run data modify storage questcraft:args hydrationEmptyText set value ""
+# If hot, always show the empty meter as a hint
+execute if score @s hydration.current matches 0 if score @s temperature.environmentCurrent matches 1.. run data modify storage questcraft:args hydrationEmptyText set value "💧💧💧💧💧  "
+
+# Get the percentage that the mage's soul power is of being full
+scoreboard players operation _hydration_percentage var = @s hydration.current
+scoreboard players set _c_100 var 100
+scoreboard players operation _hydration_percentage var *= _c_100 var
+scoreboard players operation _hydration_percentage var /= _globals hydration.max
+
+# Set the text
+execute if score _hydration_percentage var matches 1..20 run data modify storage questcraft:args hydrationText set value "💧"
+execute if score _hydration_percentage var matches 1..20 run data modify storage questcraft:args hydrationEmptyText set value "💧💧💧💧  "
+
+execute if score _hydration_percentage var matches 21..40 run data modify storage questcraft:args hydrationText set value "💧💧"
+execute if score _hydration_percentage var matches 21..40 run data modify storage questcraft:args hydrationEmptyText set value "💧💧💧  "
+
+execute if score _hydration_percentage var matches 41..60 run data modify storage questcraft:args hydrationText set value "💧💧💧"
+execute if score _hydration_percentage var matches 41..60 run data modify storage questcraft:args hydrationEmptyText set value "💧💧  "
+
+execute if score _hydration_percentage var matches 61..80 run data modify storage questcraft:args hydrationText set value "💧💧💧💧"
+execute if score _hydration_percentage var matches 61..80 run data modify storage questcraft:args hydrationEmptyText set value "💧  "
+
+execute if score _hydration_percentage var matches 81.. run data modify storage questcraft:args hydrationText set value "💧💧💧💧💧"
+execute if score _hydration_percentage var matches 81.. run data modify storage questcraft:args hydrationEmptyText set value "  "
 
 # Determine the color of the bassbar to use based on the value
 execute if score @s temperature.current < _globals temperature.freezingThreshold run data modify storage questcraft:args temperatureMeterColor set value "white"
@@ -50,5 +77,9 @@ data remove storage questcraft:args temperatureFireText
 data remove storage questcraft:args temperatureEnvironmentText
 data remove storage questcraft:args temperatureEnvironmentColor
 data remove storage questcraft:args temperatureWetnessText
+data remove storage questcraft:args hydrationText
 data remove storage questcraft:args temperatureMeterColor
 data remove storage questcraft:args temperatureMeterVisible
+
+scoreboard players reset _c_100
+scoreboard players reset _hydration_percentage

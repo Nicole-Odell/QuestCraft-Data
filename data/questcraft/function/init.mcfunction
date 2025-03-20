@@ -10,6 +10,9 @@ gamerule snowAccumulationHeight 7
 scoreboard objectives add printDebug dummy
 scoreboard players set _globals printDebug 0
 
+scoreboard objectives add printTickTimes dummy
+scoreboard players set _globals printTickTimes 0
+
 scoreboard objectives add disableTick dummy
 scoreboard players set _globals disableTick 0
 
@@ -57,13 +60,20 @@ scoreboard players set _globals temperature.freezingThreshold 6000
 scoreboard objectives add wetness.max dummy
 scoreboard players set _globals wetness.max 12000
 scoreboard objectives add wetness.wetThreshold dummy
-scoreboard players set _globals wetness.wetThreshold 4000
+scoreboard players set _globals wetness.wetThreshold 6000
 scoreboard objectives add wetness.waterWetSpeed dummy
 scoreboard players set _globals wetness.waterWetSpeed 200
 scoreboard objectives add wetness.rainWetSpeed dummy
 scoreboard players set _globals wetness.rainWetSpeed 5
 scoreboard objectives add wetness.drySpeed dummy
 scoreboard players set _globals wetness.drySpeed 1
+
+scoreboard objectives add hydration.max dummy
+scoreboard players set _globals hydration.max 30000
+scoreboard objectives add hydration.lossSpeed dummy
+scoreboard players set _globals hydration.lossSpeed 1
+scoreboard objectives add hydration.drinkAmount dummy
+scoreboard players set _globals hydration.drinkAmount 18000
 
 # Speed that temperature changes
 scoreboard objectives add temperature.changeSpeed dummy
@@ -76,7 +86,7 @@ scoreboard objectives add temperature.wasEvaluatedThisTick dummy
 scoreboard objectives add food food
 scoreboard objectives add health health
 scoreboard objectives add wetness.current dummy
-scoreboard objectives add hydration dummy
+scoreboard objectives add hydration.current dummy
 scoreboard objectives add isNearWarmth dummy
 
 # ==== Mage ==== #

@@ -1,8 +1,73 @@
 {
-    "condition": "minecraft:location_check",
-    "predicate": {
-        "fluid": {
-            "fluids": "#water"
+    "condition": "any_of",
+    "terms": [
+        {
+            "condition": "all_of",
+            "terms": [
+                {
+                    "condition": "minecraft:inverted",
+                    "term": {
+                        "condition": "minecraft:entity_properties",
+                        "entity": "this",
+                        "predicate": {
+                            "vehicle": {
+                                "type": [
+                                    "minecraft:boat",
+                                    "minecraft:chest_boat"
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "condition": "any_of",
+                    "terms": [
+                        {
+                            "condition": "minecraft:location_check",
+                            "offsetY": 1,
+                            "predicate": {
+                                "fluid": {
+                                    "fluids": "#water"
+                                }
+                            }
+                        },
+                        {
+                            "condition": "minecraft:location_check",
+                            "predicate": {
+                                "fluid": {
+                                    "fluids": "#water"
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "condition": "all_of",
+            "terms": [
+                {
+                    "condition": "minecraft:entity_properties",
+                    "entity": "this",
+                    "predicate": {
+                        "vehicle": {
+                            "type": [
+                                "minecraft:boat",
+                                "minecraft:chest_boat"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "condition": "minecraft:location_check",
+                    "offsetY": 1,
+                    "predicate": {
+                        "fluid": {
+                            "fluids": "#water"
+                        }
+                    }
+                }
+            ]
         }
-    }
+    ]
 }

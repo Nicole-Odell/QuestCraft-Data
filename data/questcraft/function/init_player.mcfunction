@@ -9,7 +9,7 @@ execute store result storage questcraft:args playerId int 1 run scoreboard playe
 scoreboard players operation @s temperature.current = _globals temperature.midpoint
 scoreboard players operation @s temperature.environmentCurrent = _globals temperature.midpoint
 scoreboard players set @s wetness.current 0
-scoreboard players set @s hydration 0
+scoreboard players set @s hydration.current 0
 scoreboard players set @s isNearWarmth 0
 
 # Set up the player's temperature meter

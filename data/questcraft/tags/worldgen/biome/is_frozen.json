@@ -3,6 +3,7 @@
         "#terralith:reference/temperature/frozen_all",
         "terralith:rocky_mountains",
         "terralith:cave/frostfire_caves",
+        "terralith:birch_taiga",
         "minecraft:deep_frozen_ocean",
         "minecraft:frozen_ocean",
         "minecraft:frozen_peaks",

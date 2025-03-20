@@ -18,12 +18,16 @@ execute if score _is_in_shelter var matches 1 if score @s wetness.current > _glo
 
 function questcraft:debug_print_score {player:"@s",score:"temperature.environmentCurrent"}
 
+# Adjust hydration. In cold areas, hydration doesn't decrease differently then neutral 
+scoreboard players set _wetness_effective_temperature_current var 0
+function questcraft:environment_player_hydration_adjust
+
 # Set the effective environment temp used for wetness adjustment
 execute if score _is_in_shelter var matches 0 run scoreboard players set _wetness_effective_temperature_current var -1
 execute if score _is_in_shelter var matches 1 run scoreboard players set _wetness_effective_temperature_current var 0
+
 # Nearby warm block increases this value by 2
 execute if score @s isNearWarmth matches 1 run scoreboard players add _wetness_effective_temperature_current var 2
-
 execute unless score _is_in_water var matches 1 run function questcraft:environment_player_wetness_adjust
 
 function questcraft:debug_print_var {var:"_wetness_effective_temperature_current"}

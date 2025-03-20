@@ -33,6 +33,37 @@ execute unless score @s temperature.wasEvaluatedThisTick matches 1 run function 
 # Update the display of the temperature meter
 function questcraft:environment_player_temperature_meter_display
 
+# Apply adverse effects for each temperature level
+# Freezing to death - take damage every other second
+execute if score _game_time_mod_40 var matches 0 if score @s temperature.current matches 0 run damage @s 1 minecraft:freeze
+execute if score @s temperature.current matches 0 run effect give @s slowness 1 2 true
+execute if score @s temperature.current matches 0 run effect give @s mining_fatigue 1 2 true
+# Freezing
+execute if score _temperature_current_level var matches -2 run effect give @s slowness 1 1 true
+execute if score _temperature_current_level var matches -2 run effect give @s mining_fatigue 1 1 true
+# Cold
+execute if score _temperature_current_level var matches -1 run effect give @s slowness 1 0 true
+execute if score _temperature_current_level var matches -1 run effect give @s mining_fatigue 1 0 true
+
+# Hot
+execute if score _temperature_current_level var matches 1 run effect give @s hunger 1 0 true
+# Very Hot
+execute if score _temperature_current_level var matches 2 run effect give @s slowness 1 1 true
+execute if score _temperature_current_level var matches 2 run effect give @s hunger 1 2 true
+# Heat Stroke - take damage every other second
+execute if score _game_time_mod_40 var matches 0 if score @s temperature.current = _globals temperature.max run damage @s 1 minecraft:dry_out
+
+
+# Apply other adverse environmental effects
+# Being wet slows you down
+execute if score @s wetness.current > _globals wetness.wetThreshold run effect give @s slowness 1 0 true
+execute if score @s wetness.current > _globals wetness.wetThreshold run particle falling_water ~ ~1 ~ 0.3 0.5 0.3 10 1 normal
+
+# Poisonous water in swamps
+execute if score _game_time_mod_5 var matches 0 if predicate questcraft:is_in_poisonous_water_biome if predicate questcraft:is_in_water run scoreboard players set _is_in_poison_water var 1
+execute if score _game_time_mod_5 var matches 0 if score _is_in_poison_water var matches 1 run effect give @s poison 5 0
+execute if score _game_time_mod_40 var matches 0 if score _is_in_poison_water var matches 1 run title @s actionbar [{"bold":true,"italic":true,"color":"#B3FF00","text":"💀 Poisonous Water 💀"}]
+
 scoreboard players reset _temperature_current_level var
 scoreboard players reset _is_exposed_to_sky var
 scoreboard players reset _is_precipitating var
@@ -41,3 +72,4 @@ scoreboard players reset _is_in_rainy_biome var
 scoreboard players reset _is_snowing var
 scoreboard players reset _is_day_temperature var
 scoreboard players reset _is_night_temperature var
+scoreboard players reset _is_in_poison_water var

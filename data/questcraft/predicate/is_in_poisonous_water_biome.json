@@ -1,0 +1,6 @@
+{
+    "condition": "minecraft:location_check",
+    "predicate": {
+        "biomes": "#questcraft:is_water_poisonous"
+    }
+}

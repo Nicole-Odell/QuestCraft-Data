@@ -6,7 +6,12 @@
             "condition": "minecraft:location_check",
             "predicate": {
                 "structures": [
-                    "minecraft:trial_chambers"
+                    "minecraft:trial_chambers",
+                    "nova_structures:shrine_combat_tier_1",
+                    "nova_structures:shrine_combat_tier_2",
+                    "nova_structures:shrine_combat_tier_3",
+                    "nova_structures:shrine_combat_tier_4",
+                    "nova_structures:shrine_combat_tier_5"
                 ],
                 "can_see_sky": false
             }
@@ -14,13 +19,7 @@
         {
             "condition": "minecraft:location_check",
             "predicate": {
-                "structures": [
-                    "minecraft:village_desert",
-                    "minecraft:village_plains",
-                    "minecraft:village_savanna",
-                    "minecraft:village_snowy",
-                    "minecraft:village_taiga"
-                ],
+                "structures": "#questcraft:is_shelter",
                 "light": {
                     "light": {
                         "min": 8

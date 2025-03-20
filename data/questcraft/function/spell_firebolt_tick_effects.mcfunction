@@ -1,8 +1,8 @@
 # Base particle effect
-particle minecraft:flame ~ ~ ~ 0 0 0 0.01 10 force
+execute unless score @s projectileTtl matches 120.. run particle minecraft:flame ~ ~ ~ 0 0 0 0.01 10 force
 
 # In-flight aditional effect
-execute if entity @s[nbt={inGround:0b}] run particle minecraft:flame ^ ^ ^1 0 0 0 0.01 10 normal
+execute unless score @s projectileTtl matches 120.. if entity @s[nbt={inGround:0b}] run particle minecraft:flame ^ ^ ^1 0 0 0 0.01 10 normal
 
 # On-ground effects
 execute if entity @s[nbt={inGround:1b}] run particle minecraft:flame ~ ~0.1 ~ 0.8 0 0.8 0.01 10 force

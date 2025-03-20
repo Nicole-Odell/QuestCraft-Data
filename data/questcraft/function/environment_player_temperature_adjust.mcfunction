@@ -1,3 +1,7 @@
+# Reset to the midpoint on death
+execute if score @s health matches 0 run scoreboard players operation @s temperature.current = _globals temperature.midpoint
+
+# Don't change anything if we are in neutral temperature and are already at the midpoint
 execute if score @s temperature.current = _globals temperature.midpoint if score @s temperature.environmentCurrent matches 0 run return 1
 
 # Determine how much to change the meter based on the distance between the environment temperature level and where we are in the meter

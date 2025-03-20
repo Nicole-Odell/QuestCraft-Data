@@ -1,0 +1,18 @@
+{
+    "criteria": {
+        "requirement": {
+            "trigger": "minecraft:consume_item",
+            "conditions": {
+                "item": {
+                    "items": "potion",
+                    "predicates": {
+                        "potion_contents": "water"
+                    }
+                }
+            }
+        }
+    },
+    "rewards": {
+        "function": "questcraft:player_drank_water"
+    }
+}

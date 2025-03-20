@@ -1,3 +1,6 @@
+# Reset to 0 on death
+execute if score @s health matches 0 run scoreboard players set @s wetness.current 0
+
 execute if score @s wetness.current matches 0 run return 1
 
 # Get the amount to dry the player by. We shift by the minimum environment temp that we will dry off in (-2) to get positive values only
