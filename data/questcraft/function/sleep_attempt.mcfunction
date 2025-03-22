@@ -10,6 +10,6 @@ execute unless score @s wetness.current matches 0 run scoreboard players set _ca
 
 execute if score _cant_sleep var matches 1 run title @s actionbar [{"italic":true,"color":"yellow","text":"You must be dry and at a neutral temperature to sleep!"}]
 # tp ~ ~ ~ cancels sleep
-execute if score _cant_sleep var matches 1 run tp @s ~ ~ ~
+execute if score _cant_sleep var matches 1 at @s run tp @s ~ ~ ~
 
 scoreboard players reset _cant_sleep var
