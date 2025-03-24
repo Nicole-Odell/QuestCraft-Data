@@ -7,7 +7,7 @@ execute if score @s temperature.current = _globals temperature.midpoint if score
 # Determine how much to change the meter based on the distance between the environment temperature level and where we are in the meter
 # Formula is environment temp level - current temp level, plus 1 more in the direction of the delta
 scoreboard players operation _temperature_delta var = @s temperature.environmentCurrent
-scoreboard players operation _temperature_delta var -= _temperature_current_level var
+scoreboard players operation _temperature_delta var -= @s temperature.currentLevel
 
 # Determine if we are exactly at a threshold
 scoreboard players set _at_exact_threshold var 0

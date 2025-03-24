@@ -10,12 +10,15 @@ function questcraft:debug_print_score {player:"@s",score:"temperature.environmen
 execute if score _is_in_shelter var matches 0 if score @s wetness.current matches 1.. run scoreboard players set @s temperature.environmentCurrent -3
 
 # When by a fire, wet causes freezing until dried off
-execute if score _is_in_shelter var matches 0 if score @s isNearWarmth matches 1 run scoreboard players set @s temperature.environmentCurrent 0
-execute if score _is_in_shelter var matches 0 if score @s isNearWarmth matches 1 if score @s wetness.current > _globals wetness.wetThreshold run scoreboard players set @s temperature.environmentCurrent -2
+execute if score _is_in_shelter var matches 0 if score @s isNearWarmth matches 1.. run scoreboard players set @s temperature.environmentCurrent 0
+execute if score _is_in_shelter var matches 0 if score @s isNearWarmth matches 1.. if score @s wetness.current > _globals wetness.wetThreshold run scoreboard players set @s temperature.environmentCurrent -2
 
 # In shelter, wet causes cold until dried off
 execute if score _is_in_shelter var matches 1 run scoreboard players set @s temperature.environmentCurrent 0
 execute if score _is_in_shelter var matches 1 if score @s wetness.current > _globals wetness.wetThreshold run scoreboard players set @s temperature.environmentCurrent -1
+
+# Regardless of in-shelter state, if we are in water and the fire is below us (isNearWarmth=2), the water is warm and we are comfortable.
+execute if score _is_in_water var matches 1 if score @s isNearWarmth matches 2 run scoreboard players set @s temperature.environmentCurrent 0
 
 function questcraft:debug_print_score {player:"@s",score:"temperature.environmentCurrent"}
 
@@ -27,7 +30,7 @@ function questcraft:environment_player_hydration_adjust
 execute if score _is_in_shelter var matches 0 run scoreboard players set _wetness_effective_temperature_current var -2
 execute if score _is_in_shelter var matches 1 run scoreboard players set _wetness_effective_temperature_current var 0
 # Nearby warm block increases this value by 2
-execute if score @s isNearWarmth matches 1 run scoreboard players add _wetness_effective_temperature_current var 3
+execute if score @s isNearWarmth matches 1.. run scoreboard players add _wetness_effective_temperature_current var 3
 execute unless score _is_in_water var matches 1 run function questcraft:environment_player_wetness_adjust
 
 function questcraft:debug_print_var {var:"_wetness_effective_temperature_current"}

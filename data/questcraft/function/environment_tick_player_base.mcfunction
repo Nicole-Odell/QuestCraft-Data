@@ -1,12 +1,13 @@
 # Get the current temperature as a representation of where in the meter it is
-execute if score @s temperature.current < _globals temperature.freezingThreshold run scoreboard players set _temperature_current_level var -2
-execute if score @s temperature.current >= _globals temperature.freezingThreshold if score @s temperature.current < _globals temperature.coldThreshold run scoreboard players set _temperature_current_level var -1
-execute if score @s temperature.current >= _globals temperature.coldThreshold if score @s temperature.current < _globals temperature.hotThreshold run scoreboard players set _temperature_current_level var 0
-execute if score @s temperature.current >= _globals temperature.hotThreshold if score @s temperature.current <= _globals temperature.overheatingThreshold run scoreboard players set _temperature_current_level var 1
-execute if score @s temperature.current > _globals temperature.overheatingThreshold run scoreboard players set _temperature_current_level var 2
+execute if score @s temperature.current < _globals temperature.freezingThreshold run scoreboard players set @s temperature.currentLevel -2
+execute if score @s temperature.current >= _globals temperature.freezingThreshold if score @s temperature.current < _globals temperature.coldThreshold run scoreboard players set @s temperature.currentLevel -1
+execute if score @s temperature.current >= _globals temperature.coldThreshold if score @s temperature.current < _globals temperature.hotThreshold run scoreboard players set @s temperature.currentLevel 0
+execute if score @s temperature.current >= _globals temperature.hotThreshold if score @s temperature.current <= _globals temperature.overheatingThreshold run scoreboard players set @s temperature.currentLevel 1
+execute if score @s temperature.current > _globals temperature.overheatingThreshold run scoreboard players set @s temperature.currentLevel 2
 
 execute store success score _is_exposed_to_sky var run execute if predicate questcraft:is_exposed_to_sky
 execute store success score _is_precipitating var run execute if predicate questcraft:is_raining
+execute store success score _is_thundering var run execute if predicate questcraft:is_thundering
 execute store success score _is_in_water var run execute if predicate questcraft:is_in_water
 execute store success score _is_in_rainy_biome var run execute if predicate questcraft:is_in_rainy_biome
 # _is_snowing will technically also be true in deserts, but we don't check it for those biomes.
@@ -14,9 +15,15 @@ execute store success score _is_in_rainy_biome var run execute if predicate ques
 scoreboard players set _is_snowing var 0
 execute store success score _is_snowing var run execute if score _is_in_rainy_biome var matches 0 if score _is_precipitating var matches 1
 
-# Apply wetness if the player is in water, or if it is raining and they are exposed to sky in a rainy biome. Clamp it at the max value
+# Apply wetness if the player is in water, or if it is raining and they are exposed to sky in a rainy biome. 
 execute if score _is_in_water var matches 1 if score @s wetness.current < _globals wetness.max run scoreboard players operation @s wetness.current += _globals wetness.waterWetSpeed
-execute if score _is_precipitating var matches 1 if score _is_in_rainy_biome var matches 1 if score _is_exposed_to_sky var matches 1 if score @s wetness.current < _globals wetness.max run scoreboard players operation @s wetness.current += _globals wetness.rainWetSpeed
+
+# Regular Rain cannot reach drenched level. Make sure we don't go past it with rain alone
+execute if score _is_precipitating var matches 1 if score _is_in_rainy_biome var matches 1 if score _is_exposed_to_sky var matches 1 if score @s wetness.current <= _globals wetness.drenchedThresholdMinusRainWetSpeed run scoreboard players operation @s wetness.current += _globals wetness.rainWetSpeed
+
+# Apply it (possibly again if not yet drenched) if it is thundering. Thundering can go past drenched level
+execute if score _is_thundering var matches 1 if score _is_in_rainy_biome var matches 1 if score _is_exposed_to_sky var matches 1 if score @s wetness.current < _globals wetness.max run scoreboard players operation @s wetness.current += _globals wetness.rainWetSpeed
+# Clamp it at the max value
 execute if score @s wetness.current > _globals wetness.max run scoreboard players operation @s wetness.current = _globals wetness.max
 
 # Determine what environment temperature to use based on the time of day
@@ -33,40 +40,69 @@ execute unless score @s temperature.wasEvaluatedThisTick matches 1 run function 
 # Update the display of the temperature meter
 function questcraft:environment_player_temperature_meter_display
 
+
 # Apply adverse effects for each temperature level
-# Freezing to death - take damage every other second
+
+# Freezing to death
+#   Take freezing damage every other second
+#   Slowness 3
+#   Mining Fatigue 3
+#   Mage casting is 3x slower
 execute if score _game_time_mod_40 var matches 0 if score @s temperature.current matches 0 run damage @s 1 minecraft:freeze
 execute if score @s temperature.current matches 0 run effect give @s slowness 1 2 true
 execute if score @s temperature.current matches 0 run effect give @s mining_fatigue 1 2 true
+execute if score @s temperature.current matches 0 run scoreboard players set @s spellCastingCastCharge 60
+
 # Freezing
-execute if score _temperature_current_level var matches -2 run effect give @s slowness 1 1 true
-execute if score _temperature_current_level var matches -2 run effect give @s mining_fatigue 1 1 true
+#   Slowness 2
+#   Mining Fatigue 2
+#   Mage casting is 2x slower
+execute if score @s temperature.currentLevel matches -2 run effect give @s slowness 1 1 true
+execute if score @s temperature.currentLevel matches -2 run effect give @s mining_fatigue 1 1 true
+execute if score @s temperature.current matches 0 run scoreboard players set @s spellCastingCastCharge 40
+
 # Cold
-execute if score _temperature_current_level var matches -1 run effect give @s slowness 1 0 true
-execute if score _temperature_current_level var matches -1 run effect give @s mining_fatigue 1 0 true
+#   Slowness 1
+#   Mining Fatigue 1
+#   Mage casting is 1.5x slower
+execute if score @s temperature.currentLevel matches -1 run effect give @s slowness 1 0 true
+execute if score @s temperature.currentLevel matches -1 run effect give @s mining_fatigue 1 0 true
+execute if score @s temperature.current matches 0 run scoreboard players set @s spellCastingCastCharge 30
 
 # Hot
-execute if score _temperature_current_level var matches 1 run effect give @s hunger 1 0 true
-# Very Hot
-execute if score _temperature_current_level var matches 2 run effect give @s slowness 1 1 true
-execute if score _temperature_current_level var matches 2 run effect give @s hunger 1 2 true
-# Heat Stroke - take damage every other second
-execute if score _game_time_mod_40 var matches 0 if score @s temperature.current = _globals temperature.max run damage @s 1 minecraft:dry_out
+#   Hunger 1
+execute if score @s temperature.currentLevel matches 1 run effect give @s hunger 1 0 true
+execute if score @s temperature.current matches 0 run scoreboard players set @s spellCastingCastCharge 20
 
+# Very Hot
+#   Slowness 2
+#   Hunger 3
+#   TODO: Zeal depletes 1.5x faster
+execute if score @s temperature.currentLevel matches 2 run effect give @s slowness 1 1 true
+execute if score @s temperature.currentLevel matches 2 run effect give @s hunger 1 2 true
+execute if score @s temperature.current matches 0 run scoreboard players set @s spellCastingCastCharge 20
+
+# Heat Stroke
+#   Take dehydration damage every other second
+#   TODO: Zeal depletes 2x faster
+execute if score _game_time_mod_40 var matches 0 if score @s temperature.current = _globals temperature.max run damage @s 1 minecraft:dry_out
+execute if score @s temperature.current matches 0 run scoreboard players set @s spellCastingCastCharge 20
 
 # Apply other adverse environmental effects
-# Being wet slows you down
-execute if score @s wetness.current > _globals wetness.wetThreshold run effect give @s slowness 1 0 true
-execute if score @s wetness.current > _globals wetness.wetThreshold run particle falling_water ~ ~1 ~ 0.3 0.5 0.3 10 1 normal
+
+# Being drenched slows you down
+execute if score @s wetness.current > _globals wetness.drenchedThreshold run effect give @s slowness 1 0 true
+execute if score @s wetness.current > _globals wetness.drenchedThreshold run particle falling_water ~ ~1 ~ 0.3 0.5 0.3 10 1 normal
 
 # Poisonous water in swamps
 execute if score _game_time_mod_5 var matches 0 if predicate questcraft:is_in_poisonous_water_biome if predicate questcraft:is_in_water run scoreboard players set _is_in_poison_water var 1
 execute if score _game_time_mod_5 var matches 0 if score _is_in_poison_water var matches 1 run effect give @s poison 5 0
 execute if score _game_time_mod_40 var matches 0 if score _is_in_poison_water var matches 1 run title @s actionbar [{"bold":true,"italic":true,"color":"#B3FF00","text":"💀 Poisonous Water 💀"}]
 
-scoreboard players reset _temperature_current_level var
+
 scoreboard players reset _is_exposed_to_sky var
 scoreboard players reset _is_precipitating var
+scoreboard players reset _is_thundering var
 scoreboard players reset _is_in_water var
 scoreboard players reset _is_in_rainy_biome var
 scoreboard players reset _is_snowing var

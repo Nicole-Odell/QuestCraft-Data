@@ -17,9 +17,9 @@ execute unless score _any_spell_matched var matches 1 run function questcraft:sp
 
 # Transfuse Health [lv1 2]: Converts another resource into its equivalent of health
 data modify storage questcraft:args spellToMatch set value [1,1]
-data modify storage questcraft:args spellName set value "Transfuse Health"
+data modify storage questcraft:args spellName set value "Major Transfuse Health"
 data modify storage questcraft:args spellCost set value 32
-data modify storage questcraft:args spellFunction set value "questcraft:spell_heal_cast"
+data modify storage questcraft:args spellFunction set value "questcraft:spell_heal_major_cast"
 execute unless score _any_spell_matched var matches 1 run function questcraft:spell_casting_cast_if_match with storage questcraft:args
 
 # Impact: Launches an entity back and does minor damage
@@ -31,14 +31,14 @@ execute unless score _any_spell_matched var matches 1 run function questcraft:sp
 
 # Firebolt: Fires a burst of blaze fireballs which light enemies on fire and melt ice they touch
 data modify storage questcraft:args spellToMatch set value [0,1]
-data modify storage questcraft:args spellName set value "FireBolt"
+data modify storage questcraft:args spellName set value "Firebolt"
 data modify storage questcraft:args spellCost set value 2
 data modify storage questcraft:args spellFunction set value "questcraft:spell_firebolt_cast"
 execute unless score _any_spell_matched var matches 1 run function questcraft:spell_casting_cast_if_match with storage questcraft:args
 
 # Ice wind: Fires a burst of cold which applies freezing to enemies and freezes water temporarily (like Frost Walker), unless in a frozen biome
 data modify storage questcraft:args spellToMatch set value [0,2]
-data modify storage questcraft:args spellName set value "<spell>"
+data modify storage questcraft:args spellName set value "Icewind"
 data modify storage questcraft:args spellCost set value 2
 data modify storage questcraft:args spellFunction set value "questcraft:spell_icewind_cast"
 execute unless score _any_spell_matched var matches 1 run function questcraft:spell_casting_cast_if_match with storage questcraft:args

@@ -60,13 +60,20 @@ scoreboard players set _globals temperature.freezingThreshold 6000
 scoreboard objectives add wetness.max dummy
 scoreboard players set _globals wetness.max 12000
 scoreboard objectives add wetness.wetThreshold dummy
-scoreboard players set _globals wetness.wetThreshold 6000
+scoreboard players set _globals wetness.wetThreshold 4000
+scoreboard objectives add wetness.drenchedThreshold dummy
+scoreboard players set _globals wetness.drenchedThreshold 8000
 scoreboard objectives add wetness.waterWetSpeed dummy
 scoreboard players set _globals wetness.waterWetSpeed 200
 scoreboard objectives add wetness.rainWetSpeed dummy
 scoreboard players set _globals wetness.rainWetSpeed 5
 scoreboard objectives add wetness.drySpeed dummy
 scoreboard players set _globals wetness.drySpeed 1
+
+# Pre-calculate this to save time later
+scoreboard objectives add wetness.drenchedThresholdMinusRainWetSpeed dummy
+scoreboard players operation _globals wetness.drenchedThresholdMinusRainWetSpeed = _globals wetness.drenchedThreshold
+scoreboard players operation _globals wetness.drenchedThresholdMinusRainWetSpeed -= _globals wetness.rainWetSpeed
 
 scoreboard objectives add hydration.max dummy
 scoreboard players set _globals hydration.max 30000
@@ -81,13 +88,18 @@ scoreboard players set _globals temperature.changeSpeed 5
 
 # Player stats
 scoreboard objectives add temperature.current dummy
+scoreboard objectives add temperature.currentLevel dummy
 scoreboard objectives add temperature.environmentCurrent dummy
 scoreboard objectives add temperature.wasEvaluatedThisTick dummy
-scoreboard objectives add food food
-scoreboard objectives add health health
 scoreboard objectives add wetness.current dummy
 scoreboard objectives add hydration.current dummy
 scoreboard objectives add isNearWarmth dummy
+scoreboard objectives add food food
+scoreboard objectives add health health
+scoreboard objectives add timeSinceLastRest minecraft.custom:minecraft.time_since_rest
+
+# Status effect related stats
+scoreboard objectives add frozenTime dummy
 
 # ==== Mage ==== #
 
@@ -110,10 +122,9 @@ scoreboard objectives add mageLevel dummy
 scoreboard objectives add spellBufferSize dummy
 scoreboard objectives add soulPower.current dummy
 scoreboard objectives add soulPower.max dummy
+scoreboard objectives add spellCastingCastCharge dummy
 
 # Spellcasting constants
-scoreboard objectives add spellCastingMaxCharge dummy
-scoreboard players set _globals spellCastingMaxCharge 20
 
 scoreboard objectives add spellCastingFoodPower dummy
 scoreboard players set _globals spellCastingFoodPower 1

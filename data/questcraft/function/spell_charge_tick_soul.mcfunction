@@ -1,7 +1,7 @@
 # If the spell charge hasn't increased since last tick, It means the player stopped holding right click. Stop the charge up sound, then
 # add this aspect to the spell. Do not add the aspect to the spell if the charge is past the max.
 execute if score @s soul_aspect.charge = @s soul_aspect.maxCharge run stopsound @a player minecraft:block.bell.resonate
-execute if score @s soul_aspect.charge = @s soul_aspect.maxCharge unless score @s soul_aspect.charge > _globals spellCastingMaxCharge run function questcraft:spell_build_soul
+execute if score @s soul_aspect.charge = @s soul_aspect.maxCharge unless score @s soul_aspect.charge > @s spellCastingCastCharge run function questcraft:spell_build_soul
 
 # Reset the charge and max to 0
 execute if score @s soul_aspect.charge = @s soul_aspect.maxCharge run scoreboard players set @s soul_aspect.charge 0
@@ -12,8 +12,8 @@ execute if score @s soul_aspect.charge > @s soul_aspect.maxCharge run scoreboard
 
 # If the charge reaches the max, trigger the spell casting process
 # Get the mage id and cast details to pass to casting
-execute if score @s soul_aspect.charge = _globals spellCastingMaxCharge run execute store result storage questcraft:args mageId int 1 run scoreboard players get @s mageId
-execute if score @s soul_aspect.charge = _globals spellCastingMaxCharge run data modify storage questcraft:args castSource set value 2
+execute if score @s soul_aspect.charge = @s spellCastingCastCharge run execute store result storage questcraft:args mageId int 1 run scoreboard players get @s mageId
+execute if score @s soul_aspect.charge = @s spellCastingCastCharge run data modify storage questcraft:args castSource set value 2
 
 # Attempt to cast. May or may not succeed based on spell details and cast source
-execute if score @s soul_aspect.charge = _globals spellCastingMaxCharge run function questcraft:spell_casting_prime with storage questcraft:args
+execute if score @s soul_aspect.charge = @s spellCastingCastCharge run function questcraft:spell_casting_prime with storage questcraft:args

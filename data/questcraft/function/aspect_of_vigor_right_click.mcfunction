@@ -1,5 +1,5 @@
 # Display the particle unless we have passed the max charge. This avoids particles after a spell is cast if they continue to hold right click.
-# execute unless score @s vigor_aspect.charge >= _globals spellCastingMaxCharge at @s anchored eyes run particle minecraft:composter ^-0.4 ^-0.15 ^0.35 0.025 0.025 0.025 1 10 force @s
+# execute unless score @s vigor_aspect.charge >= @s spellCastingCastCharge at @s anchored eyes run particle minecraft:composter ^-0.4 ^-0.15 ^0.35 0.025 0.025 0.025 1 10 force @s
 execute unless score @s vigor_aspect.charge matches 5.. at @s anchored eyes run particle minecraft:composter ^-0.4 ^-0.15 ^0.35 0.025 0.025 0.025 1 10 force @s
 
 # Play the charge up sound if we have started charging
