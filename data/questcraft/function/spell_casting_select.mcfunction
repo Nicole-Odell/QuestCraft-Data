@@ -6,9 +6,6 @@ execute store result score _spell_length var run data get storage questcraft:arg
 # This tracks whether any spell was successfully found based on the buffer
 scoreboard players set _any_spell_matched var 0
 
-# This tracks whether any spell was successfully cast
-scoreboard players set _was_spell_cast var 0
-
 # === Basic === #
 
 # Transfuse Health [lvl 1]: Converts another resource into its equivalent of health
@@ -115,9 +112,9 @@ execute unless score _any_spell_matched var matches 1 run function questcraft:sp
 
 # Gathering Hail: Collects all projectiles fired at the player for a short time then sends them all flying in a direction
 
-# Hyper Beam: Beam attack that destroys blocks and does massive damage
+# Hyper Beam: Long range Beam attack that destroys blocks and does massive damage
 data modify storage questcraft:args spellToMatch set value [0,2,1,2]
-data modify storage questcraft:args spellCost set value 20
+data modify storage questcraft:args spellCost set value 100
 data modify storage questcraft:args spellName set value "Hyper Beam"
 data modify storage questcraft:args spellFunction set value "questcraft:spell_hyperbeam_cast"
 data modify storage questcraft:args spellCastedWithRaycast set value 0
@@ -128,6 +125,13 @@ execute unless score _any_spell_matched var matches 1 run function questcraft:sp
 # Wither Bloom: pulse that applies wither to all enemies and yourself
 
 # Temporal Bargain: Slows time server-wide, but gives the caster extra speed and haste to compensate
+# data modify storage questcraft:args spellToMatch set value [2,0,0,2]
+# data modify storage questcraft:args spellCost set value 50
+# data modify storage questcraft:args spellName set value "Temporal bargain"
+# data modify storage questcraft:args spellFunction set value "questcraft:spell_timebargain_cast"
+# data modify storage questcraft:args spellCastedWithRaycast set value 0
+# execute unless score _any_spell_matched var matches 1 run function questcraft:spell_casting_cast_if_match with storage questcraft:args
+
 
 # Fail the spell cast if we didn't match any spells
 execute unless score _any_spell_matched var matches 1 run function questcraft:spell_casting_fail_spell_not_found with storage questcraft:args

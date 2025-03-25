@@ -126,6 +126,9 @@ scoreboard objectives add soulPower.max dummy
 scoreboard objectives add spellCastingCastCharge dummy
 scoreboard objectives add isCastingPrimed dummy
 
+# Spell effects
+scoreboard objectives add wardTime dummy
+
 # Spellcasting constants
 
 scoreboard objectives add spellCastingFoodPower dummy

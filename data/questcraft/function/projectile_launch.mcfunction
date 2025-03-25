@@ -8,12 +8,12 @@ $data modify storage questcraft:args projectileSpeed set value $(projectileSpeed
 $data modify storage questcraft:args projectileSpeedOffsetLR set value "$(projectileSpeedOffsetLR)"
 $data modify storage questcraft:args projectileSpeedOffsetUD set value "$(projectileSpeedOffsetUD)"
 
-$data modify storage questcraft:args projectileTags set value "$(projectileTags)"
+$data modify storage questcraft:args projectileTag set value "$(projectileTag)"
 
 # Determine if there are actually any custom projectile tags to include
-execute store result score _projectile_tags_length var run data get storage questcraft:args projectileTags
+execute store result score _projectile_tags_length var run data get storage questcraft:args projectileTag
 # If there is none, put dummy content there to avoid a syntax error
-execute if score _projectile_tags_length var matches 0 run data modify storage questcraft:args projectileTags set value "_"
+execute if score _projectile_tags_length var matches 0 run data modify storage questcraft:args projectileTag set value "_"
 
 $data modify storage questcraft:args projectileData set value "$(projectileData)"
 
@@ -32,7 +32,7 @@ function questcraft:projectile_launch_apply with storage questcraft:args
 data remove storage questcraft:args projectileId
 data remove storage questcraft:args projectileEntity
 data remove storage questcraft:args projectileSpeed
-data remove storage questcraft:args projectileTags
+data remove storage questcraft:args projectileTag
 data remove storage questcraft:args projectileData
 data remove storage questcraft:args projectileSpeedOffsetLR
 data remove storage questcraft:args projectileSpeedOffsetUD

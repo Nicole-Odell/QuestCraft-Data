@@ -1,5 +1,5 @@
 scoreboard players add @s projectileTimeAlive 1
-execute if score @s projectileTimeAlive matches 60.. run kill @s
+execute if score @s projectileTimeAlive matches 16.. run kill @s
 
 # Move the particle
 tp @s ^ ^ ^6

@@ -35,8 +35,8 @@ execute if score _time_since_start var matches 2.. run particle firework ^ ^ ^-5
 # execute if score _time_since_start var matches 2.. run particle firework ^ ^ ^-7 0 0 0 0 30 force
 
 playsound minecraft:block.beacon.power_select player @a ~ ~ ~ 32 2
-execute if score _time_since_start var matches 2.. run summon firework_rocket ^ ^ ^ {FireworksItem:{id:"minecraft:firework_rocket",count:1,components:{"minecraft:fireworks":{explosions:[{shape:"small_ball",has_twinkle:true,has_trail:false,colors:[I;10879175],fade_colors:[I;16775633]}]}}}}
-execute if score _time_since_start var matches 2.. run summon firework_rocket ^ ^ ^-2.5 {FireworksItem:{id:"minecraft:firework_rocket",count:1,components:{"minecraft:fireworks":{explosions:[{shape:"small_ball",has_twinkle:true,has_trail:false,colors:[I;10879175],fade_colors:[I;16775633]}]}}}}
+execute if score _time_since_start var matches 2.. run summon firework_rocket ^ ^ ^ {FireworksItem:{id:"minecraft:firework_rocket",count:1,components:{"minecraft:fireworks":{explosions:[{shape:"small_ball",has_twinkle:true,has_trail:false,colors:[I;16777215],fade_colors:[I;16775633]}]}}}}
+execute if score _time_since_start var matches 2.. run summon firework_rocket ^ ^ ^-2.5 {FireworksItem:{id:"minecraft:firework_rocket",count:1,components:{"minecraft:fireworks":{explosions:[{shape:"small_ball",has_twinkle:true,has_trail:false,colors:[I;16777215],fade_colors:[I;16775633]}]}}}}
 
 execute if score _time_since_start var matches 2.. at @s run summon tnt ^ ^ ^ {fuse:2,block_state:{Name:"minecraft:air"}}
 # execute if score _time_since_start var matches 2.. at @s run summon tnt ^ ^1.5 ^ {fuse:2,block_state:{Name:"minecraft:air"}}
@@ -86,5 +86,6 @@ execute if score _time_since_start var matches 3.. at @s run summon tnt ^ ^ ^-5 
 # execute if score _time_since_start var matches 2.. at @s run summon tnt ^-1.5 ^ ^-7 {fuse:2,block_state:{Name:"minecraft:air"}}
 # execute if score _time_since_start var matches 2.. at @s run summon tnt ^1.5 ^ ^-7 {fuse:2,block_state:{Name:"minecraft:air"}}
 
+scoreboard players reset _c_time_until_start
 scoreboard players reset _death_time var
 scoreboard players reset _time_since_start var
