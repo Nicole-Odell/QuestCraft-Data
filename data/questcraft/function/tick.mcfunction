@@ -23,6 +23,7 @@ scoreboard players operation _game_time_mod_40 var %= _c_40 var
 execute store result score _day_time var run time query daytime
 
 # Main tick functions
+execute unless score _globals disableTick matches 1 run function questcraft:raycast_tick
 execute unless score _globals disableTick matches 1 run function questcraft:sleep_tick
 execute unless score _globals disableTick matches 1 run function questcraft:environment_tick
 execute unless score _globals disableTick matches 1 run function questcraft:spells_tick
@@ -30,6 +31,9 @@ execute unless score _globals disableTick matches 1 run function questcraft:proj
 
 # TEMP
 execute if score _game_time_mod_10 var matches 0 as @a at @s as @n[type=villager,tag=!villager_init,distance=..32] run function questcraft:init_villager
+
+# execute as InfectedGrowth at @s run function questcraft:test_raycast
+# execute at InfectedGrowth as @n[type=!#questcraft:is_attack_targetable] at @s run function questcraft:test_raycast
 
 scoreboard players reset _c_4 var
 scoreboard players reset _game_time_mod_4 var

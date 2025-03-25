@@ -2,9 +2,8 @@
 
 gamerule snowAccumulationHeight 7
 
-# scoreboard objectives add rayCastHops dummy
-# scoreboard objectives add maxRayCastHops dummy
-# scoreboard players set _globals maxRayCastHops 64
+scoreboard objectives add raycast.maxRange dummy
+scoreboard players set _globals raycast.maxRange 64
 
 # Debug
 scoreboard objectives add printDebug dummy
@@ -29,6 +28,8 @@ scoreboard objectives add var dummy
 scoreboard objectives add nextProjectileId dummy
 scoreboard players set _globals nextProjectileId 0
 scoreboard objectives add projectileTtl dummy
+
+scoreboard objectives add projectileTimeAlive dummy
 
 # ==== Player ==== #
 
@@ -123,6 +124,7 @@ scoreboard objectives add spellBufferSize dummy
 scoreboard objectives add soulPower.current dummy
 scoreboard objectives add soulPower.max dummy
 scoreboard objectives add spellCastingCastCharge dummy
+scoreboard objectives add isCastingPrimed dummy
 
 # Spellcasting constants
 

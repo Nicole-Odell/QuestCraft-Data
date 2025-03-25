@@ -1,0 +1,1 @@
+$function questcraft:spell_casting_target_raycast_display_apply with storage questcraft:mage_data mages[$(mageId)].spellDetails

@@ -1,5 +1,12 @@
+# Store whether the spell is cast with a raycast as a score
+execute store result score _is_spell_cast_with_raycast var run data get storage questcraft:args spellCastedWithRaycast
+
 # Store the castSource as a score
 $scoreboard players set _cast_source var $(castSource)
+
+# If we are currently casting the spell with a raycast, we already paid the cost to cast it
+execute if score _is_spell_cast_with_raycast var matches 1 if score @s isCastingPrimed matches 1 run function questcraft:spell_casting_finish_raycast with storage questcraft:args
+execute if score _is_spell_cast_with_raycast var matches 1 if score @s isCastingPrimed matches 1 run return 1
 
 # Store the Spell cost as a score
 $scoreboard players set _spell_cost var $(spellCost)
@@ -29,7 +36,7 @@ execute if score _cast_source var matches 1 run execute store result score _cast
 execute if score _cast_source var matches 2 run execute store result score _cast_possible var run execute if score _caster_power_with_source var >= _spell_cost_with_source var
 
 # If not enough power, fail to cast
-execute if score _cast_possible var matches 0 run function questcraft:spell_casting_fail_not_enough_power
+execute if score _cast_possible var matches 0 run function questcraft:spell_casting_fail_not_enough_power with storage questcraft:args
 
 # If enough power, apply the cost to the source
 execute if score _cast_source var matches 0 run execute if score _cast_possible var matches 1 run function questcraft:spell_casting_deduct_cost_food
@@ -37,11 +44,13 @@ execute if score _cast_source var matches 1 run execute if score _cast_possible 
 execute if score _cast_source var matches 2 run execute if score _cast_possible var matches 1 run function questcraft:spell_casting_deduct_cost_soul
 
 # If enough power, execute the spell function
-$execute if score _cast_possible var matches 1 run function $(spellFunction) with storage questcraft:args
+$execute if score _cast_possible var matches 1 unless score _is_spell_cast_with_raycast var matches 1 run function $(spellFunction) with storage questcraft:args
 
-# Spell cast successfully
-execute if score _cast_possible var matches 1 run function questcraft:spell_casting_finish with storage questcraft:args
+# Spell cast successfully. Handle direct cast vs raycast targetted spells
+execute if score _cast_possible var matches 1 unless score _is_spell_cast_with_raycast var matches 1 run function questcraft:spell_casting_finish with storage questcraft:args
+execute if score _cast_possible var matches 1 if score _is_spell_cast_with_raycast var matches 1 run function questcraft:spell_casting_target_raycast with storage questcraft:args
 
+scoreboard players reset _is_spell_cast_with_raycast var
 scoreboard players reset _cast_source var
 scoreboard players reset _spell_cost var
 scoreboard players reset _spell_cost_with_source var

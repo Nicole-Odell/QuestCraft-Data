@@ -1,3 +1,6 @@
+# Mark the player as not casting a raycast targetted spell
+scoreboard players set @s isCastingPrimed 0
+
 # Get the castSource as a score
 execute store result score _cast_source var run data get storage questcraft:args castSource
 
@@ -21,3 +24,6 @@ data remove storage questcraft:args castAspectName
 data remove storage questcraft:args castColor
 
 scoreboard players reset _cast_source
+
+# Clear the spell buffer now that we have casted the spell
+$data modify storage questcraft:mage_data mages[$(mageId)].spell set value []

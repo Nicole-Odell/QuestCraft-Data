@@ -1,3 +1,6 @@
+# If we are currently casting a spell with a raycast, the raycast tick will do the display instead
+execute if score @s isCastingPrimed matches 1 run return 1
+
 # Gather the args to pass
 execute store result storage questcraft:args mageId int 1 run scoreboard players get @s mageId
 data modify storage questcraft:args index set value 0

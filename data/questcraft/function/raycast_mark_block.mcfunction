@@ -1,0 +1,2 @@
+execute unless entity @e[type=block_display,tag=raycast_block_display,tag=!raycast_block_display_used] run summon block_display ~ ~ ~ {Glowing:1b,Tags:["raycast_block_display","raycast_block_display_used"],brightness:{sky:15,block:15},transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[0f,0f,0f],scale:[0.5f,0.5f,0.5f]},block_state:{Name:"minecraft:white_concrete"}}
+execute as @n[type=block_display,tag=raycast_block_display,tag=!raycast_block_display_used] run function questcraft:raycast_mark_block_display

@@ -1,7 +1,7 @@
 # If the spell charge hasn't increased since last tick, It means the player stopped holding right click. Stop the charge up sound, then
 # add this aspect to the spell. Do not add the aspect to the spell if the charge is past the max.
 execute if score @s soul_aspect.charge = @s soul_aspect.maxCharge run stopsound @a player minecraft:block.bell.resonate
-execute if score @s soul_aspect.charge = @s soul_aspect.maxCharge unless score @s soul_aspect.charge > @s spellCastingCastCharge run function questcraft:spell_build_soul
+execute unless score @s isCastingPrimed matches 1 if score @s soul_aspect.charge = @s soul_aspect.maxCharge unless score @s soul_aspect.charge > @s spellCastingCastCharge run function questcraft:spell_build_soul
 
 # Reset the charge and max to 0
 execute if score @s soul_aspect.charge = @s soul_aspect.maxCharge run scoreboard players set @s soul_aspect.charge 0
@@ -16,4 +16,4 @@ execute if score @s soul_aspect.charge = @s spellCastingCastCharge run execute s
 execute if score @s soul_aspect.charge = @s spellCastingCastCharge run data modify storage questcraft:args castSource set value 2
 
 # Attempt to cast. May or may not succeed based on spell details and cast source
-execute if score @s soul_aspect.charge = @s spellCastingCastCharge run function questcraft:spell_casting_prime with storage questcraft:args
+execute if score @s soul_aspect.charge = @s spellCastingCastCharge run function questcraft:spell_casting_base with storage questcraft:args

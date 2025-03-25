@@ -1,0 +1,1 @@
+particle white_smoke ~ ~ ~ 0 0 0 0 1 normal

@@ -1,0 +1,1 @@
+particle dust{color:[1.000,0.000,0.000],scale:2} ~ ~ ~ 0 0 0 0 1 normal

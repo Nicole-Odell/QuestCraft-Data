@@ -83,6 +83,7 @@ data remove storage questcraft:args temperatureEnvironmentText
 data remove storage questcraft:args temperatureEnvironmentColor
 data remove storage questcraft:args temperatureWetnessText
 data remove storage questcraft:args hydrationText
+data remove storage questcraft:args hydrationEmptyText
 data remove storage questcraft:args temperatureMeterColor
 data remove storage questcraft:args temperatureMeterVisible
 

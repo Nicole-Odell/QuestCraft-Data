@@ -4,7 +4,7 @@ execute as @a[scores={soul_aspect.charge=1..}] run function questcraft:spell_cha
 execute as @a[scores={void_aspect.charge=1..}] run function questcraft:spell_charge_tick_void
 
 execute as @a[scores={isMage=1}] run function questcraft:spell_casting_display
-
 execute as @a[scores={isMage=1}] run function questcraft:mage_soul_meter_display
+execute as @a[scores={isMage=1,isCastingPrimed=1}] run function questcraft:spell_casting_target_raycast_tick
 
 function questcraft:spells_tick_effects
