@@ -16,6 +16,7 @@ scoreboard players set @s soulPower.current 1000
 scoreboard players set @s soulPower.max 1000
 scoreboard players set @s spellCastingCastCharge 20
 scoreboard players set @s isCastingPrimed 0
+scoreboard players set @s bloodBondPower 0
 
 # Set up the mage's Soul Meter
 execute store result storage questcraft:args soulPowerMax int 1 run scoreboard players get @s soulPower.max

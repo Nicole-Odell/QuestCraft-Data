@@ -1,1 +1,1 @@
-$damage @s $(healthCost) minecraft:starve
+$damage @s $(healthCost) minecraft:indirect_magic

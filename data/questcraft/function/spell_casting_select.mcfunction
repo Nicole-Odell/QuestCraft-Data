@@ -59,7 +59,7 @@ execute unless score _any_spell_matched var matches 1 run function questcraft:sp
 # Ward: Deflects projectiles for a short time 
 data modify storage questcraft:args spellToMatch set value [2,0]
 data modify storage questcraft:args spellName set value "Basic Ward"
-data modify storage questcraft:args spellCost set value 2
+data modify storage questcraft:args spellCost set value 100
 data modify storage questcraft:args spellFunction set value "questcraft:spell_ward_cast"
 data modify storage questcraft:args spellCastedWithRaycast set value 0
 execute unless score _any_spell_matched var matches 1 run function questcraft:spell_casting_cast_if_match with storage questcraft:args
@@ -76,7 +76,7 @@ execute unless score _any_spell_matched var matches 1 run function questcraft:sp
 data modify storage questcraft:args spellToMatch set value [2,1]
 data modify storage questcraft:args spellName set value "Blood Bond"
 data modify storage questcraft:args spellCost set value 2
-data modify storage questcraft:args spellFunction set value "questcraft:spell_blood_bond_cast"
+data modify storage questcraft:args spellFunction set value "questcraft:spell_bloodbond_cast"
 data modify storage questcraft:args spellCastedWithRaycast set value 1
 execute unless score _any_spell_matched var matches 1 run function questcraft:spell_casting_cast_if_match with storage questcraft:args
 

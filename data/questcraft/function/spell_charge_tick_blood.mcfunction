@@ -3,6 +3,10 @@
 execute if score @s blood_aspect.charge = @s blood_aspect.maxCharge run stopsound @a player minecraft:block.bell.resonate
 execute unless score @s isCastingPrimed matches 1 if score @s blood_aspect.charge = @s blood_aspect.maxCharge unless score @s blood_aspect.charge > @s spellCastingCastCharge run function questcraft:spell_build_blood
 
+# Handle the case where we are just confirming a primed raycasted spell
+execute if score @s isCastingPrimed matches 1 if score @s blood_aspect.charge = @s blood_aspect.maxCharge unless score @s blood_aspect.charge > @s spellCastingCastCharge run data modify storage questcraft:args castSource set value 1
+execute if score @s isCastingPrimed matches 1 if score @s blood_aspect.charge = @s blood_aspect.maxCharge unless score @s blood_aspect.charge > @s spellCastingCastCharge run function questcraft:spell_casting_cast_raycast_confirm
+
 # Reset the charge and max to 0
 execute if score @s blood_aspect.charge = @s blood_aspect.maxCharge run scoreboard players set @s blood_aspect.charge 0
 execute if score @s blood_aspect.charge matches 0 run scoreboard players set @s blood_aspect.maxCharge 0

@@ -28,8 +28,41 @@ scoreboard objectives add var dummy
 scoreboard objectives add nextProjectileId dummy
 scoreboard players set _globals nextProjectileId 0
 scoreboard objectives add projectileTtl dummy
-
 scoreboard objectives add projectileTimeAlive dummy
+
+# Teams used for coloring entities
+team add Black
+team modify Black color black
+team add Dark_Blue "Dark Blue"
+team modify Dark_Blue color dark_blue
+team add Dark_Green "Dark Green"
+team modify Dark_Green color dark_green
+team add Dark_Aqua "Dark Aqua"
+team modify Dark_Aqua color dark_aqua
+team add Dark_Red "Dark Red"
+team modify Dark_Red color dark_red
+team add Dark_Purple "Dark Purple"
+team modify Dark_Purple color dark_purple
+team add Gold
+team modify Gold color gold
+team add Gray
+team modify Gray color gray
+team add Dark_Gray "Dark Gray"
+team modify Dark_Gray color dark_gray
+team add Blue
+team modify Blue color blue
+team add Green
+team modify Green color green
+team add Aqua
+team modify Aqua color aqua
+team add Red
+team modify Red color red
+team add Light_Purple "Light Purple"
+team modify Light_Purple color light_purple
+team add Yellow
+team modify Yellow color yellow
+team add White
+team modify White color white
 
 # ==== Player ==== #
 
@@ -123,14 +156,17 @@ scoreboard objectives add mageLevel dummy
 scoreboard objectives add spellBufferSize dummy
 scoreboard objectives add soulPower.current dummy
 scoreboard objectives add soulPower.max dummy
+scoreboard objectives add bloodBondPower dummy
 scoreboard objectives add spellCastingCastCharge dummy
 scoreboard objectives add isCastingPrimed dummy
 
 # Spell effects
 scoreboard objectives add wardTime dummy
+scoreboard objectives add bloodBond.timeRemaining dummy
+scoreboard objectives add bloodBond.bondedMageId dummy
+scoreboard objectives add bloodBond.castedToThisTick dummy
 
 # Spellcasting constants
-
 scoreboard objectives add spellCastingFoodPower dummy
 scoreboard players set _globals spellCastingFoodPower 1
 

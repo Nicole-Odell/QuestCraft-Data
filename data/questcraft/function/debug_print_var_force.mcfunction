@@ -1,0 +1,1 @@
+$tellraw InfectedGrowth ["$(var): ",{"score":{"name":"$(var)","objective":"var"}}]

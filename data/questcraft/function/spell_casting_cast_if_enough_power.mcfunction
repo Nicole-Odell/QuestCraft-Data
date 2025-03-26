@@ -28,6 +28,9 @@ execute if score _cast_source var matches 0 run scoreboard players operation _ca
 execute if score _cast_source var matches 0 run scoreboard players operation _caster_power_with_source var += _caster_food_saturation_power var
 
 execute if score _cast_source var matches 1 run execute store result score _caster_power_with_source var run scoreboard players get @s health
+# Account for Blood Bond power if source is health
+execute if score _cast_source var matches 1 run scoreboard players operation _caster_power_with_source var += @s bloodBondPower
+
 execute if score _cast_source var matches 2 run execute store result score _caster_power_with_source var run scoreboard players get @s soulPower.current
 
 # We can cast with all of our power for hunger or soul, but not for health (otherwise we will die)

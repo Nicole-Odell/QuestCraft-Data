@@ -3,6 +3,10 @@
 execute if score @s vigor_aspect.charge = @s vigor_aspect.maxCharge run stopsound @a player minecraft:block.bell.resonate
 execute unless score @s isCastingPrimed matches 1 if score @s vigor_aspect.charge = @s vigor_aspect.maxCharge unless score @s vigor_aspect.charge > @s spellCastingCastCharge run function questcraft:spell_build_vigor
 
+# Handle the case where we are just confirming a primed raycasted spell
+execute if score @s isCastingPrimed matches 1 if score @s vigor_aspect.charge = @s vigor_aspect.maxCharge unless score @s vigor_aspect.charge > @s spellCastingCastCharge run data modify storage questcraft:args castSource set value 0
+execute if score @s isCastingPrimed matches 1 if score @s vigor_aspect.charge = @s vigor_aspect.maxCharge unless score @s vigor_aspect.charge > @s spellCastingCastCharge run function questcraft:spell_casting_cast_raycast_confirm
+
 # Reset the charge and max to 0
 execute if score @s vigor_aspect.charge = @s vigor_aspect.maxCharge run scoreboard players set @s vigor_aspect.charge 0
 execute if score @s vigor_aspect.charge matches 0 run scoreboard players set @s vigor_aspect.maxCharge 0

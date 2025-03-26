@@ -2,6 +2,14 @@ execute store result storage questcraft:args mageId int 1 run scoreboard players
 execute store result storage questcraft:args soulPowerMax int 1 run scoreboard players get @s soulPower.max
 execute store result storage questcraft:args soulPowerCurrent int 1 run scoreboard players get @s soulPower.current
 
+# Periodically re-calculate the mage's blood bond power
+execute if score _game_time_mod_10 var matches 5 run execute run function questcraft:mage_calculate_blood_bond_power with storage questcraft:args
+
+# Determine if we should display the blood bond power text
+execute if score @s bloodBondPower matches 0 run data modify storage questcraft:args bloodBondPowerText set value ""
+execute if score @s bloodBondPower matches 1.. run execute store result storage questcraft:args bloodBondDisplayPower int 1 run scoreboard players get @s bloodBondPower
+execute if score @s bloodBondPower matches 1.. run function questcraft:mage_get_blood_bond_power_string with storage questcraft:args
+
 # Get the percentage that the mage's soul power is of being full
 scoreboard players operation _soul_power_percentage var = @s soulPower.current
 scoreboard players set _c_100 var 100
@@ -28,6 +36,8 @@ data remove storage questcraft:args soulPowerMax
 data remove storage questcraft:args soulPowerCurrent
 data remove storage questcraft:args soulPowerLevelColor
 data remove storage questcraft:args soulPowerMeterColor
+data remove storage questcraft:args bloodBondPowerText
+data remove storage questcraft:args bloodBondDisplayPower
 
 scoreboard players reset _c_100 var
 scoreboard players reset _soul_power_percentage var

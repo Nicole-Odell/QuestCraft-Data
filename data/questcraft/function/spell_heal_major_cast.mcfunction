@@ -20,8 +20,7 @@ effect give @s minecraft:instant_health 1 2
 
 # Apply the overheal, if any, as absorption
 execute store result storage questcraft:args absorptionAmplifier int 1 run scoreboard players get _absorption_health_amplifier var
-execute if score _absorption_health_amplifier var matches 0.. run function questcraft:spell_heal_major_cast_sub with storage questcraft:args
-
+execute if score _absorption_health_amplifier var matches 0.. unless predicate questcraft:has_absorption run function questcraft:spell_heal_major_cast_sub with storage questcraft:args
 
 data remove storage questcraft:args absorptionAmplifier
 
