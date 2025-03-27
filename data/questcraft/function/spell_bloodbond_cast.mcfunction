@@ -1,19 +1,22 @@
-data modify storage questcraft:args rayCastRange set value 32
-data modify storage questcraft:args rayCastStepFunction set value "questcraft:nop"
-data modify storage questcraft:args rayCastBlockPassThroughFilter set value "#questcraft:is_not_solid_for_spells"
-data modify storage questcraft:args rayCastBlockImpactFunction set value "questcraft:nop"
-data modify storage questcraft:args rayCastEntityTargettableFilter set value "type=#questcraft:is_attack_targetable"
-data modify storage questcraft:args rayCastEntityImpactRadius set value "1.5"
-data modify storage questcraft:args rayCastEntityImpactFunction set value "questcraft:spell_bloodbond_apply"
-data modify storage questcraft:args rayCastMaxRangeFunction set value "questcraft:nop"
+# Mark the entity as blood bonded, and as blood boned to the specific mage
+tag @s add blood_bonded
+$tag @s add blood_bonded_$(mageId)
+$scoreboard players set @s bloodBond.bondedMageId $(mageId)
 
-execute as @s at @s anchored eyes positioned ^ ^ ^ anchored feet run function questcraft:raycast with storage questcraft:args
+# Set the time for the entity to be blood bonded
+scoreboard players set @s bloodBond.timeRemaining 6000
 
-data remove storage questcraft:args rayCastRange
-data remove storage questcraft:args rayCastStepFunction
-data remove storage questcraft:args rayCastBlockPassThroughFilter
-data remove storage questcraft:args rayCastBlockImpactFunction
-data remove storage questcraft:args rayCastEntityTargettableFilter
-data remove storage questcraft:args rayCastEntityImpactRadius
-data remove storage questcraft:args rayCastEntityImpactFunction
-data remove storage questcraft:args rayCastMaxRangeFunction
+# Play the sound effects for applying
+$execute as @p[tag=blood_bonded_$(mageId)] at @s run playsound minecraft:entity.witch.drink player @s ~ ~ ~ 0.5 1.2 0
+$execute as @p[tag=blood_bonded_$(mageId)] at @s run playsound minecraft:block.note_block.harp player @s ~ ~ ~ 0.5 0 0
+$execute as @p[tag=blood_bonded_$(mageId)] at @s run playsound minecraft:block.note_block.chime player @s ~ ~ ~ 0.5 0 0
+
+# Play the particle effect for applying
+$execute as @p[tag=blood_bonded_$(mageId)] at @s run particle dust_color_transition{from_color:[1.0,0.0,0.0],scale:1,to_color:[0.0,0.0,0.0]} ^-0.5 ^ ^0.5 0 0 0 0.5 50 force
+execute at @s run particle dust_color_transition{from_color:[1.0,0.0,0.0],scale:1.5,to_color:[0.0,0.0,0.0]} ~ ~1 ~ 0.35 0.6 0.35 1 65 force
+
+# Force a recalculation of the blood bond power this tick
+function questcraft:mage_calculate_blood_bond_power with storage questcraft:args
+
+# Mark that we succeeded at marking an entity
+scoreboard players set _did_raycast_spell_succeed var 1

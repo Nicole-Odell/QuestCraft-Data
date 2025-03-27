@@ -8,8 +8,7 @@ $execute if score _ray_steps_remaining var matches 0 run function $(rayCastMaxRa
 execute if score _ray_steps_remaining var matches 0 run return 0
 
 # Run the entity impact function and return success if we hit a target entity
-$execute positioned ~ ~-0.5 ~ as @n[$(rayCastEntityTargettableFilter),distance=..$(rayCastEntityImpactRadius)] at @s run function $(rayCastEntityImpactFunction) with storage questcraft:args
-$execute positioned ~ ~-0.5 ~ if entity @n[$(rayCastEntityTargettableFilter),distance=..$(rayCastEntityImpactRadius)] run return 1
+$execute positioned ~ ~-0.5 ~ as @n[$(rayCastEntityTargettableFilter),distance=..$(rayCastEntityImpactRadius)] at @s run return run function $(rayCastEntityImpactFunction) with storage questcraft:args
 
 # Otherwise, continue stepping the raycast
 execute store success score _raycast_completed var positioned ^ ^ ^0.1 run function questcraft:raycast_step_no_block_impact with storage questcraft:args

@@ -171,10 +171,13 @@ scoreboard objectives add spellCastingFoodPower dummy
 scoreboard players set _globals spellCastingFoodPower 1
 
 scoreboard objectives add spellCastingBloodPower dummy
-scoreboard players set _globals spellCastingBloodPower 2
+scoreboard players set _globals spellCastingBloodPower 1
+# Power from blood bond is divided by this amount
+scoreboard objectives add spellCastingBloodBondPowerDivider dummy
+scoreboard players set _globals spellCastingBloodBondPowerDivider 2
 
 scoreboard objectives add spellCastingSoulPower dummy
-scoreboard players set _globals spellCastingSoulPower 2
+scoreboard players set _globals spellCastingSoulPower 1
 
 # Variables for spellcasting
 scoreboard objectives add vigor_aspect.charge dummy

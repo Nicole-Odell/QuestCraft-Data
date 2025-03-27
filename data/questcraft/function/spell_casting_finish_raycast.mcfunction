@@ -5,12 +5,8 @@ $execute store result score _original_cast_source var run data get storage quest
 # Cancel the spell cast if they don't match
 execute unless score _original_cast_source var = _cast_source var run function questcraft:spell_casting_cancel with storage questcraft:args
 
-# If they do match, call the actual spell cast function and then the normal finish function
-$execute if score _original_cast_source var = _cast_source var run function $(spellFunction) with storage questcraft:args
-execute if score _original_cast_source var = _cast_source var run function questcraft:spell_casting_finish with storage questcraft:args
-
-# Reset the saved spell details
-$data remove storage questcraft:mage_data mages[$(mageId)].spellDetails
+# If they do match, call the raycast confirm function and then the normal finish function
+execute if score _original_cast_source var = _cast_source var run function questcraft:spell_casting_finish_raycast_sub with storage questcraft:args
 
 # We must reset these here because the caller returns
 scoreboard players reset _is_spell_cast_with_raycast var

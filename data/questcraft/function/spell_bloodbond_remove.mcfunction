@@ -3,7 +3,10 @@ tag @s remove blood_bonded
 $tag @s remove blood_bonded_$(mageId)
 tag @s remove blood_bonded_hit
 
-say Blood Bond Broke!
+$execute as @s run tellraw @p[tag=blood_bonded_$(mageId)] {"color":"red","italic":true,"text":"Blood Bond Broke!"}
+$execute as @p[tag=blood_bonded_$(mageId)] at @s run playsound minecraft:entity.witch.drink player @s ~ ~ ~ 0.7 0.7 0
+$execute as @p[tag=blood_bonded_$(mageId)] at @s run playsound minecraft:block.glass.break player @s ~ ~ ~ 0.7 1.8 0
+execute at @s run particle dust_color_transition{from_color:[1.0,0.0,0.0],scale:1.5,to_color:[0.0,0.0,0.0]} ~ ~1 ~ 0.35 0.6 0.35 2 25 force
 
 # Reset scores 
 scoreboard players reset @s bloodBond.timeRemaining

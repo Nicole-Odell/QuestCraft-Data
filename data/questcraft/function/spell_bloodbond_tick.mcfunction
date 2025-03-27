@@ -1,7 +1,6 @@
 # Decrement the blood bond remaining time
 scoreboard players remove @s bloodBond.timeRemaining 1
 
-
 # If the time remaining has reached 0, remove the blood bond
 execute if score @s bloodBond.timeRemaining matches 0 run execute store result storage questcraft:args mageId int 1 run scoreboard players get @s bloodBond.bondedMageId
 execute if score @s bloodBond.timeRemaining matches 0 run function questcraft:spell_bloodbond_remove with storage questcraft:args
