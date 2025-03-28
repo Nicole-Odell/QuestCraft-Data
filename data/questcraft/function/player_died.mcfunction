@@ -1,0 +1,1 @@
+function questcraft:player_status_reset

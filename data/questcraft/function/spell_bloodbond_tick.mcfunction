@@ -7,10 +7,12 @@ execute if score @s bloodBond.timeRemaining matches 0 run function questcraft:sp
 execute if score @s bloodBond.timeRemaining matches 0 run return 1
 
 # Play the base particle effect
-particle dust_color_transition{from_color:[1.0,0.0,0.0],scale:1,to_color:[0.0,0.0,0.0]} ~ ~1 ~ 0.25 0.25 0.25 0.1 10 force
+execute if entity @s[type=!#questcraft:short_entities,type=!#questcraft:tiny_entities] run particle dust_color_transition{from_color:[1.0,0.0,0.0],scale:1,to_color:[0.0,0.0,0.0]} ~ ~1 ~ 0.25 0.25 0.25 0.1 10 force
+execute if entity @s[type=#questcraft:short_entities] run particle dust_color_transition{from_color:[1.0,0.0,0.0],scale:1,to_color:[0.0,0.0,0.0]} ~ ~0.5 ~ 0.15 0.15 0.15 0.1 8 force
+execute if entity @s[type=#questcraft:tiny_entities] run particle dust_color_transition{from_color:[1.0,0.0,0.0],scale:1,to_color:[0.0,0.0,0.0]} ~ ~0.25 ~ 0.1 0.1 0.1 0.1 6 force
 
 # Each entity will try to raycast a path back to the player
-# Don't bother if we were aalready used in a path this tick
+# Don't bother if we were already used in a path this tick
 execute if score @s bloodBond.castedToThisTick matches 1 run return 1
 
 # Get the mageId into argument storage for the below function
@@ -20,9 +22,10 @@ data modify storage questcraft:args rayCastRange set value 16
 data modify storage questcraft:args rayCastStepFunction set value "questcraft:spell_bloodbond_raycast_effects"
 data modify storage questcraft:args rayCastBlockPassThroughFilter set value ""
 data modify storage questcraft:args rayCastBlockImpactFunction set value "questcraft:nop"
-data modify storage questcraft:args rayCastEntityTargettableFilter set value "tag=blood_bonded_0,tag=!blood_bonded_hit"
+# This just sets rayCastEntityTargettableFilterusing the mageId
+function questcraft:spell_bloodbond_tick_sub with storage questcraft:args
 data modify storage questcraft:args rayCastEntityImpactRadius set value "1"
-data modify storage questcraft:args rayCastEntityImpactFunction set value "questcraft:nop"
+data modify storage questcraft:args rayCastEntityImpactFunction set value "questcraft:spell_bloodbond_raycast_effects_impact"
 data modify storage questcraft:args rayCastMaxRangeFunction set value "questcraft:nop"
 
 scoreboard players set _found_player var 0

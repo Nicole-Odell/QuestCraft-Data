@@ -1,7 +1,10 @@
 {
     "values": [
         "#terralith:reference/desert_all",
-        "#terralith:reference/badlands_with_structures",
+        "terralith:bryce_canyon",
+        "terralith:painted_mountains",
+        "terralith:red_oasis",
+        "terralith:white_mesa",
         "minecraft:badlands",
         "minecraft:eroded_badlands",
         "minecraft:desert"

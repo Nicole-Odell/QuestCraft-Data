@@ -157,16 +157,19 @@ scoreboard objectives add spellBufferSize dummy
 scoreboard objectives add soulPower.current dummy
 scoreboard objectives add soulPower.max dummy
 scoreboard objectives add bloodBondPower dummy
-scoreboard objectives add spellCastingCastCharge dummy
+scoreboard objectives add spellCastingRequiredCastCharge dummy
 scoreboard objectives add isCastingPrimed dummy
 
 # Spell effects
+scoreboard objectives add coolingAuraTime dummy
 scoreboard objectives add wardTime dummy
 scoreboard objectives add bloodBond.timeRemaining dummy
 scoreboard objectives add bloodBond.bondedMageId dummy
 scoreboard objectives add bloodBond.castedToThisTick dummy
 
 # Spellcasting constants
+scoreboard players set _globals spellCastingRequiredCastCharge 20
+
 scoreboard objectives add spellCastingFoodPower dummy
 scoreboard players set _globals spellCastingFoodPower 1
 

@@ -1,5 +1,7 @@
 {
     "values": [
+        "#terralith:reference/savanna",
+        "#minecraft:is_savanna",
         "#questcraft:is_frozen",
         "#questcraft:is_desert"
     ]

@@ -1,6 +1,3 @@
-# Reset to 0 on death
-execute if score @s health matches 0 run scoreboard players set @s wetness.current 0
-
 # Nothing to do if alreday at 0 wetness
 execute if score @s wetness.current matches 0 run return 1
 

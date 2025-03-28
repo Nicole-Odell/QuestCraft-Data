@@ -14,7 +14,6 @@ scoreboard players set @s mageLevel 1
 scoreboard players set @s spellBufferSize 4 
 scoreboard players set @s soulPower.current 1000
 scoreboard players set @s soulPower.max 1000
-scoreboard players set @s spellCastingCastCharge 20
 scoreboard players set @s isCastingPrimed 0
 scoreboard players set @s bloodBondPower 0
 
@@ -23,6 +22,7 @@ execute store result storage questcraft:args soulPowerMax int 1 run scoreboard p
 function questcraft:make_player_mage_soul_meter with storage questcraft:args
 
 # Init variables used for spellcasting
+scoreboard players operation @s spellCastingRequiredCastCharge = _globals spellCastingRequiredCastCharge
 scoreboard players set @s vigor_aspect.charge 0
 scoreboard players set @s vigor_aspect.maxCharge 0
 scoreboard players set @s blood_aspect.charge 0

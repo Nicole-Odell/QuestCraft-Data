@@ -26,8 +26,12 @@ execute store result score _day_time var run time query daytime
 execute unless score _globals disableTick matches 1 run function questcraft:sleep_tick
 execute unless score _globals disableTick matches 1 run function questcraft:environment_tick
 execute unless score _globals disableTick matches 1 run function questcraft:spells_tick
+execute unless score _globals disableTick matches 1 run function questcraft:status_effects_tick
 execute unless score _globals disableTick matches 1 run function questcraft:projectile_tick
 execute unless score _globals disableTick matches 1 run function questcraft:raycast_tick
+
+# Handling for reset if a player dies
+execute unless score _globals disableTick matches 1 run execute as @a[scores={health=0}] run function questcraft:player_died
 
 # TEMP
 execute if score _game_time_mod_10 var matches 0 as @a at @s as @n[type=villager,tag=!villager_init,distance=..32] run function questcraft:init_villager

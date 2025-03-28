@@ -43,6 +43,11 @@ function questcraft:environment_player_temperature_meter_display
 
 # Apply adverse effects for each temperature level
 
+# Set this initially since we will modify it based on current temperature level
+scoreboard players operation @s spellCastingRequiredCastCharge = _globals spellCastingRequiredCastCharge
+scoreboard players set _c_3 var 3
+scoreboard players set _c_2 var 2
+
 # Freezing to death
 #   Take freezing damage every other second
 #   Slowness 3
@@ -51,7 +56,7 @@ function questcraft:environment_player_temperature_meter_display
 execute if score _game_time_mod_40 var matches 0 if score @s temperature.current matches 0 run damage @s 1 minecraft:freeze
 execute if score @s temperature.current matches 0 run effect give @s slowness 1 2 true
 execute if score @s temperature.current matches 0 run effect give @s mining_fatigue 1 2 true
-execute if score @s temperature.current matches 0 run scoreboard players set @s spellCastingCastCharge 60
+execute if score @s temperature.current matches 0 run scoreboard players operation @s spellCastingRequiredCastCharge *= _c_3 var
 
 # Freezing
 #   Slowness 2
@@ -59,7 +64,7 @@ execute if score @s temperature.current matches 0 run scoreboard players set @s 
 #   Mage casting is 2x slower
 execute if score @s temperature.currentLevel matches -2 run effect give @s slowness 1 1 true
 execute if score @s temperature.currentLevel matches -2 run effect give @s mining_fatigue 1 1 true
-execute if score @s temperature.current matches 0 run scoreboard players set @s spellCastingCastCharge 40
+execute if score @s temperature.current matches 0 run scoreboard players operation @s spellCastingRequiredCastCharge *= _c_2 var
 
 # Cold
 #   Slowness 1
@@ -67,12 +72,13 @@ execute if score @s temperature.current matches 0 run scoreboard players set @s 
 #   Mage casting is 1.5x slower
 execute if score @s temperature.currentLevel matches -1 run effect give @s slowness 1 0 true
 execute if score @s temperature.currentLevel matches -1 run effect give @s mining_fatigue 1 0 true
-execute if score @s temperature.current matches 0 run scoreboard players set @s spellCastingCastCharge 30
+# We just aadd 10 to this for perf reasons since we can't multiply by 1.5. Should be updated if the default spellCastingRequiredCastCharge is ever changed
+execute if score @s temperature.current matches 0 run scoreboard players add @s spellCastingRequiredCastCharge 10
 
 # Hot
 #   Hunger 1
 execute if score @s temperature.currentLevel matches 1 run effect give @s hunger 1 0 true
-execute if score @s temperature.current matches 0 run scoreboard players set @s spellCastingCastCharge 20
+execute if score @s temperature.current matches 0 run scoreboard players operation @s spellCastingRequiredCastCharge = _globals spellCastingRequiredCastCharge
 
 # Very Hot
 #   Slowness 2
@@ -80,13 +86,13 @@ execute if score @s temperature.current matches 0 run scoreboard players set @s 
 #   TODO: Zeal depletes 1.5x faster
 execute if score @s temperature.currentLevel matches 2 run effect give @s slowness 1 1 true
 execute if score @s temperature.currentLevel matches 2 run effect give @s hunger 1 2 true
-execute if score @s temperature.current matches 0 run scoreboard players set @s spellCastingCastCharge 20
+execute if score @s temperature.current matches 0 run scoreboard players operation @s spellCastingRequiredCastCharge = _globals spellCastingRequiredCastCharge
 
 # Heat Stroke
 #   Take dehydration damage every other second
 #   TODO: Zeal depletes 2x faster
 execute if score _game_time_mod_40 var matches 0 if score @s temperature.current = _globals temperature.max run damage @s 1 minecraft:dry_out
-execute if score @s temperature.current matches 0 run scoreboard players set @s spellCastingCastCharge 20
+execute if score @s temperature.current matches 0 run scoreboard players operation @s spellCastingRequiredCastCharge = _globals spellCastingRequiredCastCharge
 
 # Apply other adverse environmental effects
 
@@ -108,4 +114,6 @@ scoreboard players reset _is_in_rainy_biome var
 scoreboard players reset _is_snowing var
 scoreboard players reset _is_day_temperature var
 scoreboard players reset _is_night_temperature var
+scoreboard players reset _c_3 var
+scoreboard players reset _c_2 var
 scoreboard players reset _is_in_poison_water var

@@ -1,0 +1,1 @@
+$data modify storage questcraft:args rayCastEntityTargettableFilter set value "tag=blood_bonded_$(mageId),tag=!blood_bonded_hit"

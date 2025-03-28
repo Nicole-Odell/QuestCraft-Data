@@ -8,7 +8,7 @@ $execute if score _ray_steps_remaining var matches 0 run function $(rayCastMaxRa
 execute if score _ray_steps_remaining var matches 0 run return 0
 
 # Run the entity impact function and return success if we hit a target entity
-$execute positioned ~ ~-0.5 ~ as @n[$(rayCastEntityTargettableFilter),distance=..$(rayCastEntityImpactRadius)] at @s run return run function $(rayCastEntityImpactFunction) with storage questcraft:args
+$execute positioned ~ ~-0.5 ~ as @n[$(rayCastEntityTargettableFilter),distance=..$(rayCastEntityImpactRadius)] run return run function $(rayCastEntityImpactFunction) with storage questcraft:args
 
 # Run the block impact function and return success if we hit a block that doesn't match the pass-through filter
 $execute unless block ~ ~ ~ $(rayCastBlockPassThroughFilter) run scoreboard players set _ray_hit_block var 1

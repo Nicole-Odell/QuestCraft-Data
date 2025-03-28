@@ -1,8 +1,10 @@
-# Reset to the midpoint on death
-execute if score @s health matches 0 run scoreboard players operation @s temperature.current = _globals temperature.midpoint
-
 # Don't change anything if we are in neutral temperature and are already at the midpoint
 execute if score @s temperature.current = _globals temperature.midpoint if score @s temperature.environmentCurrent matches 0 run return 1
+
+# Adjust the player's final temperature.environmentCurrent if they have the Cooling Aura spell active.
+# It has more of an impact if in hot environments, and no impact if already at frozen or below
+execute if score @s temperature.environmentCurrent matches -1..0 if entity @a[tag=cooling_aura,distance=..2] run scoreboard players remove @s temperature.environmentCurrent 1
+execute if score @s temperature.environmentCurrent matches 1.. if entity @a[tag=cooling_aura,distance=..2] run scoreboard players remove @s temperature.environmentCurrent 2
 
 # Determine how much to change the meter based on the distance between the environment temperature level and where we are in the meter
 # Formula is environment temp level - current temp level, plus 1 more in the direction of the delta

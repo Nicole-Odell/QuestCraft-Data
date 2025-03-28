@@ -1,7 +1,7 @@
 scoreboard players remove @s wardTime 1
 
 # This will be the last tick of ward being active if the time has run out
-execute if score @s wardTime matches 0 run tag @s remove ward_active
+execute if score @s wardTime matches ..0 run tag @s remove ward_active
 
 # Particle effects 
 execute if score @s wardTime matches 5.. run particle electric_spark ~-1 ~1 ~ 0 0.6 0.5 0 3

@@ -1,6 +1,7 @@
 {
     "values": [
         "#terralith:reference/savanna",
+        "terralith:savanna_badlands",
         "terralith:brushland",
         "terralith:amethyst_rainforest",
         "minecraft:bamboo_jungle",

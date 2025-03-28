@@ -1,1 +1,1 @@
-$damage @s $(healthCost) minecraft:indirect_magic
+$damage @s $(healthCost) minecraft:generic

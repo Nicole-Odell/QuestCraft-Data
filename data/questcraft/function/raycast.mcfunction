@@ -3,9 +3,10 @@ $scoreboard players set _ray_steps_remaining var $(rayCastRange)
 # Enforce the max to be safe
 execute if score _ray_steps_remaining var > _globals raycast.maxRange run scoreboard players operation _ray_steps_remaining var = _globals raycast.maxRange
 
-# Multiply by 10 to get the number of 0.1-long raycast steps
+# Multiply by 10 to get the number of 0.1-long raycast steps. Add 1 to fix off-by 1 with the first step since we do our subtraction before
 scoreboard players set _c_10 var 10
 scoreboard players operation _ray_steps_remaining var *= _c_10 var
+scoreboard players add _ray_steps_remaining var 1
 
 # Determine if there is actually any custom projectile data to include
 execute store result score _block_pass_filter_length var run data get storage questcraft:args rayCastBlockPassThroughFilter

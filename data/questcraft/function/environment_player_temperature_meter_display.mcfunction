@@ -2,6 +2,12 @@ execute store result storage questcraft:args playerId int 1 run scoreboard playe
 execute store result storage questcraft:args temperatureMax int 1 run scoreboard players get _globals temperature.max
 execute store result storage questcraft:args temperatureCurrent int 1 run scoreboard players get @s temperature.current
 
+# Determine if we should show cooling aura indication
+execute unless entity @s[tag=cooling_aura] run data modify storage questcraft:args temperatureCoolingTextLeft set value ""
+execute unless entity @s[tag=cooling_aura] run data modify storage questcraft:args temperatureCoolingTextRight set value ""
+execute if entity @s[tag=cooling_aura] run data modify storage questcraft:args temperatureCoolingTextLeft set value "🌫 "
+execute if entity @s[tag=cooling_aura] run data modify storage questcraft:args temperatureCoolingTextRight set value " 🌫"
+
 # Determine if we should show fire indication
 execute if score @s isNearWarmth matches 0 run data modify storage questcraft:args temperatureFireTextLeft set value ""
 execute if score @s isNearWarmth matches 0 run data modify storage questcraft:args temperatureFireTextRight set value ""
@@ -77,6 +83,8 @@ function questcraft:environment_player_temperature_meter_display_apply with stor
 data remove storage questcraft:args playerId
 data remove storage questcraft:args temperatureMax
 data remove storage questcraft:args temperatureCurrent
+data remove storage questcraft:args temperatureCoolingTextLeft
+data remove storage questcraft:args temperatureCoolingTextRight
 data remove storage questcraft:args temperatureFireTextLeft
 data remove storage questcraft:args temperatureFireTextRight
 data remove storage questcraft:args temperatureEnvironmentText
