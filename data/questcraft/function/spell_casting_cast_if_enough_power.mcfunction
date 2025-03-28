@@ -29,6 +29,8 @@ execute if score _cast_source var matches 0 run scoreboard players operation _ca
 
 execute if score _cast_source var matches 1 run execute store result score _caster_power_with_source var run scoreboard players get @s health
 # Account for Blood Bond power if source is health. Blood bond power is 1/2 as powerful as the player's health
+# Make sure we recalculate blood bond power before we use it to check whether casting is possible
+execute if score _cast_source var matches 1 run function questcraft:mage_calculate_blood_bond_power with storage questcraft:args
 execute if score _cast_source var matches 1 run scoreboard players operation _blood_bond_power_divided var = @s bloodBondPower
 execute if score _cast_source var matches 1 run scoreboard players operation _blood_bond_power_divided var /= _globals spellCastingBloodBondPowerDivider
 execute if score _cast_source var matches 1 run scoreboard players operation _caster_power_with_source var += _blood_bond_power_divided var
