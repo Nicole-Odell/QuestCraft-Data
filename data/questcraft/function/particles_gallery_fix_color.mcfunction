@@ -1,0 +1,4 @@
+# We have to manually add a leading zero to these unless they are exactly 1 or 0, or rlese MC will give up for some reason. Other values don't have this requirement
+$execute unless score _globals particlesGalleryColorR matches 0 unless score _globals particlesGalleryColorR matches 100 run data modify storage questcraft:args particlesGalleryColorR set value 0$(particlesGalleryColorR)f
+$execute unless score _globals particlesGalleryColorG matches 0 unless score _globals particlesGalleryColorG matches 100 run data modify storage questcraft:args particlesGalleryColorG set value 0$(particlesGalleryColorG)f
+$execute unless score _globals particlesGalleryColorB matches 0 unless score _globals particlesGalleryColorB matches 100 run data modify storage questcraft:args particlesGalleryColorB set value 0$(particlesGalleryColorB)f

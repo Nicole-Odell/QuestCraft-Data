@@ -1,7 +1,9 @@
-# ==== General ==== #
+# ==== Technical ==== #
 
-gamerule snowAccumulationHeight 7
+# Force load the origin for projectile math
+forceload add -1 -1 0 0
 
+# Raycast Settings
 scoreboard objectives add raycast.maxRange dummy
 scoreboard players set _globals raycast.maxRange 64
 
@@ -15,13 +17,27 @@ scoreboard players set _globals printTickTimes 0
 scoreboard objectives add disableTick dummy
 scoreboard players set _globals disableTick 0
 
+# Particles Gallery
+scoreboard objectives add particlesGallerySpeed dummy
+scoreboard objectives add particlesGalleryCount dummy
+scoreboard objectives add particlesGalleryDeltaX dummy
+scoreboard objectives add particlesGalleryDeltaY dummy
+scoreboard objectives add particlesGalleryDeltaZ dummy
+scoreboard objectives add particlesGalleryColorR dummy
+scoreboard objectives add particlesGalleryColorG dummy
+scoreboard objectives add particlesGalleryColorB dummy
+
+scoreboard objectives add particlesGalleryForce dummy
+
+# ==== General ==== #
+
+# Gamerules and state
+gamerule snowAccumulationHeight 7
+
 # Temp storage used to pass function arguments (via macros)
 data merge storage questcraft:args {}
 
-# Force load the origin for projectile math
-forceload add -1 -1 0 0
-
-# Variables
+# Used for all temporary variables
 scoreboard objectives add var dummy
 
 # Projectile tracking
@@ -64,7 +80,8 @@ team modify Yellow color yellow
 team add White
 team modify White color white
 
-# ==== Player ==== #
+
+# ==== Players ==== #
 
 # Tracks what ID the next player will have. 
 # Only need to set this once so don't do it if the player storage has already been set
@@ -135,7 +152,8 @@ scoreboard objectives add timeSinceLastRest minecraft.custom:minecraft.time_sinc
 # Status effect related stats
 scoreboard objectives add frozenTime dummy
 
-# ==== Mage ==== #
+
+# ==== Mages ==== #
 
 # Tracks whether a player is a mage
 scoreboard objectives add isMage dummy
@@ -192,12 +210,14 @@ scoreboard objectives add soul_aspect.maxCharge dummy
 scoreboard objectives add void_aspect.charge dummy
 scoreboard objectives add void_aspect.maxCharge dummy
 
-# ==== Pathfinder ==== #
+
+# ==== Pathfinders ==== #
 
 # Tracks whether a player is a Pathfinder
 scoreboard objectives add isPathfinder dummy
 
-# ==== Templar ==== #
+
+# ==== Templars ==== #
 
 # Tracks whether a player is a Templar
 scoreboard objectives add isTemplar dummy
