@@ -26,8 +26,9 @@ scoreboard objectives add particlesGalleryDeltaZ dummy
 scoreboard objectives add particlesGalleryColorR dummy
 scoreboard objectives add particlesGalleryColorG dummy
 scoreboard objectives add particlesGalleryColorB dummy
-
 scoreboard objectives add particlesGalleryForce dummy
+scoreboard objectives add particlesGallerySelectedEffect dummy
+scoreboard objectives add particlesGalleryOnlySelected dummy
 
 # ==== General ==== #
 
