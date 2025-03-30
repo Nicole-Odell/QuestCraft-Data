@@ -1,5 +1,7 @@
+# $say summon $(projectileEntity) ^ ^ ^1 {Tags:["projectile_visual_fix","projectile_$(projectileId)","player_projectile","$(projectileTag)"],Owner:$(ownerUuid),$(projectileData)}
+
 # Summon the projectile entity
-$summon $(projectileEntity) ^ ^ ^1 {Tags:["projectile_visual_fix","projectile_$(projectileId)","player_projectile","$(projectileTag)"],Owner:$(ownerUuid),$(projectileData)}
+$summon $(projectileEntity) ^ ^ ^0.5 {Tags:["projectile_visual_fix","projectile_$(projectileId)","player_projectile","$(projectileTag)"],Owner:$(ownerUuid),$(projectileData)}
 
 # Use player rotation to create an area_effect_cloud of about 0 0 and immediately copy the position of this entity into the projectile motion tag.
 $execute rotated as @s positioned 0.0 0.0 0.0 positioned ^$(projectileSpeedOffsetLR) ^$(projectileSpeedOffsetUD) ^$(projectileSpeed) summon area_effect_cloud run data modify entity @n[type=$(projectileEntity),tag=projectile_$(projectileId)] Motion set from entity @s Pos

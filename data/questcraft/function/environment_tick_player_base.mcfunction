@@ -72,8 +72,8 @@ execute if score @s temperature.current matches 0 run scoreboard players operati
 #   Mage casting is 1.5x slower
 execute if score @s temperature.currentLevel matches -1 run effect give @s slowness 1 0 true
 execute if score @s temperature.currentLevel matches -1 run effect give @s mining_fatigue 1 0 true
-# We just aadd 10 to this for perf reasons since we can't multiply by 1.5. Should be updated if the default spellCastingRequiredCastCharge is ever changed
-execute if score @s temperature.current matches 0 run scoreboard players add @s spellCastingRequiredCastCharge 10
+# We just add 5 to this for perf reasons since we can't multiply by 1.5. Should be updated if the default spellCastingRequiredCastCharge is ever changed
+execute if score @s temperature.current matches 0 run scoreboard players add @s spellCastingRequiredCastCharge 6
 
 # Hot
 #   Hunger 1

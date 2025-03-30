@@ -17,6 +17,10 @@ scoreboard players set @s bloodBondPower 0
 tag @s remove ward_active
 scoreboard players set @s wardTime 0
 
+# Cancel Bumble Dry
+tag @s remove bumble_dry
+scoreboard players set @s bumbleDryTime 0
+
 # Reset levitation state to prevent the scheduled function from applying slow falling
 tag @s remove spell_levitating
 

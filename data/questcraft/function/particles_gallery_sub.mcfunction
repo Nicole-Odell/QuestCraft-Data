@@ -118,7 +118,7 @@ $execute as @n[type=armor_stand,tag=particle_gallery_color_r,distance=..16] run 
 $execute as @n[type=armor_stand,tag=particle_gallery_color_g,distance=..16] run data modify entity @s CustomName set value '{"bold":true,"text":"Green: $(particlesGalleryColorG)"}'
 $execute as @n[type=armor_stand,tag=particle_gallery_color_b,distance=..16] run data modify entity @s CustomName set value '{"bold":true,"text":" Blue: $(particlesGalleryColorB)"}'
 
-$execute as @n[type=armor_stand,tag=particle_gallery_delta,distance=..16] run data modify entity @s CustomName set value '{"bold":true,"text":"Delta: $(particlesGalleryDeltaX) $(particlesGalleryDeltaY) $(particlesGalleryDeltaZ)"}'
+$execute as @n[type=armor_stand,tag=particle_gallery_delta,distance=..16] run data modify entity @s CustomName set value '{"bold":true,"text":"Delta: | $(particlesGalleryDeltaX) | $(particlesGalleryDeltaY) | $(particlesGalleryDeltaZ) |"}'
 $execute as @n[type=block_display,tag=particle_gallery_delta,distance=..16] run data modify entity @s transformation.scale set value [$(particlesGalleryDeltaScaleX)f,$(particlesGalleryDeltaScaleY)f,$(particlesGalleryDeltaScaleZ)f]
 $execute as @n[type=block_display,tag=particle_gallery_delta,distance=..16] run data modify entity @s transformation.translation set value [$(particlesGalleryDeltaTranslationX)f,$(particlesGalleryDeltaTranslationY)f,$(particlesGalleryDeltaTranslationZ)f]
 

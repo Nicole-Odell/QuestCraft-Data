@@ -1,0 +1,1 @@
+execute as @a[scores={impactShotsInBurst=1..}] run function questcraft:spell_impact_repeat_sub

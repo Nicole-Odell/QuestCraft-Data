@@ -1,3 +1,6 @@
+execute at @s run playsound minecraft:entity.breeze.idle_ground player @a ~ ~ ~ 1 0 0
+execute at @s run playsound minecraft:entity.snow_golem.shoot player @a ~ ~ ~ 1 2 0
+
 execute at @s run particle minecraft:wax_off ~ ~0.75 ~ 0.1 0.5 0.1 10 60 force
 execute at @s run particle dust_color_transition{from_color:[1.000,1.000,1.000],scale:1,to_color:[0.000,1.000,1.000]} ~ ~1 ~ 0.35 0.8 0.35 1 20 force
 

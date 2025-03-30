@@ -8,74 +8,18 @@ scoreboard players set _any_spell_matched var 0
 
 # === Basic === #
 
-# Transfuse Health [lvl 1]: Converts the equivalent amount of another resource into 8 of health
-data modify storage questcraft:args spellToMatch set value [1]
-data modify storage questcraft:args spellName set value "Minor Transfuse Health"
-data modify storage questcraft:args spellCost set value 8
-data modify storage questcraft:args spellFunction set value "questcraft:spell_heal_minor_cast"
-execute unless score _any_spell_matched var matches 1 run function questcraft:spell_casting_cast_if_match with storage questcraft:args
-
-# Transfuse Health [lv1 2]: Converts the equivalent amount of another resource into 16 of health, and grants overheal if it goes past max
-data modify storage questcraft:args spellToMatch set value [1,1]
-data modify storage questcraft:args spellName set value "Major Transfuse Health"
-data modify storage questcraft:args spellCost set value 16
-data modify storage questcraft:args spellFunction set value "questcraft:spell_heal_major_cast"
-execute unless score _any_spell_matched var matches 1 run function questcraft:spell_casting_cast_if_match with storage questcraft:args
-
-# Transfuse Vigor [lvl 1]: Converts the equivalent amount of another resource into 12 of food (4 hunger 8 saturation)
+# Transfuse Vigor: Converts the equivalent amount of another resource into 12 of food (4 hunger 8 saturation)
 data modify storage questcraft:args spellToMatch set value [0]
 data modify storage questcraft:args spellName set value "Minor Transfuse Vigor"
 data modify storage questcraft:args spellCost set value 12
 data modify storage questcraft:args spellFunction set value "questcraft:spell_vigor_minor_cast"
 execute unless score _any_spell_matched var matches 1 run function questcraft:spell_casting_cast_if_match with storage questcraft:args
 
-# Transfuse Vigor [lvl 1]: Converts the equivalent amount of another resource into 24 of food (8 hunger 16 saturation)
-data modify storage questcraft:args spellToMatch set value [0,0]
-data modify storage questcraft:args spellName set value "Minor Transfuse Vigor"
-data modify storage questcraft:args spellCost set value 24
-data modify storage questcraft:args spellFunction set value "questcraft:spell_vigor_major_cast"
-execute unless score _any_spell_matched var matches 1 run function questcraft:spell_casting_cast_if_match with storage questcraft:args
-
-# Inner Warmth: Raises the player's temperature by one level
-data modify storage questcraft:args spellToMatch set value [2,1]
-data modify storage questcraft:args spellName set value "Inner Warmth"
-data modify storage questcraft:args spellCost set value 12
-data modify storage questcraft:args spellFunction set value "questcraft:spell_innerwarmth_cast"
-execute unless score _any_spell_matched var matches 1 run function questcraft:spell_casting_cast_if_match with storage questcraft:args
-
-# Cooling Aura: Provides cool air to the player for a time
-data modify storage questcraft:args spellToMatch set value [2,2]
-data modify storage questcraft:args spellName set value "Cooling Aura"
-data modify storage questcraft:args spellCost set value 12
-data modify storage questcraft:args spellFunction set value "questcraft:spell_coolingaura_cast"
-execute unless score _any_spell_matched var matches 1 run function questcraft:spell_casting_cast_if_match with storage questcraft:args
-
-# Impact: Launches an entity back and does minor damage #$#
-data modify storage questcraft:args spellToMatch set value [0,0]
-data modify storage questcraft:args spellName set value "<spell>"
-data modify storage questcraft:args spellCost set value 2
-data modify storage questcraft:args spellFunction set value "questcraft:spell_impact_cast"
-execute unless score _any_spell_matched var matches 1 run function questcraft:spell_casting_cast_if_match with storage questcraft:args
-
-# Firebolt: Fires a bolt of fire which penetrates enemies and melts ice it touches. When it hits a surface, it leaves a field of fire for a time.
-data modify storage questcraft:args spellToMatch set value [0,1]
-data modify storage questcraft:args spellName set value "Firebolt"
-data modify storage questcraft:args spellCost set value 2
-data modify storage questcraft:args spellFunction set value "questcraft:spell_firebolt_cast"
-execute unless score _any_spell_matched var matches 1 run function questcraft:spell_casting_cast_if_match with storage questcraft:args
-
-# Ice wind: Fires a burst of cold which applies freezing to enemies and freezes water (temporarily (like Frost Walker), unless in a frozen biome).
-data modify storage questcraft:args spellToMatch set value [0,2]
-data modify storage questcraft:args spellName set value "Icewind"
-data modify storage questcraft:args spellCost set value 2
-data modify storage questcraft:args spellFunction set value "questcraft:spell_icewind_cast"
-execute unless score _any_spell_matched var matches 1 run function questcraft:spell_casting_cast_if_match with storage questcraft:args
-
-# Ward: Deflects projectiles for a short time.
-data modify storage questcraft:args spellToMatch set value [2,0]
-data modify storage questcraft:args spellName set value "Ward"
-data modify storage questcraft:args spellCost set value 10
-data modify storage questcraft:args spellFunction set value "questcraft:spell_ward_cast"
+# Minor Transfuse Health: Converts the equivalent amount of another resource into 8 of health
+data modify storage questcraft:args spellToMatch set value [1]
+data modify storage questcraft:args spellName set value "Minor Transfuse Health"
+data modify storage questcraft:args spellCost set value 8
+data modify storage questcraft:args spellFunction set value "questcraft:spell_heal_minor_cast"
 execute unless score _any_spell_matched var matches 1 run function questcraft:spell_casting_cast_if_match with storage questcraft:args
 
 # Blood Bond: Binds an enemy's health to the caster, allowing them to draw from their and any other bonded enemy's combined health pool to cast spells.
@@ -89,28 +33,98 @@ $data modify storage questcraft:args spellCustomTargetFilter set value "type=#qu
 execute unless score _any_spell_matched var matches 1 run function questcraft:spell_casting_cast_if_match with storage questcraft:args
 data modify storage questcraft:args spellCastedWithRaycast set value 0
 
+# Impact: Launches a volley of 10 magical spears that do significant damage to a single target
+data modify storage questcraft:args spellToMatch set value [0,0]
+data modify storage questcraft:args spellName set value "Mystic Spears"
+data modify storage questcraft:args spellCost set value 4
+data modify storage questcraft:args spellFunction set value "questcraft:spell_impact_cast"
+execute unless score _any_spell_matched var matches 1 run function questcraft:spell_casting_cast_if_match with storage questcraft:args
+
+# Firebolt: Fires a bolt of fire which penetrates enemies and melts ice it touches. When it hits a surface, it leaves a field of fire for a time.
+data modify storage questcraft:args spellToMatch set value [0,1]
+data modify storage questcraft:args spellName set value "Firebolt"
+data modify storage questcraft:args spellCost set value 4
+data modify storage questcraft:args spellFunction set value "questcraft:spell_firebolt_cast"
+execute unless score _any_spell_matched var matches 1 run function questcraft:spell_casting_cast_if_match with storage questcraft:args
+
+# Ice wind: Fires a burst of cold which applies freezing to enemies and freezes water (temporarily (like Frost Walker), unless in a frozen biome).
+data modify storage questcraft:args spellToMatch set value [0,2]
+data modify storage questcraft:args spellName set value "Icewind"
+data modify storage questcraft:args spellCost set value 4
+data modify storage questcraft:args spellFunction set value "questcraft:spell_icewind_cast"
+execute unless score _any_spell_matched var matches 1 run function questcraft:spell_casting_cast_if_match with storage questcraft:args
+
+# Major Transfuse Health: Converts the equivalent amount of another resource into 16 of health, and grants overheal if it goes past max
+data modify storage questcraft:args spellToMatch set value [1,1]
+data modify storage questcraft:args spellName set value "Major Transfuse Health"
+data modify storage questcraft:args spellCost set value 16
+data modify storage questcraft:args spellFunction set value "questcraft:spell_heal_major_cast"
+execute unless score _any_spell_matched var matches 1 run function questcraft:spell_casting_cast_if_match with storage questcraft:args
+
+# Ward: Deflects projectiles for a short time.
+data modify storage questcraft:args spellToMatch set value [2,0]
+data modify storage questcraft:args spellName set value "Ward"
+data modify storage questcraft:args spellCost set value 8
+data modify storage questcraft:args spellFunction set value "questcraft:spell_ward_cast"
+execute unless score _any_spell_matched var matches 1 run function questcraft:spell_casting_cast_if_match with storage questcraft:args
+
+# Inner Warmth: Raises the player's temperature by one level
+data modify storage questcraft:args spellToMatch set value [2,1]
+data modify storage questcraft:args spellName set value "Inner Warmth"
+data modify storage questcraft:args spellCost set value 8
+data modify storage questcraft:args spellFunction set value "questcraft:spell_innerwarmth_cast"
+execute unless score _any_spell_matched var matches 1 run function questcraft:spell_casting_cast_if_match with storage questcraft:args
+
+# Cooling Aura: Provides cool air to the player for a time
+data modify storage questcraft:args spellToMatch set value [2,2]
+data modify storage questcraft:args spellName set value "Cooling Aura"
+data modify storage questcraft:args spellCost set value 10
+data modify storage questcraft:args spellFunction set value "questcraft:spell_coolingaura_cast"
+execute unless score _any_spell_matched var matches 1 run function questcraft:spell_casting_cast_if_match with storage questcraft:args
+
 
 # === Advanced === #
 
-# Blind Dryer: Dries you off at the cost of your sight for a time #$#
-data modify storage questcraft:args spellToMatch set value [2,1,0]
-data modify storage questcraft:args spellName set value "Bumbling Dry"
-data modify storage questcraft:args spellCost set value 8
-data modify storage questcraft:args spellFunction set value "questcraft:spell_bumbledry_major_cast"
+# Solar Ray: Lights all undead on fire nearby to the caster
+data modify storage questcraft:args spellToMatch set value [0,1,2]
+data modify storage questcraft:args spellName set value "Solar Ray"
+data modify storage questcraft:args spellCost set value 10
+data modify storage questcraft:args spellFunction set value "questcraft:spell_solarray_cast"
 execute unless score _any_spell_matched var matches 1 run function questcraft:spell_casting_cast_if_match with storage questcraft:args
 
 # Barrier: Enemies cannot enter a small radius around the caster or target for a short time #$#
 data modify storage questcraft:args spellToMatch set value [2,0,0]
 data modify storage questcraft:args spellName set value "Barrier"
-data modify storage questcraft:args spellCost set value 2
+data modify storage questcraft:args spellCost set value 10
 data modify storage questcraft:args spellFunction set value "questcraft:spell_barrier_cast"
 execute unless score _any_spell_matched var matches 1 run function questcraft:spell_casting_cast_if_match with storage questcraft:args
 
-# Solar Ray: Lights all undead on fire nearby to the caster #$#
-data modify storage questcraft:args spellToMatch set value [0,1,2]
-data modify storage questcraft:args spellName set value "Solar Ray"
-data modify storage questcraft:args spellCost set value 2
-data modify storage questcraft:args spellFunction set value "questcraft:spell_solar_ray_cast"
+# Gathering Hail: Collects all projectiles fired at the player for a short time then sends them all flying in a direction #$#
+data modify storage questcraft:args spellToMatch set value [2,0,1]
+data modify storage questcraft:args spellCost set value 10
+data modify storage questcraft:args spellName set value "Gathering Hail"
+data modify storage questcraft:args spellFunction set value "questcraft:spell_gatheringhail_cast"
+execute unless score _any_spell_matched var matches 1 run function questcraft:spell_casting_cast_if_match with storage questcraft:args
+
+# Levitate Self: Applies levitation effect to caster for a time, then slow falling after it ends
+data modify storage questcraft:args spellToMatch set value [2,0,2]
+data modify storage questcraft:args spellCost set value 8
+data modify storage questcraft:args spellName set value "Levitate Self"
+data modify storage questcraft:args spellFunction set value "questcraft:spell_levitate_cast"
+execute unless score _any_spell_matched var matches 1 run function questcraft:spell_casting_cast_if_match with storage questcraft:args
+
+# Bumble Dry: Dries you off at the cost of your sight for a time
+data modify storage questcraft:args spellToMatch set value [2,1,0]
+data modify storage questcraft:args spellName set value "Bumble Dry"
+data modify storage questcraft:args spellCost set value 10
+data modify storage questcraft:args spellFunction set value "questcraft:spell_bumbledry_cast"
+execute unless score _any_spell_matched var matches 1 run function questcraft:spell_casting_cast_if_match with storage questcraft:args
+
+# Clears all active effects, good and bad
+data modify storage questcraft:args spellToMatch set value [2,2,2]
+data modify storage questcraft:args spellName set value "Cleanse"
+data modify storage questcraft:args spellCost set value 10
+data modify storage questcraft:args spellFunction set value "questcraft:spell_cleanse_cast"
 execute unless score _any_spell_matched var matches 1 run function questcraft:spell_casting_cast_if_match with storage questcraft:args
 
 # Magic Might: Grants the caster increased melee damage and damage resistance for a short time
@@ -127,20 +141,12 @@ execute unless score _any_spell_matched var matches 1 run function questcraft:sp
 
 # Sacrifice Sight: Blinds the player but let's them see all mobs nearby for a short time
 
-# Levitate Self: Applies levitation effect to caster for a time, then slow falling after it ends
-data modify storage questcraft:args spellToMatch set value [2,0,2]
-data modify storage questcraft:args spellCost set value 4
-data modify storage questcraft:args spellName set value "Levitate Self"
-data modify storage questcraft:args spellFunction set value "questcraft:spell_levitate_cast"
-execute unless score _any_spell_matched var matches 1 run function questcraft:spell_casting_cast_if_match with storage questcraft:args
-
 # Cyclonic Tunnel: Creates a tunnel of wind to cross gaps, which fades after a time. Works by launching entities through it, granting levitation while inside.
 
 # Sacred Spring: Creates a water source block at the target location which disappears after 30 seconds. Regeneration is granted to any entity in water with a range of the source block while active
 
-# === Master === # 
 
-# Gathering Hail: Collects all projectiles fired at the player for a short time then sends them all flying in a direction
+# === Master === # 
 
 # Hyper Beam: Long range Beam attack that destroys blocks and does massive damage
 data modify storage questcraft:args spellToMatch set value [0,2,1,2]

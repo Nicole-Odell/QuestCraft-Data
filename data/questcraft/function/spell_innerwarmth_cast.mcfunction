@@ -1,3 +1,5 @@
+execute at @s run playsound minecraft:entity.player.hurt_on_fire player @a ~ ~ ~ 1 0 0
+
 execute at @s run particle minecraft:wax_on ~ ~0.75 ~ 0.1 0.4 0.1 10 60 force
 execute at @s run particle minecraft:small_flame ~ ~1 ~ 0.5 0.5 0.5 0 30 force
 

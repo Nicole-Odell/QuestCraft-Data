@@ -24,4 +24,4 @@ execute if score @s projectileTimeAlive matches 2.. run particle electric_spark 
 execute if score @s projectileTimeAlive matches ..1 run summon firework_rocket ^ ^ ^2 {FireworksItem:{id:"minecraft:firework_rocket",count:1,components:{"minecraft:fireworks":{explosions:[{shape:"small_ball",has_twinkle:true,has_trail:false,colors:[I;16775633],fade_colors:[I;10879175]}]}}}}
 execute if score @s projectileTimeAlive matches ..3 run playsound minecraft:entity.firework_rocket.twinkle player @a ~ ~ ~ 32 1.1 0
 execute if score @s projectileTimeAlive matches ..3 run playsound minecraft:entity.firework_rocket.twinkle_far player @a ~ ~ ~ 32 1.1 0
-execute if score @s projectileTimeAlive matches ..3 run playsound minecraft:block.bell.resonate player @a ~ ~ ~ 32 2 0
+execute if score @s projectileTimeAlive matches ..3 run playsound minecraft:block.bell.resonate player @a ~ ~ ~ 32 1 0
