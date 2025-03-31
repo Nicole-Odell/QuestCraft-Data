@@ -5,12 +5,18 @@ scoreboard players add _globals nextPlayerId 1
 # Get the player ID into args to pass to other init methods
 execute store result storage questcraft:args playerId int 1 run scoreboard players get @s playerId
 
+# Add an entry in player data for them
+data modify storage questcraft:player_data players append value {}
+
 # Player stats
 scoreboard players operation @s temperature.current = _globals temperature.midpoint
 scoreboard players operation @s temperature.environmentCurrent = _globals temperature.midpoint
 scoreboard players set @s wetness.current 0
 scoreboard players set @s hydration.current 0
 scoreboard players set @s isNearWarmth 0
+
+# POI status
+scoreboard players set @s isInPoi 0
 
 # Set up the player's temperature meter
 execute store result storage questcraft:args temperatureMax int 1 run scoreboard players get _globals temperature.max

@@ -92,14 +92,14 @@ data modify storage questcraft:args spellCost set value 10
 data modify storage questcraft:args spellFunction set value "questcraft:spell_solarray_cast"
 execute unless score _any_spell_matched var matches 1 run function questcraft:spell_casting_cast_if_match with storage questcraft:args
 
-# Barrier: Enemies cannot enter a small radius around the caster or target for a short time #$#
+# #$# Barrier: Enemies cannot enter a small radius around the caster or target for a short time
 data modify storage questcraft:args spellToMatch set value [2,0,0]
 data modify storage questcraft:args spellName set value "Barrier"
 data modify storage questcraft:args spellCost set value 10
 data modify storage questcraft:args spellFunction set value "questcraft:spell_barrier_cast"
 execute unless score _any_spell_matched var matches 1 run function questcraft:spell_casting_cast_if_match with storage questcraft:args
 
-# Gathering Hail: Collects all projectiles fired at the player for a short time then sends them all flying in a direction #$#
+# #$# Gathering Hail: Collects all projectiles fired at the player for a short time then sends them all flying in a direction
 data modify storage questcraft:args spellToMatch set value [2,0,1]
 data modify storage questcraft:args spellCost set value 10
 data modify storage questcraft:args spellName set value "Gathering Hail"

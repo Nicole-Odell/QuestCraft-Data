@@ -1,0 +1,1 @@
+$tellraw @p {"clickEvent":{"action":"run_command","value":"/tp @s $(x) $(y) $(z)"},"hoverEvent":{"action":"show_text","value":[{"text":"tp to $(x) $(y) $(z)"}]},"text":"Debug Coords: $(x) $(y) $(z)"}

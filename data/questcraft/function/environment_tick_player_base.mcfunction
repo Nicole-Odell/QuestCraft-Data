@@ -1,3 +1,13 @@
+# Don't bother for creative mode players
+execute if entity @s[gamemode=creative] run scoreboard players operation @s temperature.current = _globals temperature.midpoint
+execute if entity @s[gamemode=spectator] run scoreboard players operation @s temperature.current = _globals temperature.midpoint
+execute if entity @s[gamemode=creative] run scoreboard players set @s temperature.environmentCurrent 0
+execute if entity @s[gamemode=spectator] run scoreboard players set @s temperature.environmentCurrent 0
+execute if entity @s[gamemode=creative] run function questcraft:environment_player_temperature_meter_display
+execute if entity @s[gamemode=spectator] run function questcraft:environment_player_temperature_meter_display
+execute if entity @s[gamemode=creative] run return 1
+execute if entity @s[gamemode=spectator] run return 1
+
 # Get the current temperature as a representation of where in the meter it is
 execute if score @s temperature.current < _globals temperature.freezingThreshold run scoreboard players set @s temperature.currentLevel -2
 execute if score @s temperature.current >= _globals temperature.freezingThreshold if score @s temperature.current < _globals temperature.coldThreshold run scoreboard players set @s temperature.currentLevel -1

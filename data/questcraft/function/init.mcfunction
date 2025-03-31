@@ -153,6 +153,9 @@ scoreboard objectives add timeSinceLastRest minecraft.custom:minecraft.time_sinc
 # Status effect related stats
 scoreboard objectives add frozenTime dummy
 
+# POI status
+scoreboard objectives add isInPoi dummy
+
 
 # ==== Mages ==== #
 

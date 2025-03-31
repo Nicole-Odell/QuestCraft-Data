@@ -1,0 +1,14 @@
+{
+    "values": [
+        "nova_structures:village_birch",
+        "nova_structures:village_jungle",
+        "nova_structures:village_swamp",
+        "terralith:fortified_village",
+        "terralith:fortified_desert_village",
+        "minecraft:village_desert",
+        "minecraft:village_plains",
+        "minecraft:village_savanna",
+        "minecraft:village_snowy",
+        "minecraft:village_taiga"
+    ]
+}
