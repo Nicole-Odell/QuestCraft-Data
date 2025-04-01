@@ -68,11 +68,11 @@ execute store result storage questcraft:args poiCenterY int 1 run scoreboard pla
 execute store result storage questcraft:args poiCenterZ int 1 run scoreboard players get _poi_search_avg_z var
 
 # Debug
-say Final:
-execute store result storage questcraft:args x int 1 run scoreboard players get _poi_search_avg_x var
-execute store result storage questcraft:args y int 1 run scoreboard players get _poi_search_avg_y var
-execute store result storage questcraft:args z int 1 run scoreboard players get _poi_search_avg_z var
-function questcraft:debug_print_coords_force with storage questcraft:args
+# say Final:
+# execute store result storage questcraft:args x int 1 run scoreboard players get _poi_search_avg_x var
+# execute store result storage questcraft:args y int 1 run scoreboard players get _poi_search_avg_y var
+# execute store result storage questcraft:args z int 1 run scoreboard players get _poi_search_avg_z var
+# function questcraft:debug_print_coords_force with storage questcraft:args
 
 
 scoreboard players reset _poi_search_locator_moved var

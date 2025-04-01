@@ -1,0 +1,10 @@
+{
+    "condition": "minecraft:location_check",
+    "predicate": {
+        "structures": [
+            "minecraft:village_plains",
+            "nova_structures:remnant_classic_village"
+        ],
+        "dimension": "minecraft:overworld"
+    }
+}

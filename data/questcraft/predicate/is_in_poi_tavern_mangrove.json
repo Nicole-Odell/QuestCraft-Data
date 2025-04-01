@@ -1,0 +1,7 @@
+{
+    "condition": "minecraft:location_check",
+    "predicate": {
+        "structures": "nova_structures:tavern_mangrove",
+        "dimension": "minecraft:overworld"
+    }
+}

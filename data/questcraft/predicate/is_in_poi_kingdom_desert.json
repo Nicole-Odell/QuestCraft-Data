@@ -1,0 +1,7 @@
+{
+    "condition": "minecraft:location_check",
+    "predicate": {
+        "structures": "terralith:fortified_desert_village",
+        "dimension": "minecraft:overworld"
+    }
+}

@@ -1,0 +1,38 @@
+{
+    "condition": "all_of",
+    "terms":
+    [
+        {
+            "condition": "minecraft:location_check",
+            "predicate": {
+                "structures": "#questcraft:kingdoms",
+                "dimension": "minecraft:overworld"
+            }
+        },
+        {
+            "condition": "inverted",
+            "term": 
+            {
+                "condition": "any_of",
+                "terms": [
+                    {
+                        "condition": "minecraft:location_check",
+                        "predicate": {
+                            "structures": "terralith:fortified_village",
+                            "dimension": "minecraft:overworld",
+                            "biomes": "#c:is_forest"
+                        }
+                    },
+                    {
+                        "condition": "minecraft:location_check",
+                        "predicate": {
+                            "structures": "terralith:fortified_village",
+                            "dimension": "minecraft:overworld",
+                            "biomes": "terralith:forested_highlands"
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}
