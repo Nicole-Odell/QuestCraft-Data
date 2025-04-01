@@ -13,7 +13,7 @@ execute store result storage questcraft:args structure_type_id int 1 run scorebo
 
 # Set the proper args for the structure type
 execute if score _structure_type_id var matches 1 run data modify storage questcraft:args structure_type set value "castle"
-execute if score _structure_type_id var matches 1 run data modify storage questcraft:args structure_type_name set value "Fort"
+execute if score _structure_type_id var matches 1 run data modify storage questcraft:args structure_type_name set value "Fortress"
 
 execute if score _structure_type_id var matches 2 run data modify storage questcraft:args structure_type set value "kingdom"
 execute if score _structure_type_id var matches 2 run data modify storage questcraft:args structure_type_name set value "Kingdom"

@@ -3,7 +3,7 @@ $execute store result score _structure_type_id var run data get storage questcra
 
 # Reset their POI state if they are far enough away for their structure type
 # Castle
-execute if score _structure_type_id var matches 1 unless entity @n[type=minecraft:marker,tag=poi_marker,tag=poi_marker_castle,distance=..64] run function questcraft:player_exited_poi_sub_apply with storage questcraft:args
+execute if score _structure_type_id var matches 1 unless entity @n[type=minecraft:marker,tag=poi_marker,tag=poi_marker_castle,distance=..256] run function questcraft:player_exited_poi_sub_apply with storage questcraft:args
 # Kingdom
 execute if score _structure_type_id var matches 2 unless entity @n[type=minecraft:marker,tag=poi_marker,tag=poi_marker_kingdom,distance=..128] run function questcraft:player_exited_poi_sub_apply with storage questcraft:args
 # Mansion

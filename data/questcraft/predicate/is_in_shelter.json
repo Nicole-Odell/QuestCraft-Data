@@ -22,7 +22,7 @@
                 "structures": "#questcraft:is_shelter",
                 "light": {
                     "light": {
-                        "min": 8
+                        "min": 4
                     }
                 },
                 "can_see_sky":false

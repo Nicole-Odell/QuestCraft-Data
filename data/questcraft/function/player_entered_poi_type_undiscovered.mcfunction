@@ -34,6 +34,6 @@ $title @a subtitle {"color":"#CDC06E","text":"Discovered New $(structure_type_na
 title @a title {"italic":true,"color":"#BDBDBD","storage":"questcraft:args","nbt":"structure_name"}
 
 # If we failed to mark the poi, we will continue to try until we do
-$execute unless entity @e[type=minecraft:marker,tag=poi_marker,tag=poi_marker_$(structure_type),distance=..128] run advancement revoke @s only questcraft:entered_poi
+$execute unless entity @e[type=minecraft:marker,tag=poi_marker,tag=poi_marker_$(structure_type),distance=..256] run advancement revoke @s only questcraft:entered_poi
 
 data remove storage questcraft:args structure_name
