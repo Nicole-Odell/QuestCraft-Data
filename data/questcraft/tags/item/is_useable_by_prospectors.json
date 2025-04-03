@@ -1,0 +1,18 @@
+{
+    "values": [
+        "#minecraft:shovels",
+        "#minecraft:axes",
+        "#minecraft:pickaxes",
+        "minecraft:chainmail_helmet",
+        "minecraft:chainmail_chestplate",
+        "minecraft:chainmail_leggings",
+        "minecraft:chainmail_boots",
+        "minecraft:turtle_helmet",
+        "minecraft:elytra",
+        "minecraft:mace",
+        "minecraft:flint_and_steel",
+        "minecraft:shears",
+        "minecraft:brush",
+        "minecraft:fishing_rod"
+    ]
+}

@@ -1,0 +1,27 @@
+{
+    "values": [
+        "#minecraft:swords",
+        "#minecraft:axes",
+        "minecraft:golden_helmet",
+        "minecraft:iron_helmet",
+        "minecraft:diamond_helmet",
+        "minecraft:netherite_helmet",
+        "minecraft:golden_chestplate",
+        "minecraft:iron_chestplate",
+        "minecraft:diamond_chestplate",
+        "minecraft:netherite_chestplate",
+        "minecraft:golden_leggings",
+        "minecraft:iron_leggings",
+        "minecraft:diamond_leggings",
+        "minecraft:netherite_leggings",
+        "minecraft:golden_boots",
+        "minecraft:iron_boots",
+        "minecraft:diamond_boots",
+        "minecraft:netherite_boots",
+        "minecraft:elytra",
+        "minecraft:shield",
+        "minecraft:flint_and_steel",
+        "minecraft:shears",
+        "minecraft:fishing_rod"
+    ]
+}

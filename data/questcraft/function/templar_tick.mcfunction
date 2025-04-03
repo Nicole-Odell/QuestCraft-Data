@@ -1,0 +1,1 @@
+execute as @a[tag=is_templar] at @s run function questcraft:templar_tick_sub

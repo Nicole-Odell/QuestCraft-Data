@@ -1,0 +1,1 @@
+item modify entity @s weapon.mainhand questcraft:init_templar_sword

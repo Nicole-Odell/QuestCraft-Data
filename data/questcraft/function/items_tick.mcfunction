@@ -1,0 +1,2 @@
+execute as @a[tag=is_templar,predicate=questcraft:is_holding_sword,predicate=!questcraft:is_holding_initialized_sword] run function questcraft:item_init_templar_sword
+# execute as @a[tag=is_prospector,predicate=questcraft:is_holding_uninitialized_pickaxe] run function questcraft:item_init_prospector_pickaxe

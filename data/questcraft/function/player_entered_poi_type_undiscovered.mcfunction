@@ -37,3 +37,4 @@ title @a title {"italic":true,"color":"#BDBDBD","storage":"questcraft:args","nbt
 $execute unless entity @e[type=minecraft:marker,tag=poi_marker,tag=poi_marker_$(structure_type),distance=..256] run advancement revoke @s only questcraft:entered_poi
 
 data remove storage questcraft:args structure_name
+data remove storage questcraft:args structure_type_subtype

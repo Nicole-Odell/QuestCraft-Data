@@ -1,0 +1,17 @@
+{
+    "values": [
+        "#minecraft:swords",
+        "#minecraft:axes",
+        "minecraft:leather_helmet",
+        "minecraft:leather_chestplate",
+        "minecraft:leather_leggings",
+        "minecraft:leather_boots",
+        "minecraft:elytra",
+        "minecraft:bow",
+        "minecraft:crossbow",
+        "minecraft:trident",
+        "minecraft:flint_and_steel",
+        "minecraft:shears",
+        "minecraft:fishing_rod"
+    ]
+}

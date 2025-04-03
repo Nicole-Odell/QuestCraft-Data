@@ -1,0 +1,17 @@
+{
+    "condition": "minecraft:entity_properties",
+    "entity": "this",
+    "predicate": {
+        "equipment": {
+            "mainhand": {
+                "items": "#minecraft:swords",
+                "predicates": {
+                    "custom_data": {
+                        "templar_sword": true,
+                        "right_click": true
+                    }
+                }
+            }
+        }
+    }
+}

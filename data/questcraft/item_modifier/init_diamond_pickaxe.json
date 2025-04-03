@@ -1,0 +1,16 @@
+{
+    "function": "minecraft:set_components",
+    "components": {
+        "damage": 0,
+        "tool": {
+            "damage_per_block": 0,
+            "rules": [
+                {
+                    "blocks": "#mineable/pickaxe",
+                    "correct_for_drops": true,
+                    "speed": 8
+                }
+            ]
+        }
+    }
+}

@@ -46,6 +46,7 @@ scoreboard objectives add nextProjectileId dummy
 scoreboard players set _globals nextProjectileId 0
 scoreboard objectives add projectileTtl dummy
 scoreboard objectives add projectileTimeAlive dummy
+scoreboard objectives add projectileHasImpacted dummy
 
 # Teams used for coloring entities
 team add Black
@@ -230,3 +231,43 @@ scoreboard objectives add isPathfinder dummy
 
 # Tracks whether a player is a Templar
 scoreboard objectives add isTemplar dummy
+
+# Score used for Zeal tracking and management
+scoreboard objectives add zeal.current dummy
+scoreboard objectives add zeal.max dummy
+scoreboard objectives add zeal.added minecraft.custom:minecraft.damage_dealt
+scoreboard objectives add zeal.timeUntilReduce dummy
+scoreboard objectives add zeal.reductionSpeed dummy
+
+# Tracks which abilities templars have equipped
+scoreboard objectives add templar.altClickAbility dummy
+scoreboard objectives add templar.holdClickAbility dummy
+scoreboard objectives add templar.crouchJumpAbility dummy
+scoreboard objectives add templar.crouchClickAbility dummy
+
+# Variables for ability casting
+scoreboard objectives add templar.swordCharge dummy
+scoreboard objectives add templar.highestSwordCharge dummy
+scoreboard objectives add templar.swordChargeToCast dummy
+scoreboard objectives add templar.crouchCharge dummy
+scoreboard objectives add templar.highestCrouchCharge dummy
+scoreboard objectives add templar.crouchChargeToCast dummy
+scoreboard objectives add templar.abilityCooldown dummy
+# Tracks whether a raycasted ability is awaiting a right click to confirm
+scoreboard objectives add templar.isAbilityPrimed dummy
+
+# Constants for Templars
+# The default max zeal for new Templars
+scoreboard players set _globals zeal.max 100
+# The time from when zeal was last added until it starts to reduce
+scoreboard players set _globals zeal.timeUntilReduce 100
+# Default rate for how fast zeal reduces once it starts to
+scoreboard players set _globals zeal.reductionSpeed 1
+# How long you have to hold right click or crouch to trigger an ability
+scoreboard players set _globals templar.swordChargeToCast 15
+scoreboard players set _globals templar.crouchChargeToCast 15
+# Cooldown between using abilities
+scoreboard players set _globals templar.abilityCooldown 10
+
+# Status effects
+scoreboard objectives add zealousChargeTime dummy

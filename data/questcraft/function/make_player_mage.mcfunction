@@ -3,6 +3,9 @@ scoreboard players set @s isMage 1
 scoreboard players set @s isPathfinder 0
 scoreboard players set @s isTemplar 0
 
+# tag them as a mage for performance
+tag @s add is_mage
+
 # Give the mage their ID and up the next ID to use by 1
 scoreboard players operation @s mageId = _globals nextMageId
 scoreboard players add _globals nextMageId 1
