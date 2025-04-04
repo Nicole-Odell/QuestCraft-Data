@@ -26,7 +26,7 @@ execute store result score _day_time var run time query daytime
 execute unless score _globals disableTick matches 1 run function questcraft:items_tick
 execute unless score _globals disableTick matches 1 run function questcraft:sleep_tick
 execute unless score _globals disableTick matches 1 run function questcraft:environment_tick
-execute unless score _globals disableTick matches 1 run function questcraft:templar_tick
+execute unless score _globals disableTick matches 1 run execute as @a[tag=is_templar] at @s run function questcraft:templar_tick
 execute unless score _globals disableTick matches 1 run function questcraft:spells_tick
 execute unless score _globals disableTick matches 1 run function questcraft:status_effects_tick
 execute unless score _globals disableTick matches 1 run function questcraft:projectile_tick
