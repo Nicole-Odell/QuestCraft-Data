@@ -153,6 +153,7 @@ scoreboard objectives add isNearWarmth dummy
 scoreboard objectives add food food
 scoreboard objectives add health health
 scoreboard objectives add timeSinceLastRest minecraft.custom:minecraft.time_since_rest
+scoreboard objectives add newJumps minecraft.custom:minecraft.jump
 
 # Status effect related stats
 scoreboard objectives add frozenTime dummy
@@ -239,6 +240,7 @@ scoreboard objectives add zeal.max dummy
 scoreboard objectives add zeal.added minecraft.custom:minecraft.damage_dealt
 scoreboard objectives add zeal.timeUntilReduce dummy
 scoreboard objectives add zeal.reductionSpeed dummy
+scoreboard objectives add zeal.isHealing dummy
 
 # Tracks which abilities templars have equipped
 scoreboard objectives add templar.altClickAbility dummy
@@ -293,3 +295,7 @@ scoreboard players set _globals templar.crouchClickAbilityCost 150
 
 # Status effects
 scoreboard objectives add zealousChargeTime dummy
+scoreboard objectives add heavenlyStrikeFloatTime dummy
+
+# Time that players float while waiting to confirm the Heavenly Strike ability
+scoreboard players set _globals heavenlyStrikeFloatTime 100

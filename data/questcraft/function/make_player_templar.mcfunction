@@ -18,6 +18,7 @@ scoreboard players set @s zeal.max 75
 scoreboard players set @s zeal.added 0
 scoreboard players set @s zeal.timeUntilReduce 0
 scoreboard players operation @s zeal.reductionSpeed = _globals zeal.reductionSpeed
+scoreboard players set @s zeal.isHealing 0
 
 # Selected abilities
 scoreboard players set @s templar.altClickAbility 0

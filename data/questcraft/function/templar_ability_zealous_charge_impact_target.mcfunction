@@ -1,11 +1,7 @@
 # Calculate and deal the damage twice for hitting the taarget
+scoreboard players set _templar_damage_multiplier var 2
 function questcraft:templar_deal_sword_damage with storage questcraft:args
-function questcraft:templar_deal_sword_damage with storage questcraft:args
-
-# Track that we did damage. Account for the doube damage
-execute store result score _damage_done var run data get storage questcraft:args damage
-scoreboard players operation _templar_ability_damage_done var += _damage_done var
-scoreboard players operation _templar_ability_damage_done var += _damage_done var
+scoreboard players reset _templar_damage_multiplier var
 
 playsound minecraft:item.shield.block player @a ~ ~ ~ 1 0 0
 playsound minecraft:entity.player.attack.crit player @a ~ ~ ~ 1 1 0

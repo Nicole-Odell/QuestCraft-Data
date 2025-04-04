@@ -23,8 +23,8 @@ data modify storage questcraft:args rayCastBlockPassThroughFilter set value "#qu
 data modify storage questcraft:args rayCastBlockImpactFunction set value "questcraft:nop"
 data modify storage questcraft:args rayCastEntityTargettableFilter set value "type=#questcraft:is_attack_targetable"
 data modify storage questcraft:args rayCastEntityImpactRadius set value "1.5"
-execute if score @s templar.altClickAbility matches 0 run data modify storage questcraft:args rayCastEntityImpactFunction set value "questcraft:templar_ability_right_click_spirit_swipe"
-execute if score @s templar.altClickAbility matches 1 run data modify storage questcraft:args rayCastEntityImpactFunction set value "questcraft:templar_ability_right_click_rightous_advent"
+execute if score @s templar.altClickAbility matches 0 run data modify storage questcraft:args rayCastEntityImpactFunction set value "questcraft:templar_ability_spirit_swipe"
+execute if score @s templar.altClickAbility matches 1 run data modify storage questcraft:args rayCastEntityImpactFunction set value "questcraft:templar_ability_rightous_advent"
 data modify storage questcraft:args rayCastMaxRangeFunction set value "questcraft:nop"
 
 execute as @s at @s anchored eyes positioned ^ ^ ^ anchored feet run function questcraft:raycast with storage questcraft:args

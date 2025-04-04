@@ -1,4 +1,8 @@
-# If the charge hasn't increased since last tick, It means the player stopped holding crouch. Remove the crouch charges state
+# If the player jumped and crouch was charged, execute the crouch jump ability and reset the charge state
+execute if score @s newJumps matches 1.. if score @s templar.isCrouchAbilityReady matches 1 run function questcraft:templar_ability_crouch_jump
+execute if score @s newJumps matches 1.. if score @s templar.isCrouchAbilityReady matches 1 run scoreboard players set @s templar.isCrouchAbilityReady 0
+
+# If the charge hasn't increased since last tick, It means the player stopped holding crouch. Remove the crouch charged state
 execute if score @s templar.crouchCharge = @s templar.highestCrouchCharge run scoreboard players set @s templar.isCrouchAbilityReady 0
 
 # if we have enough zeal to cast any crouch charge ability and we have reached a certain point, start playing the charge up sound and delay loss of zeal until at least charge is complete

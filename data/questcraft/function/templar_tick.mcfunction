@@ -15,13 +15,18 @@ execute if predicate questcraft:is_crouching run scoreboard players add @s templ
 execute if score @s templar.swordCharge matches 1.. run function questcraft:templar_sword_charge_tick
 execute if score @s templar.crouchCharge matches 1.. run function questcraft:templar_crouch_charge_tick
 
-# Active the raycasting target marker for readied abilities
-execute if entity @s[tag=templar_right_click_hold_ready] at @s run function questcraft:templar_ability_right_click_hold_ready_tick
+# Activate the raycasting target marker for readied abilities
+execute if entity @s[tag=templar_right_click_hold_ready] run data modify storage questcraft:args rayCastRange set value 16
+execute if entity @s[tag=templar_right_click_hold_ready] at @s run function questcraft:templar_ability_target_raycast_entity
+execute if entity @s[tag=templar_crouch_jump_heavenly_strike_ready] run data modify storage questcraft:args rayCastRange set value 48
+execute if entity @s[tag=templar_crouch_jump_heavenly_strike_ready] run function questcraft:templar_ability_target_raycast_block
+data remove storage questcraft:args rayCastRange
 
 # Handle active effects related to abilities
 execute if score @s zealousChargeTime matches 1.. at @s run function questcraft:templar_ability_zealous_charge_tick with storage questcraft:args
+execute if score @s heavenlyStrikeFloatTime matches 1.. at @s run function questcraft:templar_ability_heavenly_strike_tick with storage questcraft:args
 
-# Ensure that zeal is clamped between 0 and the max, 
+# Ensure that zeal is clamped between 0 and the max
 execute if score @s zeal.current matches ..0 run scoreboard players set @s zeal.current 0
 execute if score @s zeal.current > @s zeal.max run scoreboard players operation @s zeal.current = @s zeal.max
 
@@ -33,16 +38,17 @@ execute if score @s zeal.current >= _globals templar.crouchJumpAbilityCost if sc
 execute if score @s zeal.current >= _globals templar.crouchClickAbilityCost run scoreboard players set @s zeal.currentLevel 4
 
 # Update zeal-level-based effects 
+
 execute if score @s zeal.currentLevel matches 0 run effect clear @s resistance
 
 execute if score @s zeal.currentLevel matches 1 run effect give @s resistance 1 0 true
-execute if score @s zeal.currentLevel matches 1 run particle dust_color_transition{from_color:[1.0,0.7,0.0],scale:0.4,to_color:[0.0,0.0,0.0]} ~ ~1.7 ~ 0.35 0 0.35 1 2
+# execute if score @s zeal.currentLevel matches 1 run particle dust_color_transition{from_color:[1.0,0.7,0.0],scale:0.4,to_color:[0.0,0.0,0.0]} ~ ~1.7 ~ 0.35 0 0.35 1 2
 
 execute if score @s zeal.currentLevel matches 2 run effect give @s resistance 1 1 true
-execute if score @s zeal.currentLevel matches 2 run particle dust_color_transition{from_color:[1.0,1.0,0.0],scale:0.4,to_color:[1.0,1.0,1.0]} ~ ~1.7 ~ 0.35 0 0.35 1 2
+# execute if score @s zeal.currentLevel matches 2 run particle dust_color_transition{from_color:[1.0,1.0,0.0],scale:0.4,to_color:[1.0,1.0,1.0]} ~ ~1.7 ~ 0.35 0 0.35 1 2
 
 execute if score @s zeal.currentLevel matches 3 run effect give @s resistance 1 2 true
-execute if score @s zeal.currentLevel matches 3 run particle dust_color_transition{from_color:[1.0,1.0,0.7],scale:0.4,to_color:[1.0,1.0,1.0]} ~ ~1.7 ~ 0.35 0 0.35 1 4
+# execute if score @s zeal.currentLevel matches 3 run particle dust_color_transition{from_color:[1.0,1.0,0.7],scale:0.4,to_color:[1.0,1.0,1.0]} ~ ~1.7 ~ 0.35 0 0.35 1 4
 execute if score @s zeal.currentLevel matches 3 run particle wax_off ~ ~2 ~ 0.35 0 0.35 1 1
 
 execute if score @s zeal.currentLevel matches 4 run effect give @s resistance 1 3 true
@@ -71,8 +77,18 @@ scoreboard players set @s zeal.added 0
 execute unless score @s zeal.timeUntilReduce matches 0 run scoreboard players remove @s zeal.timeUntilReduce 1
 
 # If the time to reduce is at 0, reduce zeal. Clamp it at 0
-execute if score @s zeal.timeUntilReduce matches 0 run scoreboard players operation @s zeal.current -= _globals zeal.reductionSpeed
+execute if score @s zeal.timeUntilReduce matches 0 if score @s zeal.current matches 1.. run scoreboard players operation @s zeal.current -= _globals zeal.reductionSpeed
 execute if score @s zeal.current matches ..0 run scoreboard players set @s zeal.current 0
+
+# Heal the player as Zeal is reduced
+execute if score @s zeal.isHealing matches 0 if score @s zeal.timeUntilReduce matches 0 if score @s zeal.current matches 1.. run effect give @s minecraft:regeneration infinite 4 true
+execute if score @s zeal.isHealing matches 0 if score @s zeal.timeUntilReduce matches 0 if score @s zeal.current matches 1.. run scoreboard players set @s zeal.isHealing 1
+
+# Stop heal the player if Zeal is not reducing
+execute if score @s zeal.isHealing matches 1 if score @s zeal.timeUntilReduce matches 1.. run effect clear @s minecraft:regeneration
+execute if score @s zeal.isHealing matches 1 if score @s zeal.timeUntilReduce matches 1.. run scoreboard players set @s zeal.isHealing 0
+execute if score @s zeal.isHealing matches 1 if score @s zeal.current matches 0 run effect clear @s minecraft:regeneration
+execute if score @s zeal.isHealing matches 1 if score @s zeal.current matches 0 run scoreboard players set @s zeal.isHealing 0
 
 # Update display of the zeal bar
 function questcraft:templar_zeal_meter_display with storage questcraft:args

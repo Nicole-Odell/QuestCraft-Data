@@ -32,13 +32,18 @@ execute unless score _globals disableTick matches 1 run function questcraft:stat
 execute unless score _globals disableTick matches 1 run function questcraft:projectile_tick
 execute unless score _globals disableTick matches 1 run function questcraft:raycast_tick
 
+# Reset added/new scores which track delta from last tick
+scoreboard players set @a newJumps 0
+
 # Handling for reset if a player dies
 execute unless score _globals disableTick matches 1 run execute as @a[scores={health=0}] run function questcraft:player_died
 
 # TEMP
 execute if score _game_time_mod_10 var matches 0 as @a at @s as @n[type=villager,tag=!villager_init,distance=..32] run function questcraft:init_villager
 
-# execute as InfectedGrowth at @s run function questcraft:test_raycast
+# data modify storage questcraft:args rayCastRange set value 32
+# execute as InfectedGrowth at @s run function questcraft:templar_ability_target_raycast_block
+# data remove storage questcraft:args rayCastRange
 # execute at InfectedGrowth as @n[type=!#questcraft:is_attack_targetable] at @s run function questcraft:test_raycast
 
 scoreboard players reset _c_4 var
