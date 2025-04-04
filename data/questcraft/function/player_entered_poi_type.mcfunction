@@ -1,6 +1,9 @@
-# Mark that the player is in the POI type. If this fails, we know they already were and we can just return early
-$execute store success score _was_not_in_poi_type var run data modify storage questcraft:player_data players[$(playerId)].currentPoiType set value $(structure_type_id)
-execute if score _was_not_in_poi_type var matches 0 run return 1
+# If the player was already in the POI type, we don't need to do anything else
+$execute if score @s currentPoiType matches $(structure_type_id) run return 1
+
+# Set the player's current POI type to the new one
+$scoreboard players set @s currentPoiType $(structure_type_id)
+
 
 # Already discovered
 $execute if entity @e[type=minecraft:marker,tag=poi_marker,tag=poi_marker_$(structure_type),distance=..160] run function questcraft:player_entered_poi_type_discovered with storage questcraft:args

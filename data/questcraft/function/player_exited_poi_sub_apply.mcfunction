@@ -1,4 +1,2 @@
-$data modify storage questcraft:player_data players[$(playerId)].currentPoiType set value 0
-scoreboard players set @s isInPoi 0
-
-say Exited POI
+scoreboard players set @s currentPoiType 0
+tell @a[tag=admin] @s exited POI

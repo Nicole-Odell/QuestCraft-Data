@@ -16,7 +16,7 @@ scoreboard players set @s hydration.current 0
 scoreboard players set @s isNearWarmth 0
 
 # POI status
-scoreboard players set @s isInPoi 0
+scoreboard players set @s currentPoiType 0
 
 # Set up the player's temperature meter
 execute store result storage questcraft:args temperatureMax int 1 run scoreboard players get _globals temperature.max

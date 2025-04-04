@@ -96,7 +96,7 @@ execute unless data storage questcraft:player_data players run scoreboard player
 # Tracks the ID for each individual player
 scoreboard objectives add playerId dummy
 
-# Storage for data about players and their spellcasting state
+# Storage for data about players
 execute unless data storage questcraft:player_data players run data merge storage questcraft:player_data {players:[]}
 
 # Player-related constants
@@ -159,7 +159,7 @@ scoreboard objectives add newJumps minecraft.custom:minecraft.jump
 scoreboard objectives add frozenTime dummy
 
 # POI status
-scoreboard objectives add isInPoi dummy
+scoreboard objectives add currentPoiType dummy
 
 
 # ==== Mages ==== #

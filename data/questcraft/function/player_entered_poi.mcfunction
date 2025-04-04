@@ -10,34 +10,11 @@ execute if predicate questcraft:is_in_poi_tower run scoreboard players set _stru
 execute if predicate questcraft:is_in_poi_village run scoreboard players set _structure_type_id var 6
 execute store result storage questcraft:args structure_type_id int 1 run scoreboard players get _structure_type_id var
 
-
-# Set the proper args for the structure type
-execute if score _structure_type_id var matches 1 run data modify storage questcraft:args structure_type set value "castle"
-execute if score _structure_type_id var matches 1 run data modify storage questcraft:args structure_type_name set value "Fortress"
-
-execute if score _structure_type_id var matches 2 run data modify storage questcraft:args structure_type set value "kingdom"
-execute if score _structure_type_id var matches 2 run data modify storage questcraft:args structure_type_name set value "Kingdom"
-
-execute if score _structure_type_id var matches 3 run data modify storage questcraft:args structure_type set value "mansion"
-execute if score _structure_type_id var matches 3 run data modify storage questcraft:args structure_type_name set value "Mansion"
-
-execute if score _structure_type_id var matches 4 run data modify storage questcraft:args structure_type set value "tavern"
-execute if score _structure_type_id var matches 4 run data modify storage questcraft:args structure_type_name set value "Tavern"
-
-execute if score _structure_type_id var matches 5 run data modify storage questcraft:args structure_type set value "tower"
-execute if score _structure_type_id var matches 5 run data modify storage questcraft:args structure_type_name set value "Mage Tower"
-
-execute if score _structure_type_id var matches 6 run data modify storage questcraft:args structure_type set value "village"
-execute if score _structure_type_id var matches 6 run data modify storage questcraft:args structure_type_name set value "Village"
+# Set the proper args for the structure type. This sets structure_type and structure_type_name
+function questcraft:poi_get_structure_details_from_id with storage questcraft:args
 
 # Handle them entering the structure
 function questcraft:player_entered_poi_type with storage questcraft:args
-
-# Mark them as being in a POI
-scoreboard players set @s isInPoi 1
-
-scoreboard players reset _was_not_in_poi_type var
-scoreboard players reset _structure_type_id var
 
 data remove storage questcraft:args playerId
 data remove storage questcraft:args structure_type_id
