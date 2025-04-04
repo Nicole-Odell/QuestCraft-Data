@@ -234,6 +234,7 @@ scoreboard objectives add isTemplar dummy
 
 # Score used for Zeal tracking and management
 scoreboard objectives add zeal.current dummy
+scoreboard objectives add zeal.currentLevel dummy
 scoreboard objectives add zeal.max dummy
 scoreboard objectives add zeal.added minecraft.custom:minecraft.damage_dealt
 scoreboard objectives add zeal.timeUntilReduce dummy
@@ -249,25 +250,46 @@ scoreboard objectives add templar.crouchClickAbility dummy
 scoreboard objectives add templar.swordCharge dummy
 scoreboard objectives add templar.highestSwordCharge dummy
 scoreboard objectives add templar.swordChargeToCast dummy
+scoreboard objectives add templar.isSwordAbilityReady dummy
+
 scoreboard objectives add templar.crouchCharge dummy
 scoreboard objectives add templar.highestCrouchCharge dummy
 scoreboard objectives add templar.crouchChargeToCast dummy
+scoreboard objectives add templar.isCrouchAbilityReady dummy
+
 scoreboard objectives add templar.abilityCooldown dummy
+
+scoreboard objectives add templar.altClickAbilityCost dummy
+scoreboard objectives add templar.holdClickAbilityCost dummy
+scoreboard objectives add templar.crouchJumpAbilityCost dummy
+scoreboard objectives add templar.crouchClickAbilityCost dummy
+
 # Tracks whether a raycasted ability is awaiting a right click to confirm
 scoreboard objectives add templar.isAbilityPrimed dummy
 
+# Damage the Templar's sword does + effects
+scoreboard objectives add templar.swordDamage dummy
+scoreboard objectives add templar.swordUndeadDamage dummy
+scoreboard objectives add templar.swordArthropodDamage dummy
+scoreboard objectives add templar.swordFireTime dummy
+
 # Constants for Templars
-# The default max zeal for new Templars
-scoreboard players set _globals zeal.max 100
+# The max zeal for Templars
+scoreboard players set _globals zeal.max 150
 # The time from when zeal was last added until it starts to reduce
 scoreboard players set _globals zeal.timeUntilReduce 100
 # Default rate for how fast zeal reduces once it starts to
 scoreboard players set _globals zeal.reductionSpeed 1
 # How long you have to hold right click or crouch to trigger an ability
 scoreboard players set _globals templar.swordChargeToCast 15
-scoreboard players set _globals templar.crouchChargeToCast 15
+scoreboard players set _globals templar.crouchChargeToCast 45
 # Cooldown between using abilities
 scoreboard players set _globals templar.abilityCooldown 10
+# Cost for each ability
+scoreboard players set _globals templar.altClickAbilityCost 5
+scoreboard players set _globals templar.holdClickAbilityCost 20
+scoreboard players set _globals templar.crouchJumpAbilityCost 75
+scoreboard players set _globals templar.crouchClickAbilityCost 150
 
 # Status effects
 scoreboard objectives add zealousChargeTime dummy

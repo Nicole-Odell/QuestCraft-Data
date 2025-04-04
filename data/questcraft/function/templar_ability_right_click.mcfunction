@@ -1,13 +1,20 @@
+# Remove the ready state for holding right click
+tag @s remove templar_right_click_hold_ready
+
 # Cancel if the cooldown hasn't reached 0, or if we don't have enough zeal for the ability
 execute if score @s templar.abilityCooldown matches 1.. run return fail
-execute unless score @s zeal.current matches 5.. run return fail
+execute unless score @s zeal.current >= _globals templar.altClickAbilityCost run return fail
 
-# Determine the amount of damage we should do to the target
-scoreboard players set _templar_ability_damage_done var 7
+# Re-calculate the amount of damage we should do to the target.
+function questcraft:templar_calculate_sword_damage
 
-execute store result storage questcraft:args damageToDo int 1 run scoreboard players get _templar_ability_damage_done var
+# Set the args that the raycast entity impact function will use for damage
+execute store result storage questcraft:args swordDamage int 1 run scoreboard players get @s templar.swordDamage
+execute store result storage questcraft:args swordUndeadDamage int 1 run scoreboard players get @s templar.swordUndeadDamage
+execute store result storage questcraft:args swordArthropodDamage int 1 run scoreboard players get @s templar.swordArthropodDamage
+execute store result storage questcraft:args swordFireTime int 1 run scoreboard players get @s templar.swordFireTime
 
-# The raycast entity impact function will set this to a nonzero amount if we hit something
+# The impact function will set this to a nonzero amount if we hit something
 scoreboard players set _templar_ability_succeeded var 0
 
 data modify storage questcraft:args rayCastRange set value 16
@@ -32,13 +39,21 @@ data remove storage questcraft:args rayCastEntityImpactFunction
 data remove storage questcraft:args rayCastMaxRangeFunction
 
 # If we did damage, subtract the cost for the ability
-execute if score _templar_ability_succeeded var matches 1 run scoreboard players remove @s zeal.current 5
+execute if score _templar_ability_succeeded var matches 1.. run scoreboard players operation @s zeal.current -= _globals templar.altClickAbilityCost
 # Also reset the cooldown until Zeal starts to reduce.
-execute if score _templar_ability_succeeded var matches 1 run scoreboard players operation @s zeal.timeUntilReduce = _globals zeal.timeUntilReduce
+execute if score _templar_ability_succeeded var matches 1.. run scoreboard players operation @s zeal.timeUntilReduce = _globals zeal.timeUntilReduce
 # Put abilities on cooldown
-execute if score _templar_ability_succeeded var matches 1 run scoreboard players operation @s templar.abilityCooldown = _globals templar.abilityCooldown 
+execute if score _templar_ability_succeeded var matches 1.. run scoreboard players operation @s templar.abilityCooldown = _globals templar.abilityCooldown 
 
-scoreboard players reset _templar_ability_damage_done var
+# For spirit swipe, add back half the damage done as Zeal
+scoreboard players set _c_2 var 2
+scoreboard players operation _templar_ability_succeeded var /= _c_2 var
+execute if score @s templar.altClickAbility matches 0 run scoreboard players operation @s zeal.current += _templar_ability_succeeded var
+
 scoreboard players reset _templar_ability_succeeded var
+scoreboard players reset _c_2 var
 
-data remove storage questcraft:args damageToDo
+data remove storage questcraft:args swordDamage
+data remove storage questcraft:args swordUndeadDamage
+data remove storage questcraft:args swordArthropodDamage
+data remove storage questcraft:args swordFireTime

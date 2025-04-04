@@ -1,13 +1,14 @@
+# Remove the ready state for holding right click
+tag @s remove templar_right_click_hold_ready
+
 # Cancel if the cooldown hasn't reached 0, or if we don't have enough zeal for the ability
 execute if score @s templar.abilityCooldown matches 1.. run return fail
-# execute unless score @s zeal.current matches 50.. run return fail
+execute unless score @s zeal.current >= _globals templar.holdClickAbilityCost run return fail
 
-# Determine the amount of damage we should do to the target
-scoreboard players set _templar_ability_damage_done var 16
+# Re-calculate the amount of damage we should do to targets.
+function questcraft:templar_calculate_sword_damage
 
-execute store result storage questcraft:args damageToDo int 1 run scoreboard players get _templar_ability_damage_done var
-
-# The raycast entity impact function will set this to a nonzero amount if we hit something
+# The impact function will set this to a nonzero amount if we hit something
 scoreboard players set _templar_ability_succeeded var 0
 
 execute store result storage questcraft:args playerId int 1 run scoreboard players get @s playerId
@@ -33,8 +34,8 @@ data remove storage questcraft:args rayCastEntityImpactRadius
 data remove storage questcraft:args rayCastEntityImpactFunction
 data remove storage questcraft:args rayCastMaxRangeFunction
 
-# If we did damage, subtract the cost for the ability
-# execute if score _templar_ability_succeeded var matches 1 run scoreboard players remove @s zeal.current 50
+# If we did damage, subtract the cost for the ability, if applicable at this stage
+execute if score _templar_ability_succeeded var matches 1 if score @s templar.altClickAbility matches 1 run scoreboard players operation @s zeal.current -= _globals templar.holdClickAbilityCost
 # Also reset the cooldown until Zeal starts to reduce.
 execute if score _templar_ability_succeeded var matches 1 run scoreboard players operation @s zeal.timeUntilReduce = _globals zeal.timeUntilReduce
 # Put abilities on cooldown
@@ -42,8 +43,6 @@ execute if score _templar_ability_succeeded var matches 1 run scoreboard players
 # Set the zealous charge duration
 execute if score _templar_ability_succeeded var matches 1 if score @s templar.altClickAbility matches 0 run scoreboard players set @s zealousChargeTime 10
 
-
-scoreboard players reset _templar_ability_damage_done var
 scoreboard players reset _templar_ability_succeeded var
 
 data remove storage questcraft:args damageToDo

@@ -1,0 +1,1 @@
+$tellraw InfectedGrowth ["$(player)>$(score): ",{"score":{"name":"$(player)","objective":"$(score)"}}]

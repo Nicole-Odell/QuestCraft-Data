@@ -11,7 +11,10 @@ execute store result storage questcraft:args playerId int 1 run scoreboard playe
 
 # Templar-specific stats
 scoreboard players set @s zeal.current 0
-scoreboard players operation @s zeal.max = _globals zeal.max
+scoreboard players set @s zeal.currentLevel 0
+# Default is only enough for basic, advanced, and expert level abilities.
+# Master cannot be used until they reach the max at a later level
+scoreboard players set @s zeal.max 75
 scoreboard players set @s zeal.added 0
 scoreboard players set @s zeal.timeUntilReduce 0
 scoreboard players operation @s zeal.reductionSpeed = _globals zeal.reductionSpeed
