@@ -1,0 +1,15 @@
+{
+    "values": [
+        "minecraft:bogged",
+        "minecraft:cave_spider",
+        "minecraft:creeper",
+        "minecraft:drowned",
+        "minecraft:husk",
+        "minecraft:phantom",
+        "minecraft:skeleton",
+        "minecraft:slime",
+        "minecraft:spider",
+        "minecraft:stray",
+        "minecraft:zombie"
+    ]
+}

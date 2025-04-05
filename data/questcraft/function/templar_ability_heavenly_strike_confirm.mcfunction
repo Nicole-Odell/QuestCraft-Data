@@ -14,7 +14,7 @@ execute store result storage questcraft:args playerId int 1 run scoreboard playe
 
 data modify storage questcraft:args rayCastRange set value 48
 data modify storage questcraft:args rayCastStepFunction set value "questcraft:nop"
-data modify storage questcraft:args rayCastBlockPassThroughFilter set value "#questcraft:is_not_solid_for_spells"
+data modify storage questcraft:args rayCastBlockPassThroughFilter set value "#questcraft:is_not_solid_for_players"
 data modify storage questcraft:args rayCastBlockImpactFunction set value "questcraft:templar_ability_heavenly_strike_impact"
 data modify storage questcraft:args rayCastEntityTargettableFilter set value ""
 data modify storage questcraft:args rayCastEntityImpactRadius set value "1.5"

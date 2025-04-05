@@ -1,5 +1,5 @@
 data modify storage questcraft:args rayCastStepFunction set value "questcraft:nop"
-data modify storage questcraft:args rayCastBlockPassThroughFilter set value "#questcraft:is_not_solid_for_spells"
+data modify storage questcraft:args rayCastBlockPassThroughFilter set value "#questcraft:is_not_solid_for_players"
 data modify storage questcraft:args rayCastBlockImpactFunction set value "questcraft:nop"
 data modify storage questcraft:args rayCastEntityTargettableFilter set value "type=#questcraft:is_attack_targetable"
 data modify storage questcraft:args rayCastEntityImpactRadius set value "1.5"

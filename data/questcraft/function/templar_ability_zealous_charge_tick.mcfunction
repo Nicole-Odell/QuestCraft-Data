@@ -3,8 +3,8 @@ scoreboard players remove @s zealousChargeTime 1
 
 # Check that we aren't going into a wall
 scoreboard players set _is_next_location_solid var 0
-execute rotated ~ 0.0 unless block ^ ^ ^2 #questcraft:is_not_solid_for_spells run scoreboard players set _is_next_location_solid var 1
-execute rotated ~ 0.0 positioned ^ ^ ^2 unless block ~ ~1 ~ #questcraft:is_not_solid_for_spells run scoreboard players set _is_next_location_solid var 1
+execute rotated ~ 0.0 unless block ^ ^ ^2 #questcraft:is_not_solid_for_players run scoreboard players set _is_next_location_solid var 1
+execute rotated ~ 0.0 positioned ^ ^ ^2 unless block ~ ~1 ~ #questcraft:is_not_solid_for_players run scoreboard players set _is_next_location_solid var 1
 
 # Play particle effect
 execute unless score _is_next_location_solid var matches 1 rotated ~ 0.0 positioned ^ ^ ^2 run particle wax_off ~ ~1 ~ 0.3 0.5 0.3 0.5 30
