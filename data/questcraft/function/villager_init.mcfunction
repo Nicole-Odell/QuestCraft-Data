@@ -1,3 +1,7 @@
+# If the player is not in a POI, return early and don't mark the villager as inited yet.
+# We want to ensure that the correct POI information is used when initing
+execute if score _currentPoiType var matches 0 run return fail
+
 # Give them enough Xp to become master and make them master, so the XP bar isn't there to be distracting
 data modify entity @s Xp set value 250
 data modify entity @s VillagerData.level set value 5
@@ -7,15 +11,18 @@ tag @s remove villager_init
 
 tell @a[tag=admin] Initing villager
 
+# For kingdoms, determine the right variant for the biome since they always spawn as plains
+execute if score _currentPoiType var matches 2 at @n[type=marker,tag=poi_marker_kingdom] if biome ~ ~ ~ #questcraft:is_coniferous_forest run data modify entity @s VillagerData.type set value "minecraft:taiga"
+execute if score _currentPoiType var matches 2 at @n[type=marker,tag=poi_marker_kingdom] if biome ~ ~ ~ #questcraft:is_frozen run data modify entity @s VillagerData.type set value "minecraft:snow"
+
 # If they are a nitwit, immediately tag them as inited and we are done
 execute if entity @s[nbt={VillagerData:{profession:"minecraft:nitwit"}}] run scoreboard players set _villager_profession var -1
 execute if score _villager_profession var matches -1 run tell @a[tag=admin] Inited Nitwit!
 execute if score _villager_profession var matches -1 run tag @s add villager_inited
 execute if score _villager_profession var matches -1 run return run scoreboard players reset _villager_profession var
 
-# For kingdoms, determine the right variaant for the biome since they always spawn as plains
-execute if score _currentPoiType var matches 2 at @n[type=marker,tag=poi_marker_kingdom] if biome ~ ~ ~ #questcraft:is_coniferous_forest run data modify entity @s VillagerData.type set value "minecraft:taiga"
-execute if score _currentPoiType var matches 2 at @n[type=marker,tag=poi_marker_kingdom] if biome ~ ~ ~ #questcraft:is_frozen run data modify entity @s VillagerData.type set value "minecraft:snow"
+# Remove all vanilla trades
+data modify entity @s Offers.Recipes set value []
 
 # If they don't have a profession, hold off on initing them
 execute if entity @s[nbt={VillagerData:{profession:"minecraft:none"}}] run scoreboard players set _villager_profession var 0
@@ -23,7 +30,7 @@ execute if score _villager_profession var matches 0 run tell @a[tag=admin] No pr
 execute if score _villager_profession var matches 0 run return run scoreboard players reset _villager_profession var
 
 
-# Get the villager type as a score in case professions need to be customized based on type
+# Get the villager type as a score so trades can be customized based on type
 execute if entity @s[nbt={VillagerData:{type:"minecraft:desert"}}] run scoreboard players set _villager_type var 0
 execute if entity @s[nbt={VillagerData:{type:"minecraft:jungle"}}] run scoreboard players set _villager_type var 1
 execute if entity @s[nbt={VillagerData:{type:"minecraft:plains"}}] run scoreboard players set _villager_type var 2
@@ -32,17 +39,14 @@ execute if entity @s[nbt={VillagerData:{type:"minecraft:snow"}}] run scoreboard 
 execute if entity @s[nbt={VillagerData:{type:"minecraft:swamp"}}] run scoreboard players set _villager_type var 5
 execute if entity @s[nbt={VillagerData:{type:"minecraft:taiga"}}] run scoreboard players set _villager_type var 6
 
-# Remove all vanilla trades
-data modify entity @s Offers.Recipes set value []
-
 # Run the villager-type-specific trade initialization
-# 
+# DONE
 execute if entity @s[nbt={VillagerData:{profession:"minecraft:armorer"}}] run function questcraft:villager_init_armorer
 # DONE
 execute if entity @s[nbt={VillagerData:{profession:"minecraft:butcher"}}] run function questcraft:villager_init_butcher
 # 
 execute if entity @s[nbt={VillagerData:{profession:"minecraft:cartographer"}}] run function questcraft:villager_init_cartographer
-# 
+# DONE
 execute if entity @s[nbt={VillagerData:{profession:"minecraft:cleric"}}] run function questcraft:villager_init_cleric
 # DONE
 execute if entity @s[nbt={VillagerData:{profession:"minecraft:farmer"}}] run function questcraft:villager_init_farmer
@@ -50,17 +54,17 @@ execute if entity @s[nbt={VillagerData:{profession:"minecraft:farmer"}}] run fun
 execute if entity @s[nbt={VillagerData:{profession:"minecraft:fisherman"}}] run function questcraft:villager_init_fisherman
 # DONE
 execute if entity @s[nbt={VillagerData:{profession:"minecraft:fletcher"}}] run function questcraft:villager_init_fletcher
-# 
+# DONE
 execute if entity @s[nbt={VillagerData:{profession:"minecraft:leatherworker"}}] run function questcraft:villager_init_leatherworker
 # 
 execute if entity @s[nbt={VillagerData:{profession:"minecraft:librarian"}}] run function questcraft:villager_init_librarian
-# 
+# DONE
 execute if entity @s[nbt={VillagerData:{profession:"minecraft:mason"}}] run function questcraft:villager_init_mason
 # DONE
 execute if entity @s[nbt={VillagerData:{profession:"minecraft:shepherd"}}] run function questcraft:villager_init_shepherd
-# 
+# DONE
 execute if entity @s[nbt={VillagerData:{profession:"minecraft:toolsmith"}}] run function questcraft:villager_init_toolsmith
-# 
+# DONE
 execute if entity @s[nbt={VillagerData:{profession:"minecraft:weaponsmith"}}] run function questcraft:villager_init_weaponsmith
 
 tellraw @a[tag=admin] [{"italic":true,"color":"gray","text":"Inited "},{"nbt":"VillagerData.type","entity":"@s","source":"entity"},{"text":" "},{"nbt":"VillagerData.profession","entity":"@s","source":"entity"}]

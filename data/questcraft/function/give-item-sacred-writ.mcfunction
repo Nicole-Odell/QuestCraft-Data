@@ -1,0 +1,1 @@
+give @s minecraft:music_disc_11[!jukebox_playable,custom_model_data=2,custom_name='{"bold":true,"italic":true,"color":"gold","text":"Sacred Writ"}',lore=['{"text":"Bring this to a cleric and pay the tithe"}','{"text":"to receive a Blessing of Divine Power"}']] 1

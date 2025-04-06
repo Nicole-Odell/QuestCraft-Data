@@ -1,0 +1,1 @@
+$title @s actionbar [{"italic":true,"color":"#BDBDBD","text":"$(currentPoiName)"},{"italic":true,"color":"#BDBDBD","text":"  "},{"italic":true,"color":"$(currentPoiSafeStatusTextColor)","text":"$(currentPoiSafeStatusText)"}]

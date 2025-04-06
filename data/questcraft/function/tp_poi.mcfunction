@@ -1,7 +1,7 @@
 # [Terralith] Both kingdom types
 tp @s -5696 133 4351
 
-# [Terralith] Tetsing birch village
+# [Terralith] Testing birch village
 tp @s -1125 64 -534
 
 # [DnT] Lone Citadel (Frozen castle Complex)

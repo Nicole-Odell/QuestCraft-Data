@@ -8,8 +8,8 @@ execute if entity @s[gamemode=spectator] run scoreboard players set @s temperatu
 execute if entity @s[gamemode=creative] run function questcraft:environment_player_temperature_meter_display
 execute if entity @s[gamemode=spectator] run function questcraft:environment_player_temperature_meter_display
 # Show the current POI actionbar title too
-execute if entity @s[gamemode=creative] if score @s currentPoiType matches 1.. unless entity @s[tag=actionbar_no_override] run title @s actionbar [{"italic":true,"color":"#BDBDBD","storage":"questcraft:player_data","nbt":"currentPoiName"}]
-execute if entity @s[gamemode=spectator] if score @s currentPoiType matches 1.. unless entity @s[tag=actionbar_no_override] run title @s actionbar [{"italic":true,"color":"#BDBDBD","storage":"questcraft:player_data","nbt":"currentPoiName"}]
+execute if entity @s[gamemode=creative] if score @s currentPoiType matches 1.. unless entity @s[tag=actionbar_no_override] run function questcraft:poi_show_actionbar_status
+execute if entity @s[gamemode=spectator] if score @s currentPoiType matches 1.. unless entity @s[tag=actionbar_no_override] run function questcraft:poi_show_actionbar_status
 
 execute if entity @s[gamemode=creative] run return 1
 execute if entity @s[gamemode=spectator] run return 1
@@ -122,7 +122,7 @@ execute if score _game_time_mod_5 var matches 0 if score _is_in_poison_water var
 execute if score _game_time_mod_40 var matches 0 if score _is_in_poison_water var matches 1 run title @s actionbar [{"bold":true,"italic":true,"color":"#B3FF00","text":"💀 Poisonous Water 💀"}]
 
 # If we are in a POI, unless we are in poisonous water, show the POI details on the actionbar (unless there is a more critical actionbar message overriding it)
-execute if score @s currentPoiType matches 1.. unless score _is_in_poison_water var matches 1 unless entity @s[tag=actionbar_no_override] run title @s actionbar [{"italic":true,"color":"#BDBDBD","storage":"questcraft:player_data","nbt":"currentPoiName"}]
+execute if score @s currentPoiType matches 1.. unless score _is_in_poison_water var matches 1 unless entity @s[tag=actionbar_no_override] run function questcraft:poi_show_actionbar_status
 
 scoreboard players reset _is_exposed_to_sky var
 scoreboard players reset _is_precipitating var

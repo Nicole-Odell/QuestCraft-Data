@@ -14,8 +14,14 @@ $execute if score _marked_undiscovered var matches 1 as @n[type=minecraft:marker
 execute unless score _marked_undiscovered var matches 1 run title @s subtitle [{"italic":true,"color":"#BDBDBD","text":"Entering "},{"italic":true,"color":"#BDBDBD","storage":"questcraft:args","nbt":"structure_type_name"},{"italic":true,"color":"#BDBDBD","text":"  -  "},{"italic":true,"color":"#BDBDBD","storage":"questcraft:args","nbt":"structure_name"}]
 execute unless score _marked_undiscovered var matches 1 run title @s title ""
 
-# Track the current structure type and name in playerData for the actionbar title
-data modify storage questcraft:player_data currentPoiName set from storage questcraft:args structure_name
+# If we succeeded, track the current safe status (safe (1), normal (0), or hostile (-1)) and name in playerData for the actionbar title
+$data modify storage questcraft:player_data players[$(playerId)].currentPoiName set from storage questcraft:args structure_name
+$execute if score _structure_type_id var matches 1 run data modify storage questcraft:player_data players[$(playerId)].currentPoiSafeStatus set value -1
+$execute if score _structure_type_id var matches 2 run data modify storage questcraft:player_data players[$(playerId)].currentPoiSafeStatus set value 1
+$execute if score _structure_type_id var matches 3 run data modify storage questcraft:player_data players[$(playerId)].currentPoiSafeStatus set value -1
+$execute if score _structure_type_id var matches 4 run data modify storage questcraft:player_data players[$(playerId)].currentPoiSafeStatus set value 1
+$execute if score _structure_type_id var matches 5 run data modify storage questcraft:player_data players[$(playerId)].currentPoiSafeStatus set value -1
+$execute if score _structure_type_id var matches 6 run data modify storage questcraft:player_data players[$(playerId)].currentPoiSafeStatus set value 1
 
 scoreboard players reset _marked_undiscovered var
 

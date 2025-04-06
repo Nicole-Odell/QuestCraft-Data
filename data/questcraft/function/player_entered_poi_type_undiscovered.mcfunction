@@ -41,8 +41,14 @@ execute unless score _marked_poi var matches 1 run advancement revoke @s only qu
 execute unless score _marked_poi var matches 1 run scoreboard players set @s currentPoiType 0
 execute unless score _marked_poi var matches 1 run tell @a[tag=admin] POI mark failed!
 
-# If we succeeded, Track the current structure type and name in playerData for the actionbar title
-execute if score _marked_poi var matches 1 run data modify storage questcraft:player_data currentPoiName set from storage questcraft:args structure_name
+# If we succeeded, track the current safe status (safe (1), normal (0), or hostile (-1)) and name in playerData for the actionbar title
+$execute if score _marked_poi var matches 1 run data modify storage questcraft:player_data players[$(playerId)].currentPoiName set from storage questcraft:args structure_name
+$execute if score _marked_poi var matches 1 if score _structure_type_id var matches 1 run data modify storage questcraft:player_data players[$(playerId)].currentPoiSafeStatus set value -1
+$execute if score _marked_poi var matches 1 if score _structure_type_id var matches 2 run data modify storage questcraft:player_data players[$(playerId)].currentPoiSafeStatus set value 1
+$execute if score _marked_poi var matches 1 if score _structure_type_id var matches 3 run data modify storage questcraft:player_data players[$(playerId)].currentPoiSafeStatus set value -1
+$execute if score _marked_poi var matches 1 if score _structure_type_id var matches 4 run data modify storage questcraft:player_data players[$(playerId)].currentPoiSafeStatus set value 1
+$execute if score _marked_poi var matches 1 if score _structure_type_id var matches 5 run data modify storage questcraft:player_data players[$(playerId)].currentPoiSafeStatus set value -1
+$execute if score _marked_poi var matches 1 if score _structure_type_id var matches 6 run data modify storage questcraft:player_data players[$(playerId)].currentPoiSafeStatus set value 1
 
 scoreboard players reset _marked_poi var
 

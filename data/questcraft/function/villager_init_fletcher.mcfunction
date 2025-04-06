@@ -30,7 +30,9 @@ data modify entity @s Offers.Recipes append value {buy:{id:emerald,count:1},sell
 
 # execute if score _random_val var matches 5 run data modify entity @s Offers.Recipes append value {buy:{id:emerald,count:1},sell:{id:tipped_arrow,components:{potion_contents:{potion:strong_harming},custom_name:'{"text":"Blooded Arrow"}',lore:['{"text":"Damages normal targets more than a normal arrow, but heals undead"}'],rarity:rare,custom_model_data:1},count:2},maxUses:99999}
 
-# Fletcher will always buy arrows, flint, feathers, and string
+# Fletchers will always buy bows and crossbows as well as arrows, flint, feathers, and string
+data modify entity @s Offers.Recipes append value {buy:{id:crossbow,count:1},sell:{id:emerald,count:10},maxUses:99999}
+data modify entity @s Offers.Recipes append value {buy:{id:bow,count:1},sell:{id:emerald,count:8},maxUses:99999}
 data modify entity @s Offers.Recipes append value {buy:{id:arrow,count:16},sell:{id:emerald,count:1},maxUses:99999}
 data modify entity @s Offers.Recipes append value {buy:{id:flint,count:8},sell:{id:emerald,count:1},maxUses:99999}
 data modify entity @s Offers.Recipes append value {buy:{id:feather,count:6},sell:{id:emerald,count:1},maxUses:99999}

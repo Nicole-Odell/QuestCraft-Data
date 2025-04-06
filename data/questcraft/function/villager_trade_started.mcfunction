@@ -1,8 +1,5 @@
 advancement revoke @s only questcraft:started_villager_trading
 
-# If the player is not in a POI, don't modify villager trades
-# execute if score @s currentPoiType matches 0 run return fail
-
 # Get the poi type as a score so we know it when we are executing in the villager's context
 scoreboard players operation _currentPoiType var = @s currentPoiType
 
