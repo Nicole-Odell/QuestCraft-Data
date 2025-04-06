@@ -13,5 +13,3 @@ $execute unless entity @e[type=minecraft:marker,tag=poi_marker,tag=poi_marker_$(
 
 # Call the type-specific function in case there is anything specific to do
 $function questcraft:player_entered_poi_$(structure_type) with storage questcraft:args
-
-# This advancement will be revoked when we exit this structure type

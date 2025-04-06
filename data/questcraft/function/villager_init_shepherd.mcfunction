@@ -1,7 +1,8 @@
 # No biome-specific trades
 
-# Shepherds will always sell white wool
+# Shepherds will always sell white wool and string
 data modify entity @s Offers.Recipes append value {buy:{id:emerald,count:1},sell:{id:white_wool,count:4},maxUses:99999}
+data modify entity @s Offers.Recipes append value {buy:{id:emerald,count:1},sell:{id:string,count:12},maxUses:99999}
 
 # Shepherds have a chance to sell other wool colors based on that sheep's rarity
 execute store result score _random_val var run function questcraft:get_random_in_range {randMin:0,randMax:1000}

@@ -16,6 +16,8 @@ function questcraft:poi_get_structure_details_from_id with storage questcraft:ar
 # Handle them entering the structure
 function questcraft:player_entered_poi_type with storage questcraft:args
 
+scoreboard players reset _structure_type_id var
+
 data remove storage questcraft:args playerId
 data remove storage questcraft:args structure_type_id
 data remove storage questcraft:args structure_type

@@ -9,6 +9,7 @@ execute unless score @s temperature.current = _globals temperature.midpoint run 
 execute unless score @s wetness.current matches 0 run scoreboard players set _cant_sleep var 1
 
 execute if score _cant_sleep var matches 1 run title @s actionbar [{"italic":true,"color":"yellow","text":"You must be dry and at a neutral temperature to sleep!"}]
+function questcraft:player_actionbar_no_override
 # tp ~ ~ ~ cancels sleep
 execute if score _cant_sleep var matches 1 at @s run tp @s ~ ~ ~
 

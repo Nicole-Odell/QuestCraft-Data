@@ -60,7 +60,7 @@ execute at @s as @n[type=marker,tag=poi_locater_n_x] run function questcraft:tp_
 execute at @s store result score _poi_search_avg_y var run data get entity @n[type=marker,tag=poi_locater_n_x] Pos[1]
 
 # Clean up the markers
-execute at @s as @n[type=marker,tag=poi_locater] run kill @s
+execute at @s as @e[type=marker,tag=poi_locater] run kill @s
 
 # Record the center. These function as out paramaters so we don't reset them here
 execute store result storage questcraft:args poiCenterX int 1 run scoreboard players get _poi_search_avg_x var

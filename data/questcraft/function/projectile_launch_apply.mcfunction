@@ -1,5 +1,3 @@
-# $say summon $(projectileEntity) ^ ^ ^1 {Tags:["projectile_visual_fix","projectile_$(projectileId)","player_projectile","$(projectileTag)"],Owner:$(ownerUuid),$(projectileData)}
-
 # Summon the projectile entity
 $summon $(projectileEntity) ^ ^ ^0.5 {Tags:["projectile_visual_fix","projectile_$(projectileId)","player_projectile","$(projectileTag)"],Owner:$(ownerUuid),$(projectileData)}
 

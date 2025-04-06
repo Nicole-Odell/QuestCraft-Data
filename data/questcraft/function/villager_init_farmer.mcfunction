@@ -8,9 +8,13 @@ execute if score _villager_type var matches 1 run data modify entity @s Offers.R
 # plains
 execute if score _villager_type var matches 2 run data modify entity @s Offers.Recipes append value {buy:{id:emerald,count:16},sell:{id:cake,count:1},maxUses:99999}
 execute if score _villager_type var matches 2 run data modify entity @s Offers.Recipes append value {buy:{id:emerald,count:3},sell:{id:pumpkin_pie,count:1},maxUses:99999}
+execute if score _villager_type var matches 2 if score _currentPoiType var matches 2 run data modify entity @s Offers.Recipes append value {buy:{id:emerald,count:1},sell:{id:glow_berries,count:2},maxUses:99999}
+execute if score _villager_type var matches 2 if score _currentPoiType var matches 2 run data modify entity @s Offers.Recipes append value {buy:{id:emerald,count:1},sell:{id:honeycomb,count:2},maxUses:99999}
 
 # snow
 execute if score _villager_type var matches 4 run data modify entity @s Offers.Recipes append value {buy:{id:emerald,count:1},sell:{id:sweet_berries,count:4},maxUses:99999}
+execute if score _villager_type var matches 4 if score _currentPoiType var matches 2 run data modify entity @s Offers.Recipes append value {buy:{id:emerald,count:1},sell:{id:glow_berries,count:2},maxUses:99999}
+execute if score _villager_type var matches 4 if score _currentPoiType var matches 2 run data modify entity @s Offers.Recipes append value {buy:{id:emerald,count:1},sell:{id:honeycomb,count:2},maxUses:99999}
 
 # savanna
 # Nothing special
@@ -21,6 +25,8 @@ execute if score _villager_type var matches 4 run data modify entity @s Offers.R
 # taiga 
 execute if score _villager_type var matches 6 run data modify entity @s Offers.Recipes append value {buy:{id:emerald,count:3},sell:{id:pumpkin_pie,count:1},maxUses:99999}
 execute if score _villager_type var matches 6 run data modify entity @s Offers.Recipes append value {buy:{id:emerald,count:1},sell:{id:sweet_berries,count:4},maxUses:99999}
+execute if score _villager_type var matches 6 if score _currentPoiType var matches 2 run data modify entity @s Offers.Recipes append value {buy:{id:emerald,count:1},sell:{id:glow_berries,count:2},maxUses:99999}
+execute if score _villager_type var matches 6 if score _currentPoiType var matches 2 run data modify entity @s Offers.Recipes append value {buy:{id:emerald,count:1},sell:{id:honeycomb,count:2},maxUses:99999}
 
 
 # Farmers will always sell bread and basic crops, plus other crops based on the biome

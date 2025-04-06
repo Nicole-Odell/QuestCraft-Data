@@ -35,6 +35,7 @@ execute unless score _globals disableTick matches 1 run function questcraft:spel
 execute unless score _globals disableTick matches 1 run function questcraft:status_effects_tick
 execute unless score _globals disableTick matches 1 run function questcraft:projectile_tick
 execute unless score _globals disableTick matches 1 run function questcraft:raycast_tick
+execute unless score _globals disableTick matches 1 as @a[tag=actionbar_no_override] run function questcraft:player_actionbar_no_override_tick
 
 execute unless score _globals disableTick matches 1 run function questcraft:mobs_tick
 

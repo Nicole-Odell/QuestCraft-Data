@@ -14,6 +14,8 @@ $execute if score _marked_undiscovered var matches 1 as @n[type=minecraft:marker
 execute unless score _marked_undiscovered var matches 1 run title @s subtitle [{"italic":true,"color":"#BDBDBD","text":"Entering "},{"italic":true,"color":"#BDBDBD","storage":"questcraft:args","nbt":"structure_type_name"},{"italic":true,"color":"#BDBDBD","text":"  -  "},{"italic":true,"color":"#BDBDBD","storage":"questcraft:args","nbt":"structure_name"}]
 execute unless score _marked_undiscovered var matches 1 run title @s title ""
 
+# Track the current structure type and name in playerData for the actionbar title
+data modify storage questcraft:player_data currentPoiName set from storage questcraft:args structure_name
 
 scoreboard players reset _marked_undiscovered var
 

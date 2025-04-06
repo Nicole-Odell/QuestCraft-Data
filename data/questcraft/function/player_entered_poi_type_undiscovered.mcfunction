@@ -29,12 +29,22 @@ execute if score _structure_type_id var matches 6 if predicate questcraft:is_in_
 # Mark the POI. This will also assign the structure a name from the list
 execute at @s run function questcraft:poi_mark_center with storage questcraft:args
 
-# We broadcast first-time discoveries to all players
-$title @a subtitle {"color":"#CDC06E","text":"Discovered New $(structure_type_name)"}
-title @a title {"italic":true,"color":"#BDBDBD","storage":"questcraft:args","nbt":"structure_name"}
+# Check that we succeeded in marking the POI
+$execute if entity @e[type=minecraft:marker,tag=poi_marker,tag=poi_marker_$(structure_type),distance=..256] run scoreboard players set _marked_poi var 1
 
-# If we failed to mark the poi, we will continue to try until we do
-$execute unless entity @e[type=minecraft:marker,tag=poi_marker,tag=poi_marker_$(structure_type),distance=..256] run advancement revoke @s only questcraft:entered_poi
+# If we succeeded, we broadcast first-time discoveries to all players
+$execute if score _marked_poi var matches 1 run title @a subtitle {"color":"#CDC06E","text":"Discovered New $(structure_type_name)"}
+execute if score _marked_poi var matches 1 run title @a title {"italic":true,"color":"#BDBDBD","storage":"questcraft:args","nbt":"structure_name"}
+
+# If we failed to mark the poi, we will continue to try until we do. Revoke the entered advancemant and reset their POI type to do so
+execute unless score _marked_poi var matches 1 run advancement revoke @s only questcraft:entered_poi
+execute unless score _marked_poi var matches 1 run scoreboard players set @s currentPoiType 0
+execute unless score _marked_poi var matches 1 run tell @a[tag=admin] POI mark failed!
+
+# If we succeeded, Track the current structure type and name in playerData for the actionbar title
+execute if score _marked_poi var matches 1 run data modify storage questcraft:player_data currentPoiName set from storage questcraft:args structure_name
+
+scoreboard players reset _marked_poi var
 
 data remove storage questcraft:args structure_name
 data remove storage questcraft:args structure_type_subtype

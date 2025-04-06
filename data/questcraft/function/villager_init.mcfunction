@@ -1,21 +1,26 @@
-# Give them enough Xp to become master
+# Give them enough Xp to become master and make them master, so the XP bar isn't there to be distracting
 data modify entity @s Xp set value 250
 data modify entity @s VillagerData.level set value 5
-# # Give them a dummy trade which can be used to level them up
-# data modify entity @s Offers.Recipes insert 0 value {buy:{id:emerald,count:1},sell:{id:emerald,count:1},maxUses:99999}
+
+# TEMP
 tag @s remove villager_init
 
-say Initing villager
+tell @a[tag=admin] Initing villager
 
 # If they are a nitwit, immediately tag them as inited and we are done
 execute if entity @s[nbt={VillagerData:{profession:"minecraft:nitwit"}}] run scoreboard players set _villager_profession var -1
-execute if score _villager_profession var matches -1 run say inited Nitwit!
-execute if score _villager_profession var matches -1 run return run tag @s add villager_inited
+execute if score _villager_profession var matches -1 run tell @a[tag=admin] Inited Nitwit!
+execute if score _villager_profession var matches -1 run tag @s add villager_inited
+execute if score _villager_profession var matches -1 run return run scoreboard players reset _villager_profession var
+
+# For kingdoms, determine the right variaant for the biome since they always spawn as plains
+execute if score _currentPoiType var matches 2 at @n[type=marker,tag=poi_marker_kingdom] if biome ~ ~ ~ #questcraft:is_coniferous_forest run data modify entity @s VillagerData.type set value "minecraft:taiga"
+execute if score _currentPoiType var matches 2 at @n[type=marker,tag=poi_marker_kingdom] if biome ~ ~ ~ #questcraft:is_frozen run data modify entity @s VillagerData.type set value "minecraft:snow"
 
 # If they don't have a profession, hold off on initing them
 execute if entity @s[nbt={VillagerData:{profession:"minecraft:none"}}] run scoreboard players set _villager_profession var 0
-execute if score _villager_profession var matches 0 run say No profession - waiting to init
-execute if score _villager_profession var matches 0 run return 1
+execute if score _villager_profession var matches 0 run tell @a[tag=admin] No profession - waiting to init
+execute if score _villager_profession var matches 0 run return run scoreboard players reset _villager_profession var
 
 
 # Get the villager type as a score in case professions need to be customized based on type
@@ -58,15 +63,19 @@ execute if entity @s[nbt={VillagerData:{profession:"minecraft:toolsmith"}}] run 
 # 
 execute if entity @s[nbt={VillagerData:{profession:"minecraft:weaponsmith"}}] run function questcraft:villager_init_weaponsmith
 
+tellraw @a[tag=admin] [{"italic":true,"color":"gray","text":"Inited "},{"nbt":"VillagerData.type","entity":"@s","source":"entity"},{"text":" "},{"nbt":"VillagerData.profession","entity":"@s","source":"entity"}]
+
 # TEMP add a dummy trade for any uninitialized villagers to prevent them from being effectively nitwits and not able to be re-initialized easily
-data modify entity @s Offers.Recipes append value {buy:{id:emerald,count:1},sell:{id:emerald,count:1},maxUses:99999}
+# data modify entity @s Offers.Recipes append value {buy:{id:emerald,count:1},sell:{id:emerald,count:1},maxUses:99999}
 
 
 # For any DnT tavern quest givers, make sure we add back their special trades
 execute if entity @s[type=villager,tag=dnt_quest_trader] run function nova_structures:add_trade
-execute if entity @s[type=villager,tag=dnt_quest_trader] run say DnT Trader inited
+execute if entity @s[type=villager,tag=dnt_quest_trader] run data modify entity @s CustomName set value '{"text":"Concierge"}'
+execute if entity @s[type=villager,tag=dnt_quest_trader] run data modify entity @s CustomNameVisible set value true
+execute if entity @s[type=villager,tag=dnt_quest_trader] run tell @a[tag=admin] DnT Trader inited
 # TEMP change ^ to this!
-# execute if entity @s[type=villager,tag=!trader,tag=dnt_quest_trader] run say DnT Trader inited
+# execute if entity @s[type=villager,tag=!trader,tag=dnt_quest_trader] run tell @a[tag=admin] DnT Trader inited
 
 # TEMP uncomment this
 # Mark the villager as initialized

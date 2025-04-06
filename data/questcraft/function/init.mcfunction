@@ -30,16 +30,16 @@ scoreboard objectives add particlesGalleryForce dummy
 scoreboard objectives add particlesGallerySelectedEffect dummy
 scoreboard objectives add particlesGalleryOnlySelected dummy
 
-# ==== General ==== #
-
-# Gamerules and state
-gamerule snowAccumulationHeight 7
-
 # Temp storage used to pass function arguments (via macros)
 data merge storage questcraft:args {}
 
 # Used for all temporary variables
 scoreboard objectives add var dummy
+
+# ==== General ==== #
+
+# Gamerules and state
+gamerule snowAccumulationHeight 7
 
 # Projectile tracking
 scoreboard objectives add nextProjectileId dummy
@@ -125,7 +125,6 @@ scoreboard objectives add wetness.rainWetSpeed dummy
 scoreboard players set _globals wetness.rainWetSpeed 5
 scoreboard objectives add wetness.drySpeed dummy
 scoreboard players set _globals wetness.drySpeed 1
-
 # Pre-calculate this to save time later
 scoreboard objectives add wetness.drenchedThresholdMinusRainWetSpeed dummy
 scoreboard players operation _globals wetness.drenchedThresholdMinusRainWetSpeed = _globals wetness.drenchedThreshold
@@ -160,6 +159,10 @@ scoreboard objectives add frozenTime dummy
 
 # POI status
 scoreboard objectives add currentPoiType dummy
+
+# Tracks whether there is a critical actionbar title that shouldn't be overwritten,
+# and how much longer that is the case
+scoreboard objectives add actionbarNoOverrideTime dummy
 
 
 # ==== Mages ==== #

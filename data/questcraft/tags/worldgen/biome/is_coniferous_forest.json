@@ -1,0 +1,22 @@
+{
+    "values": [
+        "terralith:alpine_grove",
+        "terralith:birch_taiga",
+        "terralith:forested_highlands",
+        "terralith:shield",
+        "terralith:siberian_grove",
+        "terralith:siberian_taiga",
+        "terralith:snowy_maple_forest",
+        "terralith:snowy_shield",
+        "terralith:moonlight_grove",
+        "terralith:moonlight_valley",
+        "terralith:wintry_forest",
+        "terralith:wintry_lowlands",
+        "terralith:yosemite_lowlands",
+        "minecraft:grove",
+        "minecraft:old_growth_pine_taiga",
+        "minecraft:old_growth_spruce_taiga",
+        "minecraft:snowy_taiga",
+        "minecraft:taiga"
+    ]
+}

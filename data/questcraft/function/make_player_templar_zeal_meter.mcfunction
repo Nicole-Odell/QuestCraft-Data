@@ -1,4 +1,3 @@
-say G
 $bossbar add zeal_meter_$(playerId) ""
 
 $bossbar set zeal_meter_$(playerId) players @s

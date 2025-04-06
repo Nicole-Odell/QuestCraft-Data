@@ -1,3 +1,3 @@
 $damage @s $(damage) generic
 
-# $say did damage $(damage)
+# $tell @a[tag=admin] did damage $(damage)

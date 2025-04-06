@@ -1,1 +1,2 @@
 $title @s actionbar [{"bold":true,"color":"gold","text":"-^-<| "},{"color":"$(0)","text":"$(char) "},{"color":"$(1)","text":"$(char) "},{"color":"$(2)","text":"$(char) "},{"bold":true,"color":"gold","text":"|>-^-"}]
+function questcraft:player_actionbar_no_override
