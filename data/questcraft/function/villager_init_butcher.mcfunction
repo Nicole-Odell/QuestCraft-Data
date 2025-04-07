@@ -1,3 +1,7 @@
+# Set their name so they are easier to find
+data modify entity @s CustomName set value '[{"text":"🥩 "},{"translate":"entity.minecraft.villager.butcher"}]'
+data modify entity @s CustomNameVisible set value true
+
 # Butchers in taverns function as inkeepers instead of butchers
 # Innkeepers have special sell trades that include coocked food and drinks
 # This is also the case for butchers in kingdoms as they function like restaurant owners

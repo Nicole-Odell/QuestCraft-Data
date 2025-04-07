@@ -1,3 +1,7 @@
+# Set their name so they are easier to find
+data modify entity @s CustomName set value '[{"text":"🌿 "},{"translate":"entity.minecraft.villager.farmer"}]'
+data modify entity @s CustomNameVisible set value true
+
 # desert
 execute if score _villager_type var matches 0 run data modify entity @s Offers.Recipes append value {buy:{id:emerald,count:1},sell:{id:cactus,count:2},maxUses:99999}
 execute if score _villager_type var matches 0 if score _currentPoiType var matches 2 run data modify entity @s Offers.Recipes append value {buy:{id:emerald,count:1},sell:{id:melon_slice,count:3},maxUses:99999}

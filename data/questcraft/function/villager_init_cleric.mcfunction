@@ -1,3 +1,7 @@
+# Set their name so they are easier to find
+data modify entity @s CustomName set value '[{"text":"✨ "},{"translate":"entity.minecraft.villager.cleric"}]'
+data modify entity @s CustomNameVisible set value true
+
 # Clerics will allow players to pay the tithe and donate sacret writs, to receive a blessing of power
 data modify entity @s Offers.Recipes append value {buy:{id:music_disc_11,count:1,components:{custom_model_data:2,custom_name:'{"bold":true,"italic":true,"color":"gold","text":"Sacred Writ"}',lore:['{"text":"Bring this to a cleric and pay the tithe"}','{"text":"to receive a Blessing of Divine Power"}']}},buyB:{id:emerald,count:12},sell:{id:music_disc_11,count:1,components:{custom_model_data:3,custom_name:'{"bold":true,"italic":true,"color":"gold","text":"Blessing of Divine Power"}',lore:['{"color":"yellow","text":"A promise of great power from the gods."}','{"color":"yellow","text":"Sleep to meditate and enchance your abilities!"}']}},maxUses:1}
 

@@ -1,0 +1,15 @@
+[
+    {
+        "function": "minecraft:exploration_map",
+        "destination": "questcraft:castles",
+        "decoration": "jungle_temple",
+        "skip_existing_chunks": true,
+        "search_radius": 200,
+        "zoom": 8
+    },
+    {
+        "function": "set_name",
+        "target": "custom_name",
+        "name": "Fortress exploration map"
+    }
+]

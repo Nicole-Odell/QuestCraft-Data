@@ -18,8 +18,8 @@ execute if score _do_ench_crossbow var matches 1 if score _random_val var matche
 # Peircing 1-4
 execute if score _do_ench_crossbow var matches 1 if score _random_val var matches 45..69 run data modify entity @s Offers.Recipes append value {buy:{id:emerald,count:26},sell:{id:crossbow,components:{rarity:uncommon,enchantments:{piercing:1}},count:1},maxUses:1}
 execute if score _do_ench_crossbow var matches 1 if score _random_val var matches 70..84 run data modify entity @s Offers.Recipes append value {buy:{id:emerald,count:34},sell:{id:crossbow,components:{rarity:uncommon,enchantments:{piercing:2}},count:1},maxUses:1}
-execute if score _do_ench_crossbow var matches 1 if score _random_val var matches 85..94 run data modify entity @s Offers.Recipes append value {buy:{id:emerald,count:48},sell:{id:crossbow,components:{rarity:uncommon,enchantments:{piercing:2}},count:1},maxUses:1}
-execute if score _do_ench_crossbow var matches 1 if score _random_val var matches 95..99 run data modify entity @s Offers.Recipes append value {buy:{id:emerald,count:64},sell:{id:crossbow,components:{rarity:uncommon,enchantments:{piercing:2}},count:1},maxUses:1}
+execute if score _do_ench_crossbow var matches 1 if score _random_val var matches 85..94 run data modify entity @s Offers.Recipes append value {buy:{id:emerald,count:48},sell:{id:crossbow,components:{rarity:uncommon,enchantments:{piercing:3}},count:1},maxUses:1}
+execute if score _do_ench_crossbow var matches 1 if score _random_val var matches 95..99 run data modify entity @s Offers.Recipes append value {buy:{id:emerald,count:64},sell:{id:crossbow,components:{rarity:uncommon,enchantments:{piercing:4}},count:1},maxUses:1}
 
 # Multishot
 execute if score _do_ench_crossbow var matches 1 if score _random_val var matches 100..114 run data modify entity @s Offers.Recipes append value {buy:{id:emerald,count:48},sell:{id:crossbow,components:{rarity:uncommon,enchantments:{multishot:1}},count:1},maxUses:1}

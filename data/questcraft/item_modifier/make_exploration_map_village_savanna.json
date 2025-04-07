@@ -1,0 +1,15 @@
+[
+    {
+        "function": "minecraft:exploration_map",
+        "destination": "minecraft:on_savanna_village_maps",
+        "decoration": "village_savanna",
+        "skip_existing_chunks": false,
+        "search_radius": 200,
+        "zoom": 4
+    },
+    {
+        "function": "set_name",
+        "target": "custom_name",
+        "name": "Savanna village exploration map"
+    }
+]

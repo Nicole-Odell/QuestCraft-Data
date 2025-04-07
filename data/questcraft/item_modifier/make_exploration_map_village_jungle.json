@@ -1,0 +1,15 @@
+[
+    {
+        "function": "minecraft:exploration_map",
+        "destination": "questcraft:on_jungle_village_maps",
+        "decoration": "village_plains",
+        "skip_existing_chunks": false,
+        "search_radius": 200,
+        "zoom": 4
+    },
+    {
+        "function": "set_name",
+        "target": "custom_name",
+        "name": "Jungle village exploration map"
+    }
+]

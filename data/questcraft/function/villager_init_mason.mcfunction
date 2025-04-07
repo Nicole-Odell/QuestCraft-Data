@@ -1,6 +1,7 @@
+# Set their name so they are easier to find
 # Masons function more like general contstruction and carpentry vendors, and are renamed as such
-data modify entity @s CustomName set value '{"text":"Carpenter"}'
-data modify entity @s CustomNameVisible set value false
+data modify entity @s CustomName set value '[{"text":"🔧 "},{"text":"Carpenter"}]'
+data modify entity @s CustomNameVisible set value true
 
 # Biome-specific trades
 

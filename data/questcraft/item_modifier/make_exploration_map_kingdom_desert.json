@@ -1,0 +1,15 @@
+[
+    {
+        "function": "minecraft:exploration_map",
+        "destination": "questcraft:on_desert_kingdom_maps",
+        "decoration": "mansion",
+        "skip_existing_chunks": true,
+        "search_radius": 200,
+        "zoom": 8
+    },
+    {
+        "function": "set_name",
+        "target": "custom_name",
+        "name": "Desert Kingdom map"
+    }
+]

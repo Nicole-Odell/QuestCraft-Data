@@ -72,7 +72,7 @@ execute if score _random_val var matches 5 run data modify entity @s Offers.Reci
 execute if score _random_val var matches 6 run data modify entity @s Offers.Recipes append value {buy:{id:emerald,count:2},sell:{id:cooked_cod,count:1},maxUses:99999}
 
 # Rename actual Inkeepers and make their name visible
-execute if score _currentPoiType var matches 4 run data modify entity @s CustomName set value '{"text":"Inkeeper"}'
+execute if score _currentPoiType var matches 4 run data modify entity @s CustomName set value '[{"text":"🍴 "},{"text":"Inkeeper"}]'
 execute if score _currentPoiType var matches 4 run data modify entity @s CustomNameVisible set value true
 
 scoreboard players reset _random_val var

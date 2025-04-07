@@ -1,1 +1,0 @@
-execute as @a if score @s timeSinceLastRest matches 0..1 if score _day_time var matches 0..1 run function questcraft:player_slept

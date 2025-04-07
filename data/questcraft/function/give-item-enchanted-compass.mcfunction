@@ -1,0 +1,1 @@
+give @s minecraft:compass[custom_model_data=1,custom_name='{"italic":true,"color":"gold","text":"Enchanted Compass"}',lore=['{"text":"A magic-infused compass that"}','{"text":"points to a chosen destination"}']] 1

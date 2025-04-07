@@ -1,0 +1,15 @@
+[
+    {
+        "function": "minecraft:exploration_map",
+        "destination": "nova_structures:trident_trial_monument",
+        "decoration": "mansion",
+        "skip_existing_chunks": true,
+        "search_radius": 200,
+        "zoom": 8
+    },
+    {
+        "function": "set_name",
+        "target": "custom_name",
+        "name": "Ocean palace exploration map"
+    }
+]

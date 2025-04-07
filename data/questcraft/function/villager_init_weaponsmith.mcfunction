@@ -1,3 +1,7 @@
+# Set their name so they are easier to find
+data modify entity @s CustomName set value '[{"text":"🔪 "},{"translate":"entity.minecraft.villager.weaponsmith"}]'
+data modify entity @s CustomNameVisible set value true
+
 # No biome-specific trades
 
 # Weaponsmiths in kingdoms will have a chance to sell a diamond sword

@@ -1,0 +1,15 @@
+[
+    {
+        "function": "minecraft:exploration_map",
+        "destination": "minecraft:on_snowy_village_maps",
+        "decoration": "village_snowy",
+        "skip_existing_chunks": false,
+        "search_radius": 200,
+        "zoom": 4
+    },
+    {
+        "function": "set_name",
+        "target": "custom_name",
+        "name": "Snowy village exploration map"
+    }
+]

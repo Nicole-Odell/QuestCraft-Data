@@ -1,3 +1,7 @@
+# Set their name so they are easier to find
+data modify entity @s CustomName set value '[{"text":"👗 "},{"translate":"entity.minecraft.villager.leatherworker"}]'
+data modify entity @s CustomNameVisible set value true
+
 # Leatherworkers in kingdoms will sell saddles
 execute if score _currentPoiType var matches 2 run data modify entity @s Offers.Recipes append value {buy:{id:emerald,count:32},sell:{id:saddle,count:1},maxUses:99999}
 

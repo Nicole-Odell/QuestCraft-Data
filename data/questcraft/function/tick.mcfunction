@@ -1,3 +1,5 @@
+execute if score _globals disableTick matches 1 run return 1
+
 # Get various divisions of ticks to run things less often for performance where desired
 execute store result score _game_time_mod_4 var run time query gametime
 scoreboard players set _c_4 var 4
@@ -27,23 +29,23 @@ scoreboard players operation _game_time_mod_100 var %= _c_100 var
 execute store result score _day_time var run time query daytime
 
 # Main tick functions
-execute unless score _globals disableTick matches 1 run function questcraft:items_tick
-execute unless score _globals disableTick matches 1 run function questcraft:sleep_tick
-execute unless score _globals disableTick matches 1 run function questcraft:environment_tick
-execute unless score _globals disableTick matches 1 run execute as @a[tag=is_templar] at @s run function questcraft:templar_tick
-execute unless score _globals disableTick matches 1 run function questcraft:spells_tick
-execute unless score _globals disableTick matches 1 run function questcraft:status_effects_tick
-execute unless score _globals disableTick matches 1 run function questcraft:projectile_tick
-execute unless score _globals disableTick matches 1 run function questcraft:raycast_tick
-execute unless score _globals disableTick matches 1 as @a[tag=actionbar_no_override] run function questcraft:player_actionbar_no_override_tick
+function questcraft:items_tick
+function questcraft:daily_tick
+function questcraft:environment_tick
+execute as @a[tag=is_templar] at @s run function questcraft:templar_tick
+function questcraft:spells_tick
+function questcraft:status_effects_tick
+function questcraft:projectile_tick
+function questcraft:raycast_tick
+execute as @a[tag=actionbar_no_override] run function questcraft:player_actionbar_no_override_tick
 
-execute unless score _globals disableTick matches 1 run function questcraft:mobs_tick
+function questcraft:mobs_tick
 
 # Reset added/new scores which track delta from last tick
 scoreboard players set @a newJumps 0
 
 # Handling for reset if a player dies
-execute unless score _globals disableTick matches 1 run execute as @a[scores={health=0}] run function questcraft:player_died
+execute as @a[scores={health=0}] run function questcraft:player_died
 
 # data modify storage questcraft:args rayCastRange set value 32
 # execute as InfectedGrowth at @s run function questcraft:templar_ability_target_raycast_block

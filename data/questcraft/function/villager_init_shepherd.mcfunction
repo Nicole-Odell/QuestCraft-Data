@@ -1,3 +1,7 @@
+# Set their name so they are easier to find
+data modify entity @s CustomName set value '[{"text":"🧵 "},{"translate":"entity.minecraft.villager.shepherd"}]'
+data modify entity @s CustomNameVisible set value true
+
 # No biome-specific trades
 
 # Shepherds will always sell white wool, leads, and string

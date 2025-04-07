@@ -1,0 +1,15 @@
+[
+    {
+        "function": "minecraft:exploration_map",
+        "destination": "questcraft:taverns",
+        "decoration": "swamp_hut",
+        "skip_existing_chunks": false,
+        "search_radius": 200,
+        "zoom": 8
+    },
+    {
+        "function": "set_name",
+        "target": "custom_name",
+        "name": "Tavern exploration map"
+    }
+]
