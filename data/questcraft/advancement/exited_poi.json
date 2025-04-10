@@ -18,6 +18,6 @@
         }
     },
     "rewards": {
-        "function": "questcraft:player_exited_poi"
+        "function": "questcraft:poi/player_exited"
     }
 }

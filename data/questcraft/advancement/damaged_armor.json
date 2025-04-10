@@ -10,6 +10,6 @@
         }
     },
     "rewards": {
-        "function": "questcraft:item_damaged_armor"
+        "function": "questcraft:items/damaged_armor"
     }
 }

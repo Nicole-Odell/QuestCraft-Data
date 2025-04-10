@@ -17,6 +17,6 @@
         }
     },
     "rewards": {
-        "function": "questcraft:sleep_attempt"
+        "function": "questcraft:player/sleep_attempt"
     }
 }

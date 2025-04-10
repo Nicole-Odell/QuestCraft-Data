@@ -1,0 +1,1 @@
+$execute positioned $(poiCenterX) $(poiCenterY) $(poiCenterZ) run function questcraft:poi/triangulate_center with storage questcraft:args

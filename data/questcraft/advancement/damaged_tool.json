@@ -10,6 +10,6 @@
         }
     },
     "rewards": {
-        "function": "questcraft:item_damaged_tool"
+        "function": "questcraft:items/damaged_tool"
     }
 }

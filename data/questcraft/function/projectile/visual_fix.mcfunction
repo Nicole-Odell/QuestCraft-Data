@@ -1,0 +1,1 @@
+execute as @e[tag=projectile_visual_fix] run function questcraft:projectile/visual_fix_apply

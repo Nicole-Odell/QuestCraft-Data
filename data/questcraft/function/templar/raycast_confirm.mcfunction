@@ -1,0 +1,1 @@
+execute if entity @s[tag=templar_crouch_jump_heavenly_strike_ready] run function questcraft:templar/ability/heavenly_strike/confirm

@@ -13,6 +13,6 @@
         }
     },
     "rewards": {
-        "function": "questcraft:player_entered_poi"
+        "function": "questcraft:poi/player_entered"
     }
 }

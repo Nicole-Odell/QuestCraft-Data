@@ -5,13 +5,13 @@
             "conditions": {
                 "item": {
                     "predicates": {
-                        "minecraft:custom_data": "{templar_sword:true,right_click:true}"
+                        "minecraft:custom_data": "{right_click_sword:true,right_click:true}"
                     }
                 }
             }
         }
     },
     "rewards": {
-        "function": "questcraft:sword_right_click"
+        "function": "questcraft:items/sword_right_click"
     }
 }

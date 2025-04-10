@@ -7,7 +7,7 @@
                 "items": "#minecraft:swords",
                 "predicates": {
                     "custom_data": {
-                        "templar_sword": true,
+                        "right_click_sword": true,
                         "right_click": true
                     }
                 }

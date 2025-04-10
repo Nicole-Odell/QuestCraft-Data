@@ -12,6 +12,6 @@
         }
     },
     "rewards": {
-        "function": "questcraft:aspect_of_void_right_click"
+        "function": "questcraft:mage/casting/build/aspect_of_void_right_click"
     }
 }

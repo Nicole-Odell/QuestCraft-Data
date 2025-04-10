@@ -2,7 +2,7 @@
     {
         "function": "minecraft:set_custom_data",
         "tag": {
-            "templar_sword": true,
+            "right_click_sword": true,
             "right_click": true
         }
     },

@@ -10,6 +10,6 @@
         }
     },
     "rewards": {
-        "function": "questcraft:villager_trade_started"
+        "function": "questcraft:villager/trade_started"
     }
 }

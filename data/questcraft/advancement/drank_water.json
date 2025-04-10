@@ -13,6 +13,6 @@
         }
     },
     "rewards": {
-        "function": "questcraft:player_drank_water"
+        "function": "questcraft:player/drank_water"
     }
 }

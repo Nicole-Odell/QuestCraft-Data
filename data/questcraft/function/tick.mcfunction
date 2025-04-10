@@ -29,28 +29,28 @@ scoreboard players operation _game_time_mod_100 var %= _c_100 var
 execute store result score _day_time var run time query daytime
 
 # Main tick functions
-function questcraft:items_tick
+function questcraft:items/tick
 function questcraft:daily_tick
-function questcraft:environment_tick
-execute as @a[tag=is_templar] at @s run function questcraft:templar_tick
-function questcraft:spells_tick
-function questcraft:status_effects_tick
-function questcraft:projectile_tick
-function questcraft:raycast_tick
-execute as @a[tag=actionbar_no_override] run function questcraft:player_actionbar_no_override_tick
+function questcraft:environment/tick
+execute as @a[tag=is_templar] at @s run function questcraft:templar/tick
+function questcraft:mage/tick
+function questcraft:status_effects/tick
+function questcraft:projectile/tick
+function questcraft:raycasting/tick
+execute as @a[tag=actionbar_no_override] run function questcraft:player/set_actionbar_no_override_tick
 
-function questcraft:mobs_tick
+function questcraft:mobs/tick
 
 # Reset added/new scores which track delta from last tick
 scoreboard players set @a newJumps 0
 
 # Handling for reset if a player dies
-execute as @a[scores={health=0}] run function questcraft:player_died
+execute as @a[scores={health=0}] run function questcraft:player/died
 
 # data modify storage questcraft:args rayCastRange set value 32
-# execute as InfectedGrowth at @s run function questcraft:templar_ability_target_raycast_block
+# execute as InfectedGrowth at @s run function questcraft:templar/ability/target_raycast_block
 # data remove storage questcraft:args rayCastRange
-# execute at InfectedGrowth as @n[type=!#questcraft:is_attack_targetable] at @s run function questcraft:test_raycast
+# execute at InfectedGrowth as @n[type=!#questcraft:is_attack_targetable] at @s run function questcraft:debug/test_raycast
 
 scoreboard players reset _c_4 var
 scoreboard players reset _game_time_mod_4 var

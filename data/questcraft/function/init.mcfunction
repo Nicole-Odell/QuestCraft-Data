@@ -83,7 +83,7 @@ team add White
 team modify White color white
 
 # Set up the lists of names used for POIs
-execute unless data storage questcraft:poi_data poiTypes run function questcraft:init_poi_names
+execute unless data storage questcraft:poi_data poiTypes run function questcraft:poi/init_names
 
 
 # ==== Players ==== #

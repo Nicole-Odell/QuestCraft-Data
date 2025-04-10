@@ -1,0 +1,3 @@
+$execute if score _game_time_mod_20 var matches 0..9 run title @s actionbar [{"bold":true,"color":"white","text":"-^-<| "},{"color":"$(castColor)","text":"(= Casting $(spellName) using $(castAspectName) =) "},{"bold":true,"color":"white","text":"|>-^-"}]
+$execute if score _game_time_mod_20 var matches 10..19 run title @s actionbar [{"bold":true,"color":"yellow","text":"-^-<| "},{"color":"$(castColor)","text":"(= Casting $(spellName) using $(castAspectName) =) "},{"bold":true,"color":"yellow","text":"|>-^-"}]
+function questcraft:player/set_actionbar_no_override
