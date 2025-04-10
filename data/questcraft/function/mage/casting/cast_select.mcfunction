@@ -95,14 +95,14 @@ execute unless score _any_spell_matched var matches 1 run function questcraft:ma
 data modify storage questcraft:args spellToMatch set value [2,0,0]
 data modify storage questcraft:args spellName set value "Barrier"
 data modify storage questcraft:args spellCost set value 10
-data modify storage questcraft:args spellFunction set value "questcraft:mage/spell/barrier_cast"
+data modify storage questcraft:args spellFunction set value "questcraft:mage/spell/barrier/cast"
 execute unless score _any_spell_matched var matches 1 run function questcraft:mage/casting/cast_if_match with storage questcraft:args
 
 # #$# Gathering Hail: Collects all projectiles fired at the player for a short time then sends them all flying in a direction
 data modify storage questcraft:args spellToMatch set value [2,0,1]
 data modify storage questcraft:args spellCost set value 10
 data modify storage questcraft:args spellName set value "Gathering Hail"
-data modify storage questcraft:args spellFunction set value "questcraft:mage/spell/gatheringhail_cast"
+data modify storage questcraft:args spellFunction set value "questcraft:mage/spell/gathering_hail/cast"
 execute unless score _any_spell_matched var matches 1 run function questcraft:mage/casting/cast_if_match with storage questcraft:args
 
 # Levitate Self: Applies levitation effect to caster for a time, then slow falling after it ends

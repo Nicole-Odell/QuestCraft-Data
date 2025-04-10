@@ -44,5 +44,6 @@ scoreboard players operation @s zeal.timeUntilReduce = _globals zeal.timeUntilRe
 
 $execute if score @s zealousChargeTime matches 0 run execute as @e[type=#questcraft:is_attack_targetable,tag=zealous_charge_hit_$(playerId),distance=..128] run function questcraft:templar/ability/zealous_charge/end with storage questcraft:args
 
+scoreboard players reset _c_2 var
 scoreboard players reset _templar_ability_damage_done var
 scoreboard players reset _is_next_location_solid var

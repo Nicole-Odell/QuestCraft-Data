@@ -52,5 +52,5 @@ scoreboard players set _c_2 var 2
 scoreboard players operation _templar_ability_succeeded var /= _c_2 var
 scoreboard players operation @s zeal.current += _templar_ability_succeeded var
 
-
 scoreboard players reset _templar_ability_succeeded var
+scoreboard players reset _c_2 var
